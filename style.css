@@ -1,0 +1,169 @@
+/* ============================================
+   CSS VARIABLES & ROOT STYLES
+   ============================================ */
+:root {
+    /* Color Palette - Editorial Elegance */
+    --color-primary: #1a1a1a;
+    --color-secondary: #c8102e;
+    --color-accent: #d4af37;
+    --color-background: #ffffff;
+    --color-surface: #f8f8f8;
+    --color-border: #e0e0e0;
+    --color-text: #2d2d2d;
+    --color-text-light: #666666;
+    --color-text-muted: #999999;
+    
+    /* Category Colors */
+    --color-technology: #0066cc;
+    --color-sports: #ff6b35;
+    --color-entertainment: #9b59b6;
+    --color-world: #27ae60;
+    
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    
+    /* Layout */
+    --container-width: 1200px;
+    --border-radius: 4px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+img {
+	max-width: 100%;
+    height: auto;
+    display: block;
+}
+a{
+	text-decoration: none;
+    color: inherit;
+}
+ul {
+	list-style: none;
+}
+button {
+	font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: var(--transition);
+}
+
+/* ============================================
+   DITO ANG BREAKING NEWS STICKER
+   ============================================ */
+   
+   
+.BN {
+    background: var(--color-secondary);
+    color: white;
+    padding: 0.75rem 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.BNlabel {
+    background: var(--color-primary);
+    padding: 0.25rem 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 1rem;
+    position: relative;
+    z-index: 2;
+}
+.BNcontent{
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 30s linear infinite;
+}
+.Bitem{
+	padding: 0 3rem;
+    display: inline-block;
+}
+
+/* The engine that makes the text move */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   DITO ANG NAVIGATION BAR
+   ============================================ */
+
+.header-main{
+	padding: 1.5rem 0;
+}
+.header-main .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Logo h1{
+	 font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--color-primary);
+    line-height: 1;
+}
+.Logo .tagline{
+	font-size: 0.75rem;
+    color: var(--color-text-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    font-weight: 300;
+}
+
+.main-nav {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+}
+.main-nav a{
+	font-weight: 600;
+	font-size: 0.95rem;
+	text-transform: uppercase;
+	position: relative;
+	padding: 0.5rem 0;
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-secondary);
+    transition: width 0.3s ease;
+}
+
+main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
