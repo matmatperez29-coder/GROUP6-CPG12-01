@@ -135,18 +135,36 @@ button {
     font-weight: 300;
 }
 
+
+/* Navigation container */
 .main-nav {
-	display: flex;
-	gap: 2rem;
-	align-items: center;
+    display: flex;
+    gap: 4rem; /* increased gap between links */
+    align-items: center;
 }
-.main-nav a{
-	font-weight: 600;
-	font-size: 0.95rem;
-	text-transform: uppercase;
-	position: relative;
-	padding: 0.5rem 0;
+
+
+.main-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0.5rem 0;
+    color: var(--color-primary); /* default color */
+    transition: color 0.3s ease;
 }
+
+
+.main-nav a:hover {
+    color: red;
+}
+
+
+.main-nav a.active {
+    color: red; /* permanently red */
+}
+
+
 .main-nav a::after {
     content: '';
     position: absolute;
@@ -154,22 +172,14 @@ button {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-secondary);
+    background: red;
     transition: width 0.3s ease;
 }
 
-main-nav a:hover::after,
+/* Show underline when hovering or on active link */
+.main-nav a:hover::after,
 .main-nav a.active::after {
     width: 100%;
-}
-
-.header-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-main{
-	display:flex;
 }
 
 /* ============================================
