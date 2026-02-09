@@ -167,3 +167,126 @@ main-nav a:hover::after,
     display: flex;
     gap: 1rem;
 }
+
+main{
+	display:flex;
+}
+
+/* ============================================
+   DITO ANG FOOTER
+   ============================================ */
+ 
+footer {
+    background-color: #121212;
+    color: #ffffff;
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Brand Section Styling */
+.footer-logo {
+    font-family: serif;
+    /* Matches the "Perez" serif look */
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.brand-info p {
+    color: #b0b0b0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+/* Links Styling */
+.footer-column h3 {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background-color: #2a2a2a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #444;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding-top: 25px;
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #777;
+    font-size: 0.85rem;
+}
+
+/* Responsive Tweak for Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: left;
+    }
+}
