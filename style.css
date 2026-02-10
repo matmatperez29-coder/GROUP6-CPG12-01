@@ -3,236 +3,334 @@
    ============================================ */
 :root {
     --color-primary: #1a1a1a;
-    --color-secondary: #c8102e; /* Editorial Red */
-    --color-accent: #d4af37;    /* Gold */
+    --color-secondary: #c8102e;
+    --color-accent: #d4af37;
     --color-background: #ffffff;
-    --color-text: #2d2d2d;
+    --color-text: #222222;
     --color-text-light: #666666;
     --color-border: #e0e0e0;
-    
-    --font-display: 'Playfair Display', serif;
+
+    /* NEWS FONTS */
+    --font-headline: 'Merriweather', serif;
     --font-body: 'Source Sans 3', sans-serif;
-    
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --transition: all 0.3s ease;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: var(--font-body);
+    background: var(--color-background);
     color: var(--color-text);
-    background-color: var(--color-background);
-    overflow-x: hidden; /* Prevents unwanted side scrolling */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; transition: var(--transition); }
-ul { list-style: none; }
-button { background: none; border: none; cursor: pointer; }
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
 
 /* ============================================
-   2. BREAKING NEWS (Auto-Adjusting)
+   2. BREAKING NEWS
    ============================================ */
 .BN {
-    background: var(--color-secondary);
-    color: white;
-    padding: 0.75rem 0;
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
-    position: relative;
+    background: var(--color-secondary);
+    color: #fff;
+    padding: 0.6rem 0;
+    font-size: 0.8rem;
     overflow: hidden;
 }
 
 .BNlabel {
-    background: var(--color-primary);
+    background: #000;
     padding: 0.25rem 1rem;
     font-weight: 700;
     letter-spacing: 1px;
-    z-index: 10;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    flex-shrink: 0; /* Prevents label from squishing on mobile */
+    margin-right: 1rem;
+    flex-shrink: 0;
 }
 
 .BNcontent {
     display: flex;
     white-space: nowrap;
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 25s linear infinite;
 }
 
-.Bitem { padding: 0 3rem; font-weight: 600; }
+.Bitem {
+    padding-right: 3rem;
+}
 
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
 }
 
 /* ============================================
-   3. RESPONSIVE HEADER & NAVIGATION
+   3. HEADER & NAVIGATION
    ============================================ */
 .header {
-    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(5px);
     z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .header-main .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0.75rem; /* Adjustable padding */
-    gap: 1rem;
 }
 
-/* Logo Styles */
 .Logo h1 {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Auto-scales text size */
+    font-family: var(--font-headline);
+    font-size: 2.3rem;
     font-weight: 900;
-    color: var(--color-primary);
-    line-height: 1;
     margin: 0;
 }
-.Logo .tagline {
+
+.tagline {
     font-size: 0.7rem;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--color-text-light);
-    margin: 0;
 }
 
-/* Navigation - Works on Desktop & Mobile */
 .main-nav {
     display: flex;
     gap: 1.5rem;
 }
 
 .main-nav a {
+    font-family: var(--font-body);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     position: relative;
-    white-space: nowrap; /* Keeps links on one line */
-    padding: 5px 0;
 }
 
 .main-nav a::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: 0; left: 0; width: 0; height: 2px;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
     background: var(--color-secondary);
-    transition: width 0.3s;
+    transition: 0.3s;
 }
-.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
 
-/* Search Button */
-.search-toggle { color: var(--color-primary); padding: 5px; }
-.search-toggle:hover { color: var(--color-secondary); transform: scale(1.1); }
-
-
-/* ============================================
-   4. MAIN CONTENT AREA (Auto-Adjust)
-   ============================================ */
-main {
-    min-height: 50vh;
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.main-nav a:hover::after,
+.main-nav a.active::after {
     width: 100%;
 }
 
 /* ============================================
-   5. RESPONSIVE FOOTER
+   4. MAIN CONTENT
+   ============================================ */
+main {
+    width: 100%;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem 4rem;
+}
+
+/* FEATURED ARTICLE */
+.featured-article {
+    position: relative;
+    margin-bottom: 3rem;
+    min-height: 430px;
+    background: #f2f2f2;
+    overflow: hidden;
+}
+
+.featured-article img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    padding: 1.6rem;
+    max-width: 800px;
+}
+
+.featured-content h2 {
+    font-family: var(--font-headline);
+    font-size: 2rem;
+    line-height: 1.25;
+    margin: 0.6rem 0;
+}
+
+.featured-content .meta {
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+/* ============================================
+   5. CONTENT GRID + SIDEBAR
+   ============================================ */
+.content-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2.5rem;
+}
+
+/* NEWS GRID */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.news-card {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.news-card img {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.news-card h3 {
+    font-family: var(--font-headline);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin: 0.4rem 0;
+}
+
+.news-card .meta {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: sticky;
+    top: 160px;
+}
+
+.sidebar h4 {
+    font-family: var(--font-headline);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+}
+
+.newsletter {
+    margin-top: 2rem;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-body);
+}
+
+/* ============================================
+   6. FOOTER
    ============================================ */
 .site-footer {
-    background-color: #121212;
+    background: #121212;
     color: #fff;
     padding: 4rem 1rem 2rem;
-    margin-top: auto;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap; /* Keeps footer responsive */
+    flex-wrap: wrap;
     gap: 3rem;
-    justify-content: space-between;
 }
 
-.footer-column {
-    flex: 1 1 200px; /* Stacks columns if screen is small */
-    min-width: 180px;
+.footer-logo {
+    font-family: var(--font-headline);
 }
 
-.footer-logo { font-family: var(--font-display); margin-bottom: 1rem; }
-.brand-info p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
-
-.footer-column h3 { font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1.2rem; opacity: 0.8; }
-.footer-column ul li { margin-bottom: 0.75rem; }
-.footer-column a { color: #888; transition: color 0.2s; }
-.footer-column a:hover { color: #fff; }
-
-.social-links { display: flex; gap: 10px; margin-top: 1rem; }
-.social-icon {
-    width: 32px; height: 32px; background: #333;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%; font-size: 0.7rem;
+.footer-column h3 {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
 }
-.social-icon:hover { background: var(--color-secondary); }
 
-.footer-bottom {
-    border-top: 1px solid #333;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    text-align: center;
-    color: #666;
+.footer-column a {
+    color: #888;
     font-size: 0.85rem;
 }
 
-/* ============================================
-   6. MOBILE & TABLET OPTIMIZATIONS
-   ============================================ */
-
-/* Tablet & Mobile Tweaks */
-@media (max-width: 992px) {
-    .header-main .container {
-        flex-wrap: wrap; /* Allows header items to stack */
-    }
-    
-    /* Order change: Logo first, Search second, Nav last (new line) */
-    .Logo { order: 1; }
-    .header-actions { order: 2; }
-    
-    .main-nav {
-        order: 3;
-        width: 100%; /* Takes full width */
-        margin-top: 1rem;
-        
-        /* SCROLLABLE MENU LOGIC (App-like feel) */
-        overflow-x: auto;
-        padding-bottom: 10px;
-        -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
-        
-        /* Hide scrollbar but keep functionality */
-        scrollbar-width: none; 
-        -ms-overflow-style: none;
-    }
-    
-    .main-nav::-webkit-scrollbar { display: none; }
+.footer-column a:hover {
+    color: #fff;
 }
 
-/* Small Mobile Tweaks */
-@media (max-width: 480px) {
-    .Logo h1 { font-size: 1.8rem; }
-    
-    .BN { font-size: 0.75rem; }
-    .BNlabel { padding: 0.2rem 0.5rem; }
-    
-    .footer-container {
-        flex-direction: column; /* Stacks footer vertically */
-        gap: 2rem;
+/* ============================================
+   7. RESPONSIVE
+   ============================================ */
+@media (max-width: 992px) {
+    .content-layout {
+        grid-template-columns: 1fr;
     }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-content {
+        position: static;
+        background: #000;
+    }
+
+
+}
+.news-grid .news-card:hover h3,
+.news-grid .news-card:hover .category,
+.news-grid .news-card:hover .meta {
+    color: #c8102e; /* Change text color on hover */
+    transition: color 0.3s ease;
 }
