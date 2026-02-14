@@ -1,45 +1,56 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title> News Website </title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perez - Breaking News & Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<!-- Dito ang Breaking News Sticker -->
-	
-	<div class="BN" id="Bn">
-        <span class="BNlabel">BREAKING</span>
-        <div class="BNcontent"> 
-            <span class="Bitem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
-            <span class="Bitem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
-            <span class="Bitem">I miss you</span>
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news" id="breakingNews">
+        <span class="breaking-label">BREAKING</span>
+        <div class="breaking-content">
+            <span class="breaking-item">Global climate summit reaches historic agreement</span>
+            <span class="breaking-item">Tech giant announces revolutionary AI breakthrough</span>
+            <span class="breaking-item">World Cup final draws record viewership</span>
         </div>
     </div>
-	
-	<!-- Dito yung Header -->
-	<header class="header">
-		<div class="header-main">
-			<div class="container">
-				<div class="Logo">
-					<h1>UrbanPulse</h1>
-					<p class="tagline">Feel the Ripple!</p>
-				</div>
-				<nav class="main-nav"> 
-					<a href="index.html" class="active">Home</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="date-time" id="currentDate"></div>
+                <div class="header-social">
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">
+                    <h1>PEREZ</h1>
+                    <p class="tagline">Truth in Every Story</p>
+                </div>
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="active">Home</a>
                     <a href="category-technology.html">Technology</a>
                     <a href="category-sports.html">Sports</a>
                     <a href="category-entertainment.html">Entertainment</a>
                     <a href="category-world.html">World News</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
-				</nav>
-				<div class="header-actions">
+                </nav>
+                
+                <div class="header-actions">
                     <button class="search-toggle" id="searchToggle" aria-label="Search">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -47,66 +58,329 @@
                         </svg>
                     </button>
                 </div>
-			</div>
-		</div>
-	</header>
-	
-	
-	<main>
-	</main>
-	
-	
-	<!-- Dito yung footer -->
-	<footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-column brand-info">
-                <h2 class="footer-logo">UrbanPulse</h2>
-                <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
-                    <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
-                    <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
-                    <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search articles..." autocomplete="off">
+                <button class="search-close" id="searchClose">×</button>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Featured Articles -->
+            <section class="featured-section">
+                <div class="featured-grid">
+                    <article class="featured-main">
+                        <a href="article-1.html" class="article-link">
+                            <div class="article-image">
+                                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=800&fit=crop" alt="AI Technology">
+                                <span class="category-badge technology">Technology</span>
+                            </div>
+                            <div class="article-content">
+                                <h2 class="article-title">The AI Revolution: How Machine Learning is Reshaping Our World</h2>
+                                <p class="article-excerpt">From healthcare to transportation, artificial intelligence is transforming every aspect of modern life. We explore the latest breakthroughs and what they mean for humanity's future.</p>
+                                <div class="article-meta">
+                                    <span class="author">By Sarah Chen</span>
+                                    <span class="date">Feb 5, 2026</span>
+                                    <span class="reading-time">8 min read</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <div class="featured-side">
+                        <article class="featured-card">
+                            <a href="article-2.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo--1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Sports">
+                                    <span class="category-badge sports">Sports</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Championship Dreams: The Underdog Story of the Season</h3>
+                                    <div class="article-meta">
+                                        <span class="author">Michael Rodriguez</span>
+                                        <span class="date">Feb 4, 2026</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="featured-card">
+                            <a href="article-3.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=400&fit=crop" alt="Entertainment">
+                                    <span class="category-badge entertainment">Entertainment</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Behind the Scenes: Hollywood's Biggest Blockbuster</h3>
+                                    <div class="article-meta">
+                                        <span class="author">Emma Thompson</span>
+                                        <span class="date">Feb 3, 2026</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-layout">
+                <!-- Latest News Grid -->
+                <section class="latest-news">
+                    <h2 class="section-title">Latest News</h2>
+                    
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="technology">Technology</button>
+                        <button class="filter-btn" data-category="sports">Sports</button>
+                        <button class="filter-btn" data-category="entertainment">Entertainment</button>
+                        <button class="filter-btn" data-category="world">World News</button>
+                    </div>
+
+                    <div class="news-grid" id="newsGrid">
+                        <article class="news-card" data-category="world">
+                            <a href="article-4.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&h=400&fit=crop" alt="Global Summit">
+                                    <span class="category-badge world">World News</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Global Climate Summit Reaches Historic Agreement</h3>
+                                    <p class="article-excerpt">World leaders unite to commit to unprecedented environmental action...</p>
+                                    <div class="article-meta">
+                                        <span class="author">David Kim</span>
+                                        <span class="date">Feb 6, 2026</span>
+                                        <span class="reading-time">6 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="news-card" data-category="technology">
+                            <a href="article-5.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="Space Technology">
+                                    <span class="category-badge technology">Technology</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">SpaceX Announces Plans for First Civilian Mars Mission</h3>
+                                    <p class="article-excerpt">The private space company reveals ambitious timeline for interplanetary travel...</p>
+                                    <div class="article-meta">
+                                        <span class="author">Lisa Anderson</span>
+                                        <span class="date">Feb 5, 2026</span>
+                                        <span class="reading-time">7 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="news-card" data-category="entertainment">
+                            <a href="article-6.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?w=600&h=400&fit=crop" alt="Music Festival">
+                                    <span class="category-badge entertainment">Entertainment</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Music Festival Announces Star-Studded Lineup</h3>
+                                    <p class="article-excerpt">The biggest names in music come together for summer's hottest event...</p>
+                                    <div class="article-meta">
+                                        <span class="author">James Wilson</span>
+                                        <span class="date">Feb 4, 2026</span>
+                                        <span class="reading-time">5 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="news-card" data-category="sports">
+                            <a href="article-2.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop" alt="Running">
+                                    <span class="category-badge sports">Sports</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Marathon Record Shattered in Historic Race</h3>
+                                    <p class="article-excerpt">Elite athlete breaks world record by unprecedented margin...</p>
+                                    <div class="article-meta">
+                                        <span class="author">Michael Rodriguez</span>
+                                        <span class="date">Feb 3, 2026</span>
+                                        <span class="reading-time">4 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="news-card" data-category="technology">
+                            <a href="article-1.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=600&h=400&fit=crop" alt="Quantum Computing">
+                                    <span class="category-badge technology">Technology</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Quantum Computing Breakthrough Promises New Era</h3>
+                                    <p class="article-excerpt">Scientists achieve major milestone in quantum error correction...</p>
+                                    <div class="article-meta">
+                                        <span class="author">Sarah Chen</span>
+                                        <span class="date">Feb 2, 2026</span>
+                                        <span class="reading-time">9 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="news-card" data-category="world">
+                            <a href="article-4.html" class="article-link">
+                                <div class="article-image">
+                                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=400&fit=crop" alt="Business">
+                                    <span class="category-badge world">World News</span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">Global Markets Rally on Economic Optimism</h3>
+                                    <p class="article-excerpt">Investors show renewed confidence as indicators point to recovery...</p>
+                                    <div class="article-meta">
+                                        <span class="author">David Kim</span>
+                                        <span class="date">Feb 1, 2026</span>
+                                        <span class="reading-time">6 min read</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Trending Articles -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Most Read</h3>
+                        <div class="trending-list">
+                            <article class="trending-item">
+                                <span class="trending-number">1</span>
+                                <div class="trending-content">
+                                    <a href="article-1.html">The AI Revolution: How Machine Learning is Reshaping Our World</a>
+                                    <span class="trending-meta">12.4K reads</span>
+                                </div>
+                            </article>
+                            <article class="trending-item">
+                                <span class="trending-number">2</span>
+                                <div class="trending-content">
+                                    <a href="article-4.html">Global Climate Summit Reaches Historic Agreement</a>
+                                    <span class="trending-meta">8.2K reads</span>
+                                </div>
+                            </article>
+                            <article class="trending-item">
+                                <span class="trending-number">3</span>
+                                <div class="trending-content">
+                                    <a href="article-2.html">Championship Dreams: The Underdog Story</a>
+                                    <span class="trending-meta">6.7K reads</span>
+                                </div>
+                            </article>
+                            <article class="trending-item">
+                                <span class="trending-number">4</span>
+                                <div class="trending-content">
+                                    <a href="article-5.html">SpaceX Announces First Civilian Mars Mission</a>
+                                    <span class="trending-meta">5.9K reads</span>
+                                </div>
+                            </article>
+                            <article class="trending-item">
+                                <span class="trending-number">5</span>
+                                <div class="trending-content">
+                                    <a href="article-3.html">Behind the Scenes: Hollywood's Blockbuster</a>
+                                    <span class="trending-meta">4.8K reads</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3 class="widget-title">Daily Newsletter</h3>
+                        <p>Get the best stories delivered to your inbox.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <p class="newsletter-note">We respect your privacy. Unsubscribe anytime.</p>
+                    </div>
+
+                    <!-- Topics -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Topics</h3>
+                        <div class="topics-list">
+                            <a href="#" class="topic-tag">Artificial Intelligence</a>
+                            <a href="#" class="topic-tag">Climate Change</a>
+                            <a href="#" class="topic-tag">Space Exploration</a>
+                            <a href="#" class="topic-tag">Sports</a>
+                            <a href="#" class="topic-tag">Entertainment</a>
+                            <a href="#" class="topic-tag">Politics</a>
+                            <a href="#" class="topic-tag">Business</a>
+                            <a href="#" class="topic-tag">Health</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PEREZ</h3>
+                    <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="LinkedIn">LI</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="category-technology.html">Technology</a></li>
+                        <li><a href="category-sports.html">Sports</a></li>
+                        <li><a href="category-entertainment.html">Entertainment</a></li>
+                        <li><a href="category-world.html">World News</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Editorial Guidelines</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="footer-column">
-                <h3>CATEGORIES</h3>
-                <ul>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">World News</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Perez News. All rights reserved.</p>
             </div>
-
-            <div class="footer-column">
-                <h3>COMPANY</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Advertise</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>LEGAL</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Editorial Guidelines</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
         </div>
     </footer>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
 </body>
-</html>
 </html>
