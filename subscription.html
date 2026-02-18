@@ -61,7 +61,7 @@
     }
     .subscribe-hero .btn-primary:hover { background-color: #444; }
 
- 
+  /* Benefits Section */
     .benefits {
       max-width: 900px;
       margin: 0 auto 4rem auto;
@@ -89,51 +89,28 @@
     .benefit-content h3 { margin: 0 0 0.5rem 0; font-weight: 700; }
     .benefit-content p { margin: 0; color: #555; }
 
-    .pricing {
-      max-width: 1000px;
-      margin: 0 auto 4rem auto;
-      padding: 0 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .plan {
-      background: white;
-      border-radius: 15px;
-      padding: 2rem 1.5rem;
-      width: 260px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .plan:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    .plan h3 { font-weight: 700; margin-bottom: 0.5rem; color:#d33f49; }
-    .plan .price { font-size: 2rem; font-weight:700; margin-bottom: 1rem; }
-    .plan ul { list-style:none; padding:0; margin:0 0 1.5rem 0; text-align:left; }
-    .plan ul li { margin-bottom: 0.5rem; }
-    .plan .btn { padding:0.5rem 1.5rem; font-weight:600; background:#d33f49; color:white; border:none; border-radius:8px; transition:0.3s; }
-    .plan .btn:hover { background:#b02c3a; }
 
-   
-    .faq { max-width: 900px; margin: 0 auto 4rem auto; padding: 0 1rem; }
-    .faq h2 { text-align:center; font-family:'Playfair Display', serif; margin-bottom:2rem; }
+    /* Pricing Section */
+    .pricing { max-width:1200px; margin:0 auto 4rem auto; padding:0 1rem; display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; }
+    .plan { background:#fff; border-radius:15px; padding:2rem 1.5rem; width:300px; text-align:center; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; border-top:4px solid #d33f49; }
+    .plan:hover { transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,0,0,0.2); }
+    .plan h3 { font-weight:900; margin-bottom:0.5rem; color:#d33f49; font-size:1.5rem; }
+    .plan .price { font-size:2rem; font-weight:900; margin-bottom:1rem; color:#000; }
+    .plan p.description { font-size:0.95rem; margin-bottom:1rem; color:#444; line-height:1.4; }
+    .plan ul { list-style:none; padding:0; margin:0 0 1.5rem 0; text-align:left; color:#555; }
+    .plan ul li { margin-bottom:0.5rem; }
+    .plan .btn { padding:0.6rem 1.8rem; font-weight:700; background:#d33f49; color:white; border:none; border-radius:8px; transition:0.3s; }
+    .plan .btn:hover { background:#a62835; }
+
+    /* Most Popular Badge */
+    .popular { position:absolute; top:-10px; right:-10px; background:#d33f49; color:white; font-weight:700; padding:0.3rem 0.8rem; border-radius:50px; font-size:0.85rem; }
+
+    /* FAQ Section */
+    .faq { max-width:900px; margin:0 auto 4rem auto; padding:0 1rem; }
+    .faq h2 { text-align:center; font-family:'Playfair Display', serif; margin-bottom:2rem; font-weight:900; }
     .faq-item { margin-bottom:1.5rem; }
-    .faq-item h5 { font-weight:700; margin-bottom:0.5rem; }
-    .faq-item p { margin:0; color:#555; }
-
-    .final-cta {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #f5f5f5;
-      border-radius: 15px;
-      margin-bottom: 4rem;
-    }
-    .final-cta h3 { margin-bottom: 1rem; font-weight: 700; color: #222; }
-    .final-cta p { margin-bottom: 1.5rem; color: #555; }
-    .final-cta .btn { padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; background-color: #d33f49; border: none; color: white; transition: 0.3s; }
-    .final-cta .btn:hover { background-color: #b02c3a; }
-
+    .faq-item h5 { font-weight:700; margin-bottom:0.5rem; color:#d33f49; }
+    .faq-item p { margin:0; color:#555; line-height:1.5; }
     footer { background-color: #222; color: white; text-align: center; padding: 1.5rem 1rem; }
   </style>
 </head>
@@ -180,31 +157,39 @@
   <section class="pricing">
     <div class="plan">
       <h3>Monthly Plan</h3>
-      <div class="price">$5/mo</div>
+      <div class="price">₱299 / mo</div>
+      <p class="description">Perfect for casual readers who want daily updates and insider stories delivered straight to their inbox.</p>
       <ul>
-        <li>Daily updates</li>
-        <li>Newsletter access</li>
+        <li>Daily news updates</li>
+        <li>Weekly newsletter</li>
         <li>Exclusive articles</li>
       </ul>
       <a href="signup.html" class="btn">Subscribe</a>
     </div>
-    <div class="plan">
+
+    <div class="plan position-relative">
+      <div class="popular">Most Popular</div>
       <h3>Annual Plan</h3>
-      <div class="price">$50/yr</div>
+      <div class="price">₱3,000 / yr</div>
+      <p class="description">Ideal for regular readers who want full access and extra benefits at a discounted annual rate.</p>
       <ul>
         <li>All Monthly perks</li>
-        <li>Extra discounts</li>
-        <li>Early access to special content</li>
+        <li>Extra discounts on events</li>
+        <li>Early access to exclusive content</li>
+        <li>Special newsletters & reports</li>
       </ul>
       <a href="signup.html" class="btn">Subscribe</a>
     </div>
+
     <div class="plan">
       <h3>Premium Plan</h3>
-      <div class="price">$100/yr</div>
+      <div class="price">₱6,000 / yr</div>
+      <p class="description">The ultimate subscription for enthusiasts who want VIP access, premium content, and giveaways.</p>
       <ul>
         <li>All Annual perks</li>
-        <li>Special giveaways</li>
-        <li>VIP content & interviews</li>
+        <li>VIP giveaways & contests</li>
+        <li>Exclusive interviews & behind-the-scenes content</li>
+        <li>Priority support & event invitations</li>
       </ul>
       <a href="signup.html" class="btn">Subscribe</a>
     </div>
@@ -215,28 +200,31 @@
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
       <h5>Is the subscription free?</h5>
-      <p>Basic subscription is free, premium plans unlock additional perks and exclusive content.</p>
+      <p>Basic subscription is free, but paid plans unlock premium content, exclusive insights, and special perks.</p>
     </div>
     <div class="faq-item">
       <h5>How often will I receive updates?</h5>
-      <p>We send newsletters 3-5 times per week, plus special alerts for breaking stories.</p>
+      <p>Subscribers receive newsletters 3-5 times per week plus instant alerts for breaking news and special stories.</p>
     </div>
     <div class="faq-item">
       <h5>Can I cancel anytime?</h5>
-      <p>Yes! You can manage your subscription and cancel at any time without penalties.</p>
+      <p>Yes! Manage or cancel your subscription anytime without penalties. Flexibility is key.</p>
     </div>
     <div class="faq-item">
-      <h5>What forms of payment are accepted?</h5>
-      <p>We accept all major credit/debit cards and PayPal for paid subscriptions.</p>
+      <h5>What payment methods are accepted?</h5>
+      <p>We accept all major credit/debit cards and PayPal for all paid plans.</p>
     </div>
   </section>
 
+  <!-- Final Call-To-Action -->
   <section class="final-cta">
-    <h3>Join Thousands of Entertainment Enthusiasts</h3>
-    <p>Don’t miss a beat. Be the first to know about the biggest stories and hottest trends.</p>
+    <h3>Join Thousands of Enthusiasts</h3>
+    <p>Be the first to get breaking news, exclusive interviews, and premium content straight to your inbox.</p>
     <a href="signup.html" class="btn">Subscribe Now</a>
   </section>
 
+
+  <!-- Footer -->
   <footer>
     &copy; 2026 UrbanPulse. All rights reserved.
   </footer>
