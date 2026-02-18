@@ -88,20 +88,19 @@
       user-select: none;
     }
     .buzz-category.movies {
-      background-color: #e94e77;
+      background-color: #d33f49;
     }
     .buzz-category.music {
-      background-color: #5c6bc0;
+      background-color: #d33f49;
     }
     .buzz-category.tv {
-      background-color: #26a69a;
+      background-color: #d33f49;
     }
     .buzz-category.celebrity {
-      background-color: #fbc02d;
-      color: #333;
+      background-color: #d33f49;
     }
     .buzz-category.streaming {
-      background-color: #ff7043;
+      background-color: #d33f49;
     }
     .buzz-title {
       font-weight: 600;
@@ -248,7 +247,7 @@
               aria-label="Hero image"
               role="img"
             ></div>
-            <span class="hero-category" style="color: inherit;">Entertainment</span>
+            <span class="hero-category" style="color: inherit;">[CATEGORY]</span>
             <h1 class="hero-title">
               [TITLE]
             </h1>
@@ -273,25 +272,25 @@
             </div>
             <div class="pop-culture-buzz" aria-label="Pop Culture Buzz Articles">
               <div class="buzz-item" tabindex="0">
-                <span class="buzz-category movies">Movies</span>
+                <span class="buzz-category movies">[CATEGORY]</span>
                 <h3 class="buzz-title">
                  [TILE]
                 </h3>
               </div>
               <div class="buzz-item" tabindex="0">
-                <span class="buzz-category music">Music</span>
+                <span class="buzz-category music">[CATEGORY]</span>
                 <h3 class="buzz-title">[TITLE]</h3>
               </div>
               <div class="buzz-item" tabindex="0">
-                <span class="buzz-category tv">TV Shows</span>
+                <span class="buzz-category tv">[CATEGORY]</span>
                 <h3 class="buzz-title">[TITLE]</h3>
               </div>
               <div class="buzz-item" tabindex="0">
-                <span class="buzz-category celebrity">Celebrity</span>
+                <span class="buzz-category celebrity">[CATEGORY]</span>
                 <h3 class="buzz-title">[TITLE]</h3>
               </div>
               <div class="buzz-item" tabindex="0">
-                <span class="buzz-category streaming">Streaming</span>
+                <span class="buzz-category streaming">[CATEGORY]</span>
                 <h3 class="buzz-title">[TITLE]</h3>
               </div>
             </div>
@@ -299,83 +298,73 @@
 
           <div class="section-divider my-4"></div>
 
-          <!-- Latest News  -->
-          <section>
-            <div
-              class="section-header d-flex justify-content-between align-items-center mb-3"
-            >
-              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
-                Latest News
-              </h2>
-              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
-                View All →
-              </a>
-            </div>
+      <!-- Latest News  -->
+<section>
+  <div class="section-header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title" style="font-family: 'Playfair Display', serif;">Latest News</h2>
+    <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">View All →</a>
+  </div>
 
-            <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
-              <article class="news-card col">
-                <div
-                  class="news-card-image"
-                  style="background: #ddd; height: 160px; border-radius: 4px"
-                >
-                  [IMAGE]
-                </div>
-                <span class="news-card-category" style="color: #d33f49"
-                  >Movies</span
-                >
-                <h3 class="news-card-title">[TITLE]</h3>
-                <p class="news-card-excerpt">
-                  [INFO..]
-                </p>
-                <div class="news-card-meta">
-                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
-                  <span>[DATE]</span>
-                </div>
-              </article>
+  <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
+    <!-- Article 1 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
 
-              <article class="news-card col">
-                <div
-                  class="news-card-image"
-                  style="background: #ddd; height: 160px; border-radius: 8px"
-                >
-                  [IMAGE]
-                </div>
-                <span class="news-card-category" style="color: #d33f49"
-                  >Music</span
-                >
-                <h3 class="news-card-title">[TITLE]</h3>
-                <p class="news-card-excerpt">
-                 [INFO........]
-                </p>
-                <div class="news-card-meta">
-                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
-                  <span>[DATE]</span>
-                </div>
-              </article>
+    <!-- Article 2 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
 
-              <article class="news-card col">
-                <div
-                  class="news-card-image"
-                  style="background: #ddd; height: 160px; border-radius: 8px"
-                >
-                  [IMAGE]
-                </div>
-                <span class="news-card-category" style="color: #d33f49"
-                  >TV Shows</span
-                >
-                <h3 class="news-card-title">[TITLE]</h3>
-                <p class="news-card-excerpt">
-                  [INFO..]
-                </p>
-                <div class="news-card-meta">
-                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
-                  <span>[DATE]</span>
-                </div>
-              </article>
-            </div>
-          </section>
+    <!-- Article 3 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
 
-          <div class="section-divider my-4"></div>
+    <!-- Article 4 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 5 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 6 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+  </div>
+</section>
+
+<div class="section-divider my-4"></div>
+
+
 
           <!-- Trending Topics -->
           <section class="trending-section">
@@ -394,7 +383,7 @@
               <div class="trending-item d-flex gap-3 align-items-start">
                 <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">01</div>
                 <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">Movies</span>
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
                   <h3 class="trending-title" style="margin: 0.2rem 0;">
                     [TILE]
                   </h3>
@@ -405,7 +394,7 @@
               <div class="trending-item d-flex gap-3 align-items-start">
                 <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">02</div>
                 <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">Music</span>
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
                   <h3 class="trending-title" style="margin: 0.2rem 0;">
                     [TILE]
                   </h3>
@@ -416,7 +405,7 @@
               <div class="trending-item d-flex gap-3 align-items-start">
                 <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">03</div>
                 <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">Celebrity</span>
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
                   <h3 class="trending-title" style="margin: 0.2rem 0;">
                     [TILE]
                   </h3>
@@ -427,7 +416,7 @@
               <div class="trending-item d-flex gap-3 align-items-start">
                 <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">04</div>
                 <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">Streaming</span>
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
                   <h3 class="trending-title" style="margin: 0.2rem 0;">
                     [TILE]
                   </h3>
@@ -438,7 +427,7 @@
               <div class="trending-item d-flex gap-3 align-items-start">
                 <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">05</div>
                 <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">TV Shows</span>
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
                   <h3 class="trending-title" style="margin: 0.2rem 0;">
                     [TILE]
                   </h3>
@@ -455,22 +444,22 @@
             <h2 class="sidebar-heading">Trending Articles</h2>
             <div class="sidebar-stories">
               <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">Movies</span>
+                <span class="sidebar-category">[CATEGORY]</span>
                 <h3 class="sidebar-title">[TITLE]</h3>
                 <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
               </div>
               <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">Music</span>
+                <span class="sidebar-category">[CATEGORY]</span>
                 <h3 class="sidebar-title">[TITLE]</h3>
                 <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
               </div>
               <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">TV Shows</span>
+                <span class="sidebar-category">[CATEGORY]</span>
                 <h3 class="sidebar-title">[TITLE]</h3>
                 <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
               </div>
               <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">Celebrity</span>
+                <span class="sidebar-category">[CATEGORY]</span>
                 <h3 class="sidebar-title">[TITLE]</h3>
                 <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
               </div>
