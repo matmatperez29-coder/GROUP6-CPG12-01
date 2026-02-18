@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entertainment - UrbanPulse - Feel the Ripple!</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Hero image fix */
+    .hero-article .hero-image {
+      width: 100%;
+      max-height: 600px; /* Limit height */
+      background-color: #ddd; /* fallback bg */
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    /* Entertainment Subnav - no horizontal scroll, allow wrap */
+    .entertainment-subnav {
+      background: #f8f9fa;
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+      font-family: "Source Sans 3", sans-serif;
+      display: flex;
+      gap: 1rem;
+      overflow-x: visible; /* no scroll */
+      flex-wrap: wrap; /* wrap items if needed */
+      scroll-behavior: auto;
+      -webkit-overflow-scrolling: auto;
+      -ms-overflow-style: auto;
+      scrollbar-width: auto;
+    }
+    /* Remove scrollbar hiding for subnav */
+    .entertainment-subnav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .entertainment-subnav a.active,
+    .entertainment-subnav a:hover {
+      color: #d33f49;
+      border-bottom-color: #d33f49;
+    }
+
+    /* Pop Culture Buzz - horizontal scroll */
+    .pop-culture-buzz {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .buzz-item {
+      flex: 0 0 auto;
+      min-width: 220px;
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      font-family: "Source Sans 3", sans-serif;
+    }
+    .buzz-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+    }
+    .buzz-category {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      color: white;
+      margin-bottom: 0.6rem;
+      user-select: none;
+    }
+    .buzz-category.movies {
+      background-color: #e94e77;
+    }
+    .buzz-category.music {
+      background-color: #5c6bc0;
+    }
+    .buzz-category.tv {
+      background-color: #26a69a;
+    }
+    .buzz-category.celebrity {
+      background-color: #fbc02d;
+      color: #333;
+    }
+    .buzz-category.streaming {
+      background-color: #ff7043;
+    }
+    .buzz-title {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.3;
+      color: #222;
+    }
+
+    /* Sidebar fixes and spacing */
+    .sidebar {
+      width: 320px;
+      min-width: 300px;
+      margin-left: 2rem; /* Added more left space */
+      box-sizing: border-box;
+    }
+    .sidebar-section {
+      margin-bottom: 2rem;
+      font-family: "Source Sans 3", sans-serif;
+    }
+    .sidebar-heading {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #d33f49;
+      padding-bottom: 0.25rem;
+      color: #222;
+    }
+    .sidebar-stories {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .sidebar-story {
+      border-left: 4px solid transparent;
+      padding-left: 0.6rem;
+      transition: border-color 0.3s;
+      cursor: pointer;
+    }
+    .sidebar-story:hover {
+      border-color: #d33f49;
+    }
+    .sidebar-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d33f49;
+      text-transform: uppercase;
+    }
+    .sidebar-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.2rem 0 0.2rem 0;
+      color: #222;
+    }
+    .sidebar-meta {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    .sidebar-promo {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      font-family: "Source Sans 3", sans-serif;
+    }
+    .sidebar-promo-label {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #d33f49;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .sidebar-promo-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+    .sidebar-promo-text {
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container d-flex align-items-center justify-content-between py-3">
+        <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+        <nav class="main-nav d-flex gap-4 align-items-center" style="font-weight:600;">
+          <a href="index.html">Home</a>
+          <a href="category-technology.html">Technology</a>
+          <a href="category-sport.html">Sports</a>
+          <a href="category-entertainment.html" class="active">Entertainment</a>
+          <a href="category-world.html">World News</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <button class="search-toggle" aria-label="Search">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Entertainment Sub-Navigation -->
+  <nav class="entertainment-subnav">
+    <a href="#" class="active">[All]</a>
+    <a href="#">[Movies]</a>
+    <a href="#">[Music]</a>
+    <a href="#">[TV Shows]</a>
+    <a href="#">[Celebrity]</a>
+    <a href="#">[Streaming]</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container my-4">
+      <div class="page-layout d-flex gap-4 flex-wrap">
+        <!-- LEFT: MAIN CONTENT -->
+        <div class="main-content flex-grow-1" style="min-width: 300px; max-width: 720px;">
+          <!-- Hero Article -->
+          <article class="hero-article">
+            <div
+              class="hero-image"
+              style="background-image: url('');"
+              aria-label="Hero image"
+              role="img"
+            ></div>
+            <span class="hero-category" style="color: inherit;">Entertainment</span>
+            <h1 class="hero-title">
+              [TITLE]
+            </h1>
+            <p class="hero-excerpt">
+              [....]
+            </p>
+            <div class="hero-meta">
+              <span class="hero-author">[AUTHOR]</span> <span>•</span>
+              <span>[DATE]</span> <span>•</span> <span>[MIN READ]</span>
+            </div>
+          </article>
+
+          <!-- Pop Culture Buzz (Horizontal Scroll) -->
+          <section>
+            <div class="section-header d-flex justify-content-between align-items-center mb-3">
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Pop Culture Buzz
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+            <div class="pop-culture-buzz" aria-label="Pop Culture Buzz Articles">
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category movies">Movies</span>
+                <h3 class="buzz-title">
+                 [TILE]
+                </h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category music">Music</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category tv">TV Shows</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category celebrity">Celebrity</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category streaming">Streaming</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+            </div>
+          </section>
+
+          <div class="section-divider my-4"></div>
+
+          <!-- Latest News — 3 Column Grid -->
+          <section>
+            <div
+              class="section-header d-flex justify-content-between align-items-center mb-3"
+            >
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Latest News
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+
+            <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
+              <article class="news-card col">
+                <div
+                  class="news-card-image"
+                  style="background: #ddd; height: 160px; border-radius: 4px"
+                >
+                  [IMAGE]
+                </div>
+                <span class="news-card-category" style="color: #d33f49"
+                  >Movies</span
+                >
+                <h3 class="news-card-title">[TITLE]</h3>
+                <p class="news-card-excerpt">
+                  [INFO..]
+                </p>
+                <div class="news-card-meta">
+                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
+                  <span>[DATE]</span>
+                </div>
+              </article>
+
+              <article class="news-card col">
+                <div
+                  class="news-card-image"
+                  style="background: #ddd; height: 160px; border-radius: 8px"
+                >
+                  [IMAGE]
+                </div>
+                <span class="news-card-category" style="color: #d33f49"
+                  >Music</span
+                >
+                <h3 class="news-card-title">[TITLE]</h3>
+                <p class="news-card-excerpt">
+                 [INFO........]
+                </p>
+                <div class="news-card-meta">
+                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
+                  <span>[DATE]</span>
+                </div>
+              </article>
+
+              <article class="news-card col">
+                <div
+                  class="news-card-image"
+                  style="background: #ddd; height: 160px; border-radius: 8px"
+                >
+                  [IMAGE]
+                </div>
+                <span class="news-card-category" style="color: #d33f49"
+                  >TV Shows</span
+                >
+                <h3 class="news-card-title">[TITLE]</h3>
+                <p class="news-card-excerpt">
+                  [INFO..]
+                </p>
+                <div class="news-card-meta">
+                  <span class="news-card-author">[AUTHOR]</span> <span>•</span>
+                  <span>[DATE]</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <div class="section-divider my-4"></div>
+
+          <!-- Trending Topics -->
+          <section class="trending-section">
+            <div
+              class="section-header d-flex justify-content-between align-items-center mb-3"
+            >
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Trending
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+
+            <div class="trending-list d-flex flex-column gap-3">
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">01</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">Movies</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">02</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">Music</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">03</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">Celebrity</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">04</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">Streaming</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">05</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">TV Shows</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <aside class="sidebar">
+          <section class="sidebar-section">
+            <h2 class="sidebar-heading">Trending Articles</h2>
+            <div class="sidebar-stories">
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">Movies</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">Music</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">TV Shows</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">Celebrity</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-promo">
+            <div class="sidebar-promo-label">Subscribe</div>
+            <div class="sidebar-promo-title">Get Our Newsletter</div>
+            <div class="sidebar-promo-text">
+              Stay updated with the latest entertainment buzz. Join our mailing
+              list now!
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  ></script>
+</body>
+</html>
