@@ -8,7 +8,7 @@
     --color-background: #ffffff;
     --color-text: #2d2d2d;
     --color-text-light: #666666;
-    --color-border: #e0e0e0;'
+    --color-border: #e0e0e0;
     --color-surface: #f4f4f4;
     
     --font-display: 'Playfair Display', serif;
@@ -147,7 +147,7 @@ button { background: none; border: none; cursor: pointer; }
    4. MAIN CONTENT AREA (Auto-Adjust)
    ============================================ */
 main {
-   background: var(--color--surface);
+   background: var(--color-surface);
    padding: 0;
 }
 .container{
@@ -621,4 +621,56 @@ main {
     .placeholder-card {
         padding: 1rem;
     }
+}
+
+
+/* ============================================
+   8. JAVASCRIPT DYNAMIC STYLES 
+   ============================================ */
+
+/* Dropdown Search Bar Fixes */
+.header-actions {
+    position: relative; /* Ensures the dropdown anchors to the button area */
+}
+
+/* Dynamic Bookmark Button Styling */
+.bookmark-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--color-secondary) !important;
+    color: var(--color-secondary) !important;
+    padding: 0.3rem 0.8rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.bookmark-btn:hover {
+    background: var(--color-secondary);
+    color: #ffffff !important;
+}
+
+/* State when an article is successfully saved */
+.bookmark-btn.saved {
+    background: var(--color-primary);
+    border-color: var(--color-primary) !important;
+    color: #ffffff !important;
+}
+
+.bookmark-btn.saved:hover {
+    background: #333333;
+}
+
+/* Smooth transition for the Read More button injected by JS */
+.story-summary span, .hero-summary span, .category-card p span {
+    transition: color 0.2s ease;
+}
+
+.story-summary span:hover, .hero-summary span:hover, .category-card p span:hover {
+    color: var(--color-primary) !important;
 }

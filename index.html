@@ -1,7 +1,7 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-	<title> News Website </title>
+	<title>UrbanPulse | News Website</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,18 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<!-- Dito ang Breaking News Sticker -->
-	
 	<div class="BN" id="Bn">
         <span class="BNlabel">BREAKING</span>
         <div class="BNcontent"> 
             <span class="Bitem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
             <span class="Bitem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
-            <span class="Bitem">I miss you</span>
+            <span class="Bitem">Global tech summit announces groundbreaking AI regulations</span>
         </div>
     </div>
 	
-	<!-- Dito yung Header -->
 	<header class="header">
 		<div class="header-main">
 			<div class="container">
@@ -32,10 +29,10 @@
 				</div>
 				<nav class="main-nav"> 
 					<a href="index.html" class="active">Home</a>
-                    <a href="category-technology.html">Technology</a>
-                    <a href="category-sport.html">Sports</a>
-                    <a href="category-entertainment.html">Entertainment</a>
-                    <a href="category-world.html">World News</a>
+                    <a href="#">Technology</a>
+                    <a href="#">Sports</a>
+                    <a href="#">Entertainment</a>
+                    <a href="#">World News</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
 				</nav>
@@ -46,166 +43,101 @@
                             <path d="m21 21-4.35-4.35"></path>
                         </svg>
                     </button>
+                    <div class="search-bar" id="searchBar" style="display:none; position:absolute; right:0; top:100%; width:300px; padding:1rem; background:#fff; border:1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <input type="text" id="searchInput" placeholder="Search articles..." style="width:100%; padding:10px; border:1px solid #ccc;">
+                    </div>
                 </div>
 			</div>
 		</div>
 	</header>
 	
-    <!-- MAIN CONTENT - BBC STYLE LAYOUT -->
     <main>
         <div class="container">
-            <!-- Top Stories Banner -->
             <div class="top-banner">
                 <h2>TOP STORIES</h2>
             </div>
 
-            <!-- Hero Story (Large Top Story) -->
             <div class="hero-story">
                 <div class="hero-image">
                     [HERO IMAGE]
                 </div>
                 <div class="hero-content">
-                    <h1 class="hero-title">[MAIN HEADLINE HERE]</h1>
-                    <p class="hero-summary">[BRIEF SUMMARY OF MAIN STORY - 2 TO 3 SENTENCES MAXIMUM]</p>
+                    <h1 class="hero-title">Next-Gen AI Models Spark Debate Over Digital Ethics</h1>
+                    <p class="hero-summary">As tech giants release their most advanced artificial intelligence models yet, industry watchdogs and ethicists are raising concerns about data privacy, copyright infringement, and the rapid pace of implementation without regulatory oversight. The debate centers on how society will adapt to tools that can generate human-like text and media.</p>
                     <div class="hero-meta">
-                        <span class="category-tag">[CATEGORY]</span>
-                        <span class="time-stamp">[X HOURS AGO]</span>
+                        <span class="category-tag">Technology</span>
+                        <span class="time-stamp">2 HOURS AGO</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Secondary Stories Grid (BBC 3-column layout) -->
             <div class="stories-grid">
-                <!-- Story Card 1 -->
                 <div class="story-card">
-                    <div class="story-image">
-                        [IMAGE]
-                    </div>
+                    <div class="story-image">[IMAGE]</div>
                     <div class="story-content">
-                        <h3 class="story-title">[HEADLINE HERE]</h3>
-                        <p class="story-summary">[SHORT SUMMARY]</p>
+                        <h3 class="story-title">Local Team Advances to Finals</h3>
+                        <p class="story-summary">In a stunning upset, the city's underdog basketball team secured a spot in the national championships after a buzzer-beater shot in triple overtime, leaving fans absolutely electrified.</p>
                         <div class="story-meta">
-                            <span class="category-tag">[CATEGORY]</span>
-                            <span class="time-stamp">[TIME]</span>
+                            <span class="category-tag">Sports</span>
+                            <span class="time-stamp">4 HOURS AGO</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Story Card 2 -->
                 <div class="story-card">
-                    <div class="story-image">
-                        [IMAGE]
-                    </div>
+                    <div class="story-image">[IMAGE]</div>
                     <div class="story-content">
-                        <h3 class="story-title">[HEADLINE HERE]</h3>
-                        <p class="story-summary">[SHORT SUMMARY]</p>
+                        <h3 class="story-title">Award-Winning Director Announces New Film</h3>
+                        <p class="story-summary">Following the massive success of her latest blockbuster, the acclaimed director revealed her next project will be a gritty, historical drama set in the 1920s, featuring an all-star ensemble cast.</p>
                         <div class="story-meta">
-                            <span class="category-tag">[CATEGORY]</span>
-                            <span class="time-stamp">[TIME]</span>
+                            <span class="category-tag">Entertainment</span>
+                            <span class="time-stamp">5 HOURS AGO</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Story Card 3 -->
                 <div class="story-card">
-                    <div class="story-image">
-                        [IMAGE]
-                    </div>
+                    <div class="story-image">[IMAGE]</div>
                     <div class="story-content">
-                        <h3 class="story-title">[HEADLINE HERE]</h3>
-                        <p class="story-summary">[SHORT SUMMARY]</p>
+                        <h3 class="story-title">Global Climate Summit Concludes</h3>
+                        <p class="story-summary">World leaders have finally reached a tentative agreement on carbon emission targets for the next decade, though environmental activists argue the measures do not go far enough to prevent severe climate impacts.</p>
                         <div class="story-meta">
-                            <span class="category-tag">[CATEGORY]</span>
-                            <span class="time-stamp">[TIME]</span>
+                            <span class="category-tag">World News</span>
+                            <span class="time-stamp">6 HOURS AGO</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section Divider -->
             <div class="section-divider"></div>
 
-            <!-- Latest Updates Section -->
-            <div class="latest-section">
-                <h2 class="section-heading">LATEST UPDATES</h2>
-                
-                <!-- Compact Story List (BBC style) -->
-                <div class="compact-stories">
-                    <div class="compact-story">
-                        <div class="compact-image">[IMG]</div>
-                        <div class="compact-content">
-                            <h4>[HEADLINE]</h4>
-                            <p class="compact-meta"><span>[CATEGORY]</span> • <span>[TIME]</span></p>
-                        </div>
-                    </div>
-
-                    <div class="compact-story">
-                        <div class="compact-image">[IMG]</div>
-                        <div class="compact-content">
-                            <h4>[HEADLINE]</h4>
-                            <p class="compact-meta"><span>[CATEGORY]</span> • <span>[TIME]</span></p>
-                        </div>
-                    </div>
-
-                    <div class="compact-story">
-                        <div class="compact-image">[IMG]</div>
-                        <div class="compact-content">
-                            <h4>[HEADLINE]</h4>
-                            <p class="compact-meta"><span>[CATEGORY]</span> • <span>[TIME]</span></p>
-                        </div>
-                    </div>
-
-                    <div class="compact-story">
-                        <div class="compact-image">[IMG]</div>
-                        <div class="compact-content">
-                            <h4>[HEADLINE]</h4>
-                            <p class="compact-meta"><span>[CATEGORY]</span> • <span>[TIME]</span></p>
-                        </div>
-                    </div>
-
-                    <div class="compact-story">
-                        <div class="compact-image">[IMG]</div>
-                        <div class="compact-content">
-                            <h4>[HEADLINE]</h4>
-                            <p class="compact-meta"><span>[CATEGORY]</span> • <span>[TIME]</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
-
-            <!-- Category Sections (BBC style) -->
             <div class="category-section">
                 <h2 class="section-heading">TECHNOLOGY</h2>
                 <div class="category-grid">
                     <div class="category-card">
                         <div class="category-image">[IMAGE]</div>
-                        <h3>[HEADLINE]</h3>
-                        <p>[SUMMARY]</p>
-                        <span class="time-tag">[TIME]</span>
+                        <h3>New Smartphone Release</h3>
+                        <p>The latest flagship device features a revolutionary battery design that promises up to a week of charge under normal usage conditions, shaking up the mobile industry.</p>
+                        <span class="time-tag">10 HOURS AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span> </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>Cybersecurity Threats on the Rise</h3>
+                        <p>Experts are warning small businesses to update their security protocols following a massive spike in targeted ransomware attacks over the previous holiday weekend.</p>
+                        <span class="time-tag">12 HOURS AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span>
                     </div>
                     <div class="category-card">
                         <div class="category-image">[IMAGE]</div>
-                        <h3>[HEADLINE]</h3>
-                        <p>[SUMMARY]</p>
-                        <span class="time-tag">[TIME]</span>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-image">[IMAGE]</div>
-                        <h3>[HEADLINE]</h3>
-                        <p>[SUMMARY]</p>
-                        <span class="time-tag">[TIME]</span>
+                        <h3>The Future of Remote Work</h3>
+                        <p>A new study suggests that companies offering flexible work-from-home options are seeing a 30% increase in employee retention compared to strict return-to-office mandates.</p>
+                        <span class="time-tag">1 DAY AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
-
-            <!-- Sports Section -->
-            <div class="category-section">
+			
+			<div class="category-section">
                 <h2 class="section-heading">SPORTS</h2>
                 <div class="category-grid">
                     <div class="category-card">
@@ -227,13 +159,10 @@
                         <span class="time-tag">[TIME]</span>
                     </div>
                 </div>
-            </div>
-
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
-
-            <!-- Entertainment Section -->
-            <div class="category-section">
+				
+				<div class="section-divider"></div>
+				
+				<div class="category-section">
                 <h2 class="section-heading">ENTERTAINMENT</h2>
                 <div class="category-grid">
                     <div class="category-card">
@@ -256,12 +185,11 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
-
-            <!-- More Stories Grid -->
-            <div class="more-stories">
+            </div>
+			
+			      <div class="section-divider"></div>
+			
+			 <div class="more-stories">
                 <h2 class="section-heading">MORE STORIES</h2>
                 <div class="more-grid">
                     <div class="more-card">
@@ -291,11 +219,13 @@
                 </div>
             </div>
 			
-			
-		
         </div>
     </main>
-	<!-- Dito yung footer -->
+
+			 <div class="section-divider"></div>
+			 
+
+
 	<footer class="site-footer">
         <div class="footer-container">
             <div class="footer-column brand-info">
@@ -322,20 +252,9 @@
             <div class="footer-column">
                 <h3>COMPANY</h3>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li><a href="#">Careers</a></li>
-                    <li><a href="#">Advertise</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>LEGAL</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Editorial Guidelines</a></li>
                 </ul>
             </div>
         </div>
@@ -346,5 +265,6 @@
     </footer>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="functionality.js"></script>
 </body>
 </html>
