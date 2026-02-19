@@ -4,30 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Entertainment - UrbanPulse - Feel the Ripple!</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style2.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-   
+    /* --- METADATA & CONTENT STYLING --- */
+    .meta-block { font-family: "Source Sans 3", sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+    .m-cat { color: #d33f49; font-weight: 800; margin-right: 8px; }
+    .m-author { color: #222; font-weight: 700; }
+    .m-details { color: #888; font-weight: 400; }
+    
     .hero-article .hero-image {
       width: 100%;
-      max-height: 600px; /* Limit height */
-      background-color: #ddd; /* fallback bg */
+      height: 450px;
+      background-color: #ddd;
       background-size: cover;
       background-position: center;
       border-radius: 4px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    
+    /* --- SUBNAV STYLES --- */
     .entertainment-subnav {
       background: #f8f9fa;
       border-bottom: 1px solid #ddd;
@@ -35,159 +34,100 @@
       font-family: "Source Sans 3", sans-serif;
       display: flex;
       gap: 1rem;
-      overflow-x: visible; /* no scroll */
-      flex-wrap: wrap; /* wrap items if needed */
-      scroll-behavior: auto;
-      -webkit-overflow-scrolling: auto;
-      -ms-overflow-style: auto;
-      scrollbar-width: auto;
+      justify-content: center;
     }
-   
-    .entertainment-subnav::-webkit-scrollbar {
-      display: none;
+    .entertainment-subnav a { 
+      text-decoration: none; 
+      color: #000;
+      font-weight: 600; 
+      position: relative;
+      padding-bottom: 2px;
     }
+    .entertainment-subnav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #d33f49;
+      transition: width 0.3s ease;
+    }
+    .entertainment-subnav a:hover::after, .entertainment-subnav a.active::after { width: 100%; }
+    .entertainment-subnav a.active, .entertainment-subnav a:hover { color: #000; }
 
-    .entertainment-subnav a.active,
-    .entertainment-subnav a:hover {
-      color: #d33f49;
-      border-bottom-color: #d33f49;
-    }
+    /* --- LAYOUT GRID --- */
+    .editorial-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2.5rem; }
+    .main-feature { grid-column: span 12; margin-bottom: 2rem; }
 
-    /* Pop Culture Buzz - horizontal scroll */
-    .pop-culture-buzz {
+    .hero-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3rem; line-height: 1.1; margin: 0.5rem 0 1rem 0; }
+
+    /* --- SCROLLABLE SECTIONS (Buzz & Top Picks) --- */
+    .scroll-container {
       display: flex;
       overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
+      gap: 1.5rem;
+      padding: 1rem 0 2rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: #d33f49 #eee;
       -webkit-overflow-scrolling: touch;
     }
-    .buzz-item {
-      flex: 0 0 auto;
-      min-width: 220px;
-      background: #f5f5f5;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-      font-family: "Source Sans 3", sans-serif;
-    }
-    .buzz-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
-    }
-    .buzz-category {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 20px;
-      color: white;
-      margin-bottom: 0.6rem;
-      user-select: none;
-    }
-    .buzz-category.movies {
-      background-color: #d33f49;
-    }
-    .buzz-category.music {
-      background-color: #d33f49;
-    }
-    .buzz-category.tv {
-      background-color: #d33f49;
-    }
-    .buzz-category.celebrity {
-      background-color: #d33f49;
-    }
-    .buzz-category.streaming {
-      background-color: #d33f49;
-    }
-    .buzz-title {
-      font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.3;
-      color: #222;
-    }
+    .scroll-container::-webkit-scrollbar { height: 6px; }
+    .scroll-container::-webkit-scrollbar-thumb { background: #d33f49; border-radius: 10px; }
 
-    
-    .sidebar {
-      width: 320px;
-      min-width: 300px;
-      margin-left: 2rem; 
-      box-sizing: border-box;
-    }
-    .sidebar-section {
-      margin-bottom: 2rem;
-      font-family: "Source Sans 3", sans-serif;
-    }
-    .sidebar-heading {
-      font-weight: 700;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #d33f49;
-      padding-bottom: 0.25rem;
-      color: #222;
-    }
-    .sidebar-stories {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .sidebar-story {
-      border-left: 4px solid transparent;
-      padding-left: 0.6rem;
-      transition: border-color 0.3s;
-      cursor: pointer;
-    }
-    .sidebar-story:hover {
-      border-color: #d33f49;
-    }
-    .sidebar-category {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #d33f49;
-      text-transform: uppercase;
-    }
-    .sidebar-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0.2rem 0 0.2rem 0;
-      color: #222;
-    }
-    .sidebar-meta {
-      font-size: 0.75rem;
-      color: #666;
-    }
-
-    .sidebar-promo {
-      background: #f5f5f5;
-      padding: 1rem;
+    .scroll-item {
+      flex: 0 0 300px;
+      background: #fff;
+      border: 1px solid #eee;
       border-radius: 8px;
-      margin-bottom: 2rem;
-      font-family: "Source Sans 3", sans-serif;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
-    .sidebar-promo-label {
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: #d33f49;
-      margin-bottom: 0.5rem;
+    .scroll-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .scroll-img { width: 100%; height: 180px; background: #ddd; }
+    .scroll-content { padding: 1.2rem; }
+
+    /* --- HEADINGS --- */
+    .sidebar-heading {
+      font-weight: 800;
       text-transform: uppercase;
+      border-top: 3px solid #000;
+      padding-top: 10px;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: #000;
     }
-    .sidebar-promo-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: #222;
+
+    /* --- LATEST & TRENDING --- */
+    .news-grid-custom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .news-card-img { width: 100%; height: 180px; background: #eee; border-radius: 4px; margin-bottom: 1rem; }
+    .news-card-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; line-height: 1.3; }
+
+    .trending-row { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
+    .trending-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: #eee; line-height: 0.8; flex: 0 0 40px; }
+    .trending-img { width: 80px; height: 60px; background: #ddd; border-radius: 4px; flex-shrink: 0; }
+
+    /* --- AD --- */
+    .sidebar-ad-container {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+      color: #fff;
+      border-radius: 8px;
+      text-align: center;
     }
-    .sidebar-promo-text {
-      font-size: 0.9rem;
-      color: #444;
+    .ad-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .btn-ad { background: #d33f49; color: #fff; border: none; padding: 10px 25px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+    .btn-ad:hover { background: #fff; color: #d33f49; }
+
+    @media (max-width: 992px) {
+      .news-grid-custom { grid-template-columns: repeat(1, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <div class="header-main">
       <div class="container d-flex align-items-center justify-content-between py-3">
@@ -204,26 +144,11 @@
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </nav>
-        <div class="header-actions">
-          <button class="search-toggle" aria-label="Search">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-          </button>
-        </div>
+        <div class="header-actions"><strong>[SEARCH]</strong></div>
       </div>
     </div>
   </header>
 
-  <!-- Entertainment Sub-Navigation -->
   <nav class="entertainment-subnav">
     <a href="#" class="active">[All]</a>
     <a href="#">[Movies]</a>
@@ -233,254 +158,103 @@
     <a href="#">[Streaming]</a>
   </nav>
 
-  <!-- Main Content -->
-  <main>
-    <div class="container my-4">
-      <div class="page-layout d-flex gap-4 flex-wrap">
-        <!-- LEFT: MAIN CONTENT -->
-        <div class="main-content flex-grow-1" style="min-width: 300px; max-width: 720px;">
-          <!-- Hero Article -->
-          <article class="hero-article">
-            <div
-              class="hero-image"
-              style="background-image: url('');"
-              aria-label="Hero image"
-              role="img"
-            ></div>
-            <span class="hero-category" style="color: inherit;">[CATEGORY]</span>
-            <h1 class="hero-title">
-              [TITLE]
-            </h1>
-            <p class="hero-excerpt">
-              [....]
-            </p>
-            <div class="hero-meta">
-              <span class="hero-author">[AUTHOR]</span> <span>•</span>
-              <span>[DATE]</span> <span>•</span> <span>[MIN READ]</span>
-            </div>
-          </article>
-
-          <!-- Pop Culture Buzz (Horizontal Scroll) -->
-          <section>
-            <div class="section-header d-flex justify-content-between align-items-center mb-3">
-              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
-                Pop Culture Buzz
-              </h2>
-              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
-                View All →
-              </a>
-            </div>
-            <div class="pop-culture-buzz" aria-label="Pop Culture Buzz Articles">
-              <div class="buzz-item" tabindex="0">
-                <span class="buzz-category movies">[CATEGORY]</span>
-                <h3 class="buzz-title">
-                 [TILE]
-                </h3>
-              </div>
-              <div class="buzz-item" tabindex="0">
-                <span class="buzz-category music">[CATEGORY]</span>
-                <h3 class="buzz-title">[TITLE]</h3>
-              </div>
-              <div class="buzz-item" tabindex="0">
-                <span class="buzz-category tv">[CATEGORY]</span>
-                <h3 class="buzz-title">[TITLE]</h3>
-              </div>
-              <div class="buzz-item" tabindex="0">
-                <span class="buzz-category celebrity">[CATEGORY]</span>
-                <h3 class="buzz-title">[TITLE]</h3>
-              </div>
-              <div class="buzz-item" tabindex="0">
-                <span class="buzz-category streaming">[CATEGORY]</span>
-                <h3 class="buzz-title">[TITLE]</h3>
-              </div>
-            </div>
-          </section>
-
-          <div class="section-divider my-4"></div>
-
-      <!-- Latest News  -->
-<section>
-  <div class="section-header d-flex justify-content-between align-items-center mb-3">
-    <h2 class="section-title" style="font-family: 'Playfair Display', serif;">Latest News</h2>
-    <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">View All →</a>
-  </div>
-
-  <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
-    <!-- Article 1 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-
-    <!-- Article 2 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-
-    <!-- Article 3 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-
-    <!-- Article 4 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-
-    <!-- Article 5 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-
-    <!-- Article 6 -->
-    <article class="news-card col">
-      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
-      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
-      <h3 class="news-card-title">[TITLE]</h3>
-      <p class="news-card-excerpt">[INFO]</p>
-      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
-    </article>
-  </div>
-</section>
-
-<div class="section-divider my-4"></div>
-
-
-
-          <!-- Trending Topics -->
-          <section class="trending-section">
-            <div
-              class="section-header d-flex justify-content-between align-items-center mb-3"
-            >
-              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
-                Trending
-              </h2>
-              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
-                View All →
-              </a>
-            </div>
-
-            <div class="trending-list d-flex flex-column gap-3">
-              <div class="trending-item d-flex gap-3 align-items-start">
-                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">01</div>
-                <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
-                  <h3 class="trending-title" style="margin: 0.2rem 0;">
-                    [TILE]
-                  </h3>
-                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
-                </div>
-              </div>
-
-              <div class="trending-item d-flex gap-3 align-items-start">
-                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">02</div>
-                <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
-                  <h3 class="trending-title" style="margin: 0.2rem 0;">
-                    [TILE]
-                  </h3>
-                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
-                </div>
-              </div>
-
-              <div class="trending-item d-flex gap-3 align-items-start">
-                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">03</div>
-                <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
-                  <h3 class="trending-title" style="margin: 0.2rem 0;">
-                    [TILE]
-                  </h3>
-                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
-                </div>
-              </div>
-
-              <div class="trending-item d-flex gap-3 align-items-start">
-                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">04</div>
-                <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
-                  <h3 class="trending-title" style="margin: 0.2rem 0;">
-                    [TILE]
-                  </h3>
-                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
-                </div>
-              </div>
-
-              <div class="trending-item d-flex gap-3 align-items-start">
-                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">05</div>
-                <div class="trending-content">
-                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
-                  <h3 class="trending-title" style="margin: 0.2rem 0;">
-                    [TILE]
-                  </h3>
-                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
-                </div>
-              </div>
-            </div>
-          </section>
+  <main class="container my-5">
+    <section class="main-feature">
+      <article class="hero-article">
+        <div class="hero-image"></div>
+        <div class="meta-block">
+          <span class="m-cat">[CATEGORY]</span>
+          <span class="m-author">By [AUTHOR NAME]</span>
         </div>
+        <h1 class="hero-title">[MAJOR NEWS HEADLINE]</h1>
+        <p class="lead text-muted">[Enter a high-impact summary of your lead entertainment story here.]</p>
+        <div class="meta-block m-details">[DATE] • [X] MIN READ</div>
+      </article>
+    </section>
 
-        <!-- RIGHT: SIDEBAR -->
-        <aside class="sidebar">
-          <section class="sidebar-section">
-            <h2 class="sidebar-heading">Trending Articles</h2>
-            <div class="sidebar-stories">
-              <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">[CATEGORY]</span>
-                <h3 class="sidebar-title">[TITLE]</h3>
-                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
-              </div>
-              <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">[CATEGORY]</span>
-                <h3 class="sidebar-title">[TITLE]</h3>
-                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
-              </div>
-              <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">[CATEGORY]</span>
-                <h3 class="sidebar-title">[TITLE]</h3>
-                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
-              </div>
-              <div class="sidebar-story" tabindex="0">
-                <span class="sidebar-category">[CATEGORY]</span>
-                <h3 class="sidebar-title">[TITLE]</h3>
-                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
-              </div>
+    <section class="mb-5">
+      <h2 class="sidebar-heading">[Top Picks]</h2>
+      <div class="scroll-container">
+        <div class="scroll-item">
+            <div class="scroll-img"></div>
+            <div class="scroll-content">
+                <div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div>
+                <h4 class="h6 fw-bold">[TITLE]</h4>
             </div>
-          </section>
+        </div>
+        <div class="scroll-item">
+            <div class="scroll-img"></div>
+            <div class="scroll-content">
+                <div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div>
+                <h4 class="h6 fw-bold">[TITLE]</h4>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="scroll-img"></div>
+            <div class="scroll-content">
+                <div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div>
+                <h4 class="h6 fw-bold">[TITLE]</h4>
+            </div>
+        </div>
+        <div class="scroll-item">
+            <div class="scroll-img"></div>
+            <div class="scroll-content">
+                <div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div>
+                <h4 class="h6 fw-bold">[TITLE]</h4>
+            </div>
+        </div>
+      </div>
+    </section>
 
-          <section class="sidebar-promo">
-            <div class="sidebar-promo-label">Subscribe</div>
-            <div class="sidebar-promo-title">Get Our Newsletter</div>
-            <div class="sidebar-promo-text">
-              Stay updated with the latest entertainment buzz. Join our mailing
-              list now!
-            </div>
-          </section>
-        </aside>
+    <hr class="my-5">
+
+    <section>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 style="font-family: 'Playfair Display', serif; font-weight: 700; color: #000;">[Pop Culture Buzz]</h2>
+        <a href="#" class="text-danger fw-bold text-decoration-none small">VIEW ALL →</a>
+      </div>
+      <div class="scroll-container">
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+        <div class="scroll-item"><div class="scroll-img"></div><div class="scroll-content"><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TITLE]</h4></div></div>
+      </div>
+    </section>
+
+    <div class="row mt-5">
+      <div class="col-lg-8">
+        <h2 class="sidebar-heading">[Latest News]</h2>
+        <div class="news-grid-custom">
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+          <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
+        </div>
+      </div>
+
+      <div class="col-lg-4 ps-lg-5">
+        <h2 class="sidebar-heading">[Trending Now]</h2>
+        <div class="trending-row"><span class="trending-num">01</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
+        <div class="trending-row"><span class="trending-num">02</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
+        <div class="trending-row"><span class="trending-num">03</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
+        <div class="trending-row"><span class="trending-num">04</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
+        <div class="trending-row"><span class="trending-num">05</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
+
+        <div class="sidebar-ad-container">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-brand">UrbanStream+</div>
+          <p class="ad-text">Unlimited access to exclusive indie films.</p>
+          <button class="btn btn-ad">Start Free Trial</button>
+        </div>
       </div>
     </div>
   </main>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  ></script>
+  <footer class="py-4 text-center border-top"><p>&copy; 2026 UrbanPulse. Feel the Ripple!</p></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
