@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entertainment - UrbanPulse - Feel the Ripple!</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style3.css" />
+  <link rel="stylesheet" href="burger.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container d-flex align-items-center justify-content-between py-3">
+        <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle"
+          aria-label="Open menu"
+          aria-controls="burgerMenu"
+          aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+      </div>
+        <nav class="main-nav"> 
+					<a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+				</nav>
+        <div class="header-actions">
+          <button class="search-toggle" aria-label="Search">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Entertainment Sub-Navigation -->
+    <nav class="entertainment-nav">
+        <div class="entertainment-nav-container">
+            <a href="#" class="active">[All Movies]</a>
+            <a href="#">[Celebrity]</a>
+            <a href="#">[Tiktok]</a>
+            <a href="#">[Youtube]</a>
+            <a href="#">[Hollywood]</a>
+        </div>
+    </nav>
+  <!-- Main Content -->
+  <main>
+    <div class="container my-4">
+      <div class="page-layout d-flex gap-4 flex-wrap">
+        <!-- LEFT: MAIN CONTENT -->
+        <div class="main-content flex-grow-1" style="min-width: 300px; max-width: 720px;">
+          <!-- Hero Article -->
+          <article class="hero-article">
+            <div
+              class="hero-image"
+              style="background-image: url('');"
+              aria-label="Hero image"
+              role="img"
+            ></div>
+            <span class="hero-category" style="color: inherit;">[CATEGORY]</span>
+            <h1 class="hero-title">
+              [TITLE]
+            </h1>
+            <p class="hero-excerpt">
+              [....]
+            </p>
+            <div class="hero-meta">
+              <span class="hero-author">[AUTHOR]</span> <span>•</span>
+              <span>[DATE]</span> <span>•</span> <span>[MIN READ]</span>
+            </div>
+          </article>
+
+          <!-- Pop Culture Buzz (Horizontal Scroll) -->
+          <section>
+            <div class="section-header d-flex justify-content-between align-items-center mb-3">
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Pop Culture Buzz
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+            <div class="pop-culture-buzz" aria-label="Pop Culture Buzz Articles">
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category movies">[CATEGORY]</span>
+                <h3 class="buzz-title">
+                 [TILE]
+                </h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category music">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category tv">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category celebrity">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category streaming">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+            </div>
+          </section>
+
+          <div class="section-divider my-4"></div>
+
+      <!-- Latest News  -->
+<section>
+  <div class="section-header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title" style="font-family: 'Playfair Display', serif;">Latest News</h2>
+    <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">View All →</a>
+  </div>
+
+  <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
+    <!-- Article 1 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 2 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 3 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 4 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 5 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 6 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+  </div>
+</section>
+
+<div class="section-divider my-4"></div>
+
+
+
+          <!-- Trending Topics -->
+          <section class="trending-section">
+            <div
+              class="section-header d-flex justify-content-between align-items-center mb-3"
+            >
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Trending
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+
+            <div class="trending-list d-flex flex-column gap-3">
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">01</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">02</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">03</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">04</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">05</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <aside class="sidebar">
+          <section class="sidebar-section">
+            <h2 class="sidebar-heading">Trending Articles</h2>
+            <div class="sidebar-stories">
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-promo">
+            <div class="sidebar-promo-label">Subscribe</div>
+            <div class="sidebar-promo-title">Get Our Newsletter</div>
+            <div class="sidebar-promo-text">
+              Stay updated with the latest entertainment buzz. Join our mailing
+              list now!
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+	
+	<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <h2 class="footer-logo">UrbanPulse</h2>
+                <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+                    <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+                    <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+                    <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>CATEGORIES</h3>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">World News</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+        </div>
+    </footer>
+  
+  <!-- Mobile Burger Menu (Off-canvas) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+    <div class="burger-top">
+      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"></path>
+          <path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="burger-brand">
+        <div class="burger-logo">UrbanPulse</div>
+        <div class="burger-tagline">Feel the Ripple!</div>
+      </div>
+    </div>
+
+    <div class="burger-body">
+      <div class="burger-section">
+        <div class="burger-section-title">Browse</div>
+        <nav class="burger-links" aria-label="Primary">
+          <a class="burger-link" data-nav href="index.html">Home</a>
+          <a class="burger-link" data-nav href="category-technology.html">Technology</a>
+          <a class="burger-link" data-nav href="category-sport.html">Sports</a>
+          <a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+          <a class="burger-link" data-nav href="world.html">World News</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section">
+        <div class="burger-section-title">Company</div>
+        <nav class="burger-links" aria-label="Company">
+          <a class="burger-link" data-nav href="about.html">About</a>
+          <a class="burger-link" data-nav href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section burger-account">
+        <div class="account-row">
+          <div class="account-left">
+            <span class="account-dot" aria-hidden="true"></span>
+            <span class="account-name">Guest</span>
+          </div>
+          <a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+        </div>
+
+        <a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+        <a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+      </div>
+    </div>
+  </aside>
+
+
+
+  <script>
+  (() => {
+    const body = document.body;
+    const toggleBtn = document.getElementById('menuToggle');
+    const closeBtn  = document.getElementById('menuClose');
+    const menu      = document.getElementById('burgerMenu');
+    const overlay   = document.getElementById('menuOverlay');
+
+    if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+    let lastFocus = null;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    function setActiveLink() {
+      const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        a.classList.toggle('active', href === path);
+      });
+    }
+
+    function openMenu() {
+      lastFocus = document.activeElement;
+
+      overlay.hidden = false;
+      body.classList.add('menu-open');
+      menu.classList.add('is-open');
+      overlay.classList.add('is-open');
+
+      menu.removeAttribute('inert');
+      menu.setAttribute('aria-hidden', 'false');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+
+      setActiveLink();
+      closeBtn.focus();
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      body.classList.remove('menu-open');
+
+      menu.setAttribute('inert', '');
+      menu.setAttribute('aria-hidden', 'true');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+
+      window.setTimeout(() => {
+        overlay.hidden = true;
+      }, 260);
+
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    function trapFocus(e) {
+      if (!menu.classList.contains('is-open')) return;
+      if (e.key !== 'Tab') return;
+
+      const focusables = menu.querySelectorAll(focusableSelector);
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last  = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    toggleBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+      trapFocus(e);
+    });
+
+    menu.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      closeMenu();
+    });
+
+    setActiveLink();
+  })();
+  </script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  ></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>UrbanPulse | News Website</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="burger.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="BN" id="Bn">
+        <span class="BNlabel">BREAKING</span>
+        <div class="BNcontent"> 
+            <span class="Bitem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="Bitem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="Bitem">Global tech summit announces groundbreaking AI regulations</span>
+        </div>
+    </div>
+	
+	<header class="header">
+		<div class="header-main">
+			<div class="container">
+				<div class="header-left">
+					<button type="button" class="menu-toggle" id="menuToggle"
+						aria-label="Open menu"
+						aria-controls="burgerMenu"
+						aria-expanded="false">
+						<span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+					</button>
+					<div class="Logo">
+					<h1>UrbanPulse</h1>
+					<p class="tagline">Feel the Ripple!</p>
+				</div>
+				</div>
+				<nav class="main-nav"> 
+					<a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+				</nav>
+				<div class="header-actions">
+                    <button class="search-toggle" id="searchToggle" aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-bar" id="searchBar" style="display:none; position:absolute; right:0; top:100%; width:300px; padding:1rem; background:#fff; border:1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <input type="text" id="searchInput" placeholder="Search articles..." style="width:100%; padding:10px; border:1px solid #ccc;">
+                    </div>
+                </div>
+			</div>
+		</div>
+	</header>
+	
+    <main>
+        <div class="container">
+            <div class="top-banner">
+                <h2>TOP STORIES</h2>
+            </div>
+
+            <div class="hero-story">
+                <div class="hero-image">
+                    [HERO IMAGE]
+                </div>
+                <div class="hero-content">
+                    <h1 class="hero-title">Next-Gen AI Models Spark Debate Over Digital Ethics</h1>
+                    <p class="hero-summary">As tech giants release their most advanced artificial intelligence models yet, industry watchdogs and ethicists are raising concerns about data privacy, copyright infringement, and the rapid pace of implementation without regulatory oversight. The debate centers on how society will adapt to tools that can generate human-like text and media.</p>
+                    <div class="hero-meta">
+                        <span class="category-tag">Technology</span>
+                        <span class="time-stamp">2 HOURS AGO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-image">[IMAGE]</div>
+                    <div class="story-content">
+                        <h3 class="story-title">Local Team Advances to Finals</h3>
+                        <p class="story-summary">In a stunning upset, the city's underdog basketball team secured a spot in the national championships after a buzzer-beater shot in triple overtime, leaving fans absolutely electrified.</p>
+                        <div class="story-meta">
+                            <span class="category-tag">Sports</span>
+                            <span class="time-stamp">4 HOURS AGO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-image">[IMAGE]</div>
+                    <div class="story-content">
+                        <h3 class="story-title">Award-Winning Director Announces New Film</h3>
+                        <p class="story-summary">Following the massive success of her latest blockbuster, the acclaimed director revealed her next project will be a gritty, historical drama set in the 1920s, featuring an all-star ensemble cast.</p>
+                        <div class="story-meta">
+                            <span class="category-tag">Entertainment</span>
+                            <span class="time-stamp">5 HOURS AGO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-image">[IMAGE]</div>
+                    <div class="story-content">
+                        <h3 class="story-title">Global Climate Summit Concludes</h3>
+                        <p class="story-summary">World leaders have finally reached a tentative agreement on carbon emission targets for the next decade, though environmental activists argue the measures do not go far enough to prevent severe climate impacts.</p>
+                        <div class="story-meta">
+                            <span class="category-tag">World News</span>
+                            <span class="time-stamp">6 HOURS AGO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="category-section">
+                <h2 class="section-heading">TECHNOLOGY</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>New Smartphone Release</h3>
+                        <p>The latest flagship device features a revolutionary battery design that promises up to a week of charge under normal usage conditions, shaking up the mobile industry.</p>
+                        <span class="time-tag">10 HOURS AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span> </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>Cybersecurity Threats on the Rise</h3>
+                        <p>Experts are warning small businesses to update their security protocols following a massive spike in targeted ransomware attacks over the previous holiday weekend.</p>
+                        <span class="time-tag">12 HOURS AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>The Future of Remote Work</h3>
+                        <p>A new study suggests that companies offering flexible work-from-home options are seeing a 30% increase in employee retention compared to strict return-to-office mandates.</p>
+                        <span class="time-tag">1 DAY AGO</span>
+                        <span class="category-tag" style="display:none;">Technology</span>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="category-section">
+                <h2 class="section-heading">SPORTS</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                </div>
+				
+				<div class="section-divider"></div>
+				
+				<div class="category-section">
+                <h2 class="section-heading">ENTERTAINMENT</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">[IMAGE]</div>
+                        <h3>[HEADLINE]</h3>
+                        <p>[SUMMARY]</p>
+                        <span class="time-tag">[TIME]</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+			
+			      <div class="section-divider"></div>
+			
+			 <div class="more-stories">
+                <h2 class="section-heading">MORE STORIES</h2>
+                <div class="more-grid">
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                    <div class="more-card">
+                        <h4>[HEADLINE]</h4>
+                        <p class="more-meta">[CATEGORY] • [TIME]</p>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </main>
+
+			 <div class="section-divider"></div>
+			 
+
+
+	<footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <h2 class="footer-logo">UrbanPulse</h2>
+                <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+                    <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+                    <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+                    <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>CATEGORIES</h3>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">World News</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+        </div>
+    </footer>
+	
+
+	
+	<!-- Mobile Burger Menu (Off-canvas) -->
+	<div class="menu-overlay" id="menuOverlay" hidden></div>
+
+	<aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+		<div class="burger-top">
+			<button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M18 6 6 18"></path>
+					<path d="M6 6l12 12"></path>
+				</svg>
+			</button>
+
+			<div class="burger-brand">
+				<div class="burger-logo">UrbanPulse</div>
+				<div class="burger-tagline">Feel the Ripple!</div>
+			</div>
+		</div>
+
+		<div class="burger-body">
+			<div class="burger-section">
+				<div class="burger-section-title">Browse</div>
+				<nav class="burger-links" aria-label="Primary">
+					<a class="burger-link" data-nav href="index.html">Home</a>
+					<a class="burger-link" data-nav href="category-technology.html">Technology</a>
+					<a class="burger-link" data-nav href="category-sport.html">Sports</a>
+					<a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+					<a class="burger-link" data-nav href="world.html">World News</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section">
+				<div class="burger-section-title">Company</div>
+				<nav class="burger-links" aria-label="Company">
+					<a class="burger-link" data-nav href="about.html">About</a>
+					<a class="burger-link" data-nav href="contact.html">Contact</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section burger-account">
+				<div class="account-row">
+					<div class="account-left">
+						<span class="account-dot" aria-hidden="true"></span>
+						<span class="account-name">Guest</span>
+					</div>
+					<a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+				</div>
+
+				<a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+				<a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+			</div>
+		</div>
+	</aside>
+
+	<script>
+	(() => {
+		const body = document.body;
+		const toggleBtn = document.getElementById('menuToggle');
+		const closeBtn  = document.getElementById('menuClose');
+		const menu      = document.getElementById('burgerMenu');
+		const overlay   = document.getElementById('menuOverlay');
+
+		if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+		let lastFocus = null;
+
+		const focusableSelector = [
+			'a[href]',
+			'button:not([disabled])',
+			'textarea:not([disabled])',
+			'input:not([disabled])',
+			'select:not([disabled])',
+			'[tabindex]:not([tabindex="-1"])'
+		].join(',');
+
+		function setActiveLink() {
+			const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+			menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+				const href = (a.getAttribute('href') || '').toLowerCase();
+				a.classList.toggle('active', href === path);
+			});
+		}
+
+		function setMenuState(open) {
+			toggleBtn.setAttribute('aria-expanded', String(open));
+			menu.classList.toggle('is-open', open);
+			overlay.classList.toggle('is-open', open);
+
+			if (open) {
+				overlay.hidden = false;
+				menu.removeAttribute('inert');
+				menu.setAttribute('aria-hidden', 'false');
+				body.classList.add('menu-open');
+				lastFocus = document.activeElement;
+				setActiveLink();
+
+				const first = menu.querySelector(focusableSelector);
+				first && first.focus({ preventScroll: true });
+			} else {
+				overlay.hidden = true;
+				menu.setAttribute('inert', '');
+				menu.setAttribute('aria-hidden', 'true');
+				body.classList.remove('menu-open');
+
+				if (lastFocus && typeof lastFocus.focus === 'function') {
+					lastFocus.focus({ preventScroll: true });
+				}
+			}
+		}
+
+		function openMenu(){ setMenuState(true); }
+		function closeMenu(){ setMenuState(false); }
+
+		toggleBtn.addEventListener('click', () => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			isOpen ? closeMenu() : openMenu();
+		});
+
+		closeBtn.addEventListener('click', closeMenu);
+		overlay.addEventListener('click', closeMenu);
+
+		document.addEventListener('keydown', (e) => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			if (!isOpen) return;
+
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				closeMenu();
+				return;
+			}
+
+			if (e.key !== 'Tab') return;
+
+			const focusables = Array.from(menu.querySelectorAll(focusableSelector))
+				.filter(el => !el.hasAttribute('disabled'));
+
+			if (!focusables.length) return;
+
+			const first = focusables[0];
+			const last  = focusables[focusables.length - 1];
+
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		});
+
+		menu.querySelectorAll('[data-nav]').forEach(a => {
+			a.addEventListener('click', () => closeMenu());
+		});
+	})();
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="functionality.js"></script>
+</body>
+</html>

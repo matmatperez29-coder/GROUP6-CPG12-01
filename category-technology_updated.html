@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology - UrbanPulse - Feel the Ripple!</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="burger.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle"
+          aria-label="Open menu"
+          aria-controls="burgerMenu"
+          aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+      </div>
+
+       <nav class="main-nav"> 
+					<a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+				</nav>
+
+        <div class="header-actions">
+          <button class="search-toggle" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tech Sub-Navigation (Styled like Sports subnav) -->
+  <nav class="sports-nav">
+    <div class="sports-nav-container">
+      <a href="#" class="active">[All]</a>
+      <a href="#">[AI]</a>
+      <a href="#">[Smartphones]</a>
+      <a href="#">[Laptops]</a>
+      <a href="#">[Gaming]</a>
+      <a href="#">[Science]</a>
+      <a href="#">[Security]</a>
+      <a href="#">[Software]</a>
+      <a href="#">[Policy]</a>
+      <a href="#">[Space]</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+
+      <!-- HERO FEATURED (Sports layout) -->
+      <section class="hero-featured">
+        <article class="hero-main">
+          <div class="hero-image">[HERO IMAGE]</div>
+
+          <span class="hero-category">Tech News</span>
+          <h1 class="hero-title">End of an Era: Meta to Shut Down Messenger Website in April 2026</h1>
+
+          <p class="hero-excerpt">
+            Meta is officially pulling the plug on Messenger.com, marking the end of the platform's decade-long run as a standalone desktop experience.
+          </p>
+
+          <div class="article-body">
+            <p>
+              Following the retirement of its standalone Windows and Mac applications in late 2025, this move marks the end of Messenger’s decade-long run as a separate desktop service. Once the site officially closes in April 2026, users attempting to access the URL will be automatically redirected to <strong>facebook.com/messages</strong>, effectively folding the chat service back into the main Facebook interface.
+            </p>
+
+            <p>
+              This consolidation poses a significant hurdle for the segment of users who utilize Messenger without an active Facebook account, as they will no longer be able to manage their chats via a web browser. While the iOS and Android apps remain unaffected, the shift is part of a broader strategy to centralize Meta’s ecosystem. By housing all desktop communications under one roof, Meta aims to streamline its global security efforts—including the deployment of enhanced scam detection and password-free passkeys—to protect its massive user base.
+            </p>
+          </div>
+
+          <div class="hero-meta">
+            <span class="hero-author">by Sharona Nicole Semilla</span>
+            <span>•</span>
+            <span>February 18, 2026 | 10:09 PM</span>
+          </div>
+        </article>
+
+        <aside class="hero-sidebar">
+          <h3 class="sidebar-heading">[Most Read]</h3>
+
+          <div class="sidebar-stories">
+            <article class="sidebar-story">
+              <span class="sidebar-category">[CATEGORY]</span>
+              <h4 class="sidebar-title">[Story Title]</h4>
+              <div class="sidebar-meta">[Author] • [Time]</div>
+            </article>
+
+            <article class="sidebar-story">
+              <span class="sidebar-category">[CATEGORY]</span>
+              <h4 class="sidebar-title">[Story Title]</h4>
+              <div class="sidebar-meta">[Author] • [Time]</div>
+            </article>
+
+            <article class="sidebar-story">
+              <span class="sidebar-category">[CATEGORY]</span>
+              <h4 class="sidebar-title">[Story Title]</h4>
+              <div class="sidebar-meta">[Author] • [Time]</div>
+            </article>
+          </div>
+        </aside>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Latest News -->
+      <section>
+        <div class="section-header">
+          <h2 class="section-title">[Latest News]</h2>
+          <a href="#" class="section-link">[View All →]</a>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card">
+            <div class="story-image">
+              <img src="phosphorus-1d-research.jpg" alt="Visualization of 1D electron flow in phosphorus chains">
+            </div>
+            <span class="story-category">Quantum Materials</span>
+            <h3 class="story-title">Scientists Confirm "True" 1D Electron Behavior in Phosphorus Chains</h3>
+            <p class="story-excerpt">
+              A breakthrough at BESSY II has experimentally proven that phosphorus atoms can host genuinely one-dimensional electrons...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Science Desk</span>
+              <span>•</span>
+              <span>2 hours ago</span>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="infinix-note60.jpg" alt="Infinix NOTE 60 Series Smartphone">
+            </div>
+            <span class="story-category">Smartphones</span>
+            <h3 class="story-title">Infinix Unveils NOTE 60 Series with Snapdragon Chips and Interactive Displays</h3>
+            <p class="story-excerpt">
+              The new NOTE 60 series pushes mid-range boundaries, featuring high-performance Snapdragon processors...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Tech Watch</span>
+              <span>•</span>
+              <span>4 hours ago</span>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="r36max2-gaming.jpg" alt="R36 Max 2 Handheld Console">
+            </div>
+            <span class="story-category">Gaming</span>
+            <h3 class="story-title">Leaked: R36 Max 2 Retro Handheld to Feature 4.5&quot; IPS Screen</h3>
+            <p class="story-excerpt">
+              Leaked details of the R36 Max successor reveal a shift to a larger, high-quality IPS display and improved ergonomics...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Sam Chen</span>
+              <span>•</span>
+              <span>6 hours ago</span>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="oppo-cny-manila.jpg" alt="OPPO Service Center Promo">
+            </div>
+            <span class="story-category">Local News</span>
+            <h3 class="story-title">OPPO PH Launches Festive CNY Rewards Across Manila Service Centers</h3>
+            <p class="story-excerpt">
+              Celebrating the Lunar New Year, OPPO Philippines is offering exclusive &quot;Red Envelope&quot; prizes and discounted repairs...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Manila News Room</span>
+              <span>•</span>
+              <span>8 hours ago</span>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="vivo-v70-launch.jpg" alt="vivo V70 Smartphone">
+            </div>
+            <span class="story-category">Mobile Tech</span>
+            <h3 class="story-title">vivo V70 Confirmed for Philippine Launch on February 28</h3>
+            <p class="story-excerpt">
+              The highly anticipated vivo V70 brings a new design language to the Philippines...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Product Watch</span>
+              <span>•</span>
+              <span>10 hours ago</span>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="samsung-s26-privacy.jpg" alt="Samsung Privacy Display Tech">
+            </div>
+            <span class="story-category">Future Tech</span>
+            <h3 class="story-title">Samsung Teases S26 Ultra with Hardware-Level &quot;Privacy Display&quot;</h3>
+            <p class="story-excerpt">
+              Early teasers for the Galaxy S26 Ultra suggest a new screen technology that prevents &quot;shoulder surfing&quot;...
+            </p>
+            <div class="story-meta">
+              <span class="story-author">Global Reporter</span>
+              <span>•</span>
+              <span>12 hours ago</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Trending (List style like Sports) -->
+      <section>
+        <div class="section-header">
+          <h2 class="section-title">[Trending]</h2>
+          <a href="#" class="section-link">[View All →]</a>
+        </div>
+
+        <div class="story-list">
+          <article class="list-story">
+            <div class="list-image trending-badge">01</div>
+            <div class="list-content">
+              <span class="story-category">[CATEGORY]</span>
+              <h3 class="story-title">[Trending Article Title]</h3>
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image trending-badge">02</div>
+            <div class="list-content">
+              <span class="story-category">[CATEGORY]</span>
+              <h3 class="story-title">[Trending Article Title]</h3>
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image trending-badge">03</div>
+            <div class="list-content">
+              <span class="story-category">[CATEGORY]</span>
+              <h3 class="story-title">[Trending Article Title]</h3>
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image trending-badge">04</div>
+            <div class="list-content">
+              <span class="story-category">[CATEGORY]</span>
+              <h3 class="story-title">[Trending Article Title]</h3>
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image trending-badge">05</div>
+            <div class="list-content">
+              <span class="story-category">[CATEGORY]</span>
+              <h3 class="story-title">[Trending Article Title]</h3>
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Product Reviews (List style like Sports) -->
+      <section>
+        <div class="section-header">
+          <h2 class="section-title">[Product Reviews]</h2>
+          <a href="#" class="section-link">[View All →]</a>
+        </div>
+
+        <div class="story-list">
+          <article class="list-story">
+            <div class="list-image">[IMG]</div>
+            <div class="list-content">
+              <span class="story-category">[REVIEW]</span>
+              <h3 class="story-title">[Product Name]</h3>
+
+              <div class="review-stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              </div>
+
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image">[IMG]</div>
+            <div class="list-content">
+              <span class="story-category">[REVIEW]</span>
+              <h3 class="story-title">[Product Name]</h3>
+
+              <div class="review-stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              </div>
+
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="list-story">
+            <div class="list-image">[IMG]</div>
+            <div class="list-content">
+              <span class="story-category">[REVIEW]</span>
+              <h3 class="story-title">[Product Name]</h3>
+
+              <div class="review-stars">
+                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span>
+              </div>
+
+              <div class="story-meta">
+                <span class="story-author">[Author]</span>
+                <span>•</span>
+                <span>[Time]</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column brand-info">
+        <h2 class="footer-logo">UrbanPulse</h2>
+        <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+          <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+          <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+          <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>CATEGORIES</h3>
+        <ul>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Sports</a></li>
+          <li><a href="#">Entertainment</a></li>
+          <li><a href="#">World News</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>COMPANY</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>LEGAL</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Editorial Guidelines</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+    </div>
+  </footer>
+
+  
+  <!-- Mobile Burger Menu (Off-canvas) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+    <div class="burger-top">
+      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"></path>
+          <path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="burger-brand">
+        <div class="burger-logo">UrbanPulse</div>
+        <div class="burger-tagline">Feel the Ripple!</div>
+      </div>
+    </div>
+
+    <div class="burger-body">
+      <div class="burger-section">
+        <div class="burger-section-title">Browse</div>
+        <nav class="burger-links" aria-label="Primary">
+          <a class="burger-link" data-nav href="index.html">Home</a>
+          <a class="burger-link" data-nav href="category-technology.html">Technology</a>
+          <a class="burger-link" data-nav href="category-sport.html">Sports</a>
+          <a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+          <a class="burger-link" data-nav href="world.html">World News</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section">
+        <div class="burger-section-title">Company</div>
+        <nav class="burger-links" aria-label="Company">
+          <a class="burger-link" data-nav href="about.html">About</a>
+          <a class="burger-link" data-nav href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section burger-account">
+        <div class="account-row">
+          <div class="account-left">
+            <span class="account-dot" aria-hidden="true"></span>
+            <span class="account-name">Guest</span>
+          </div>
+          <a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+        </div>
+
+        <a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+        <a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+      </div>
+    </div>
+  </aside>
+
+
+
+  <script>
+  (() => {
+    const body = document.body;
+    const toggleBtn = document.getElementById('menuToggle');
+    const closeBtn  = document.getElementById('menuClose');
+    const menu      = document.getElementById('burgerMenu');
+    const overlay   = document.getElementById('menuOverlay');
+
+    if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+    let lastFocus = null;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    function setActiveLink() {
+      const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        a.classList.toggle('active', href === path);
+      });
+    }
+
+    function openMenu() {
+      lastFocus = document.activeElement;
+
+      overlay.hidden = false;
+      body.classList.add('menu-open');
+      menu.classList.add('is-open');
+      overlay.classList.add('is-open');
+
+      menu.removeAttribute('inert');
+      menu.setAttribute('aria-hidden', 'false');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+
+      setActiveLink();
+      closeBtn.focus();
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      body.classList.remove('menu-open');
+
+      menu.setAttribute('inert', '');
+      menu.setAttribute('aria-hidden', 'true');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+
+      window.setTimeout(() => {
+        overlay.hidden = true;
+      }, 260);
+
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    function trapFocus(e) {
+      if (!menu.classList.contains('is-open')) return;
+      if (e.key !== 'Tab') return;
+
+      const focusables = menu.querySelectorAll(focusableSelector);
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last  = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    toggleBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+      trapFocus(e);
+    });
+
+    menu.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      closeMenu();
+    });
+
+    setActiveLink();
+  })();
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

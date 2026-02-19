@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World News - UrbanPulse - Feel the Ripple!</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style4.css" />
+  <link rel="stylesheet" href="burger.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header (same design language) -->
+  <header class="header">
+    <div class="header-main">
+      <div class="container">
+        <div class="header-left">
+          <button type="button" class="menu-toggle" id="menuToggle"
+            aria-label="Open menu"
+            aria-controls="burgerMenu"
+            aria-expanded="false">
+            <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+          <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+        </div>
+
+        <nav class="main-nav"> 
+					<a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+				</nav>
+        <div class="header-actions">
+          <button class="search-toggle" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- World Subnav (same feel, unique labels) -->
+  <nav class="sports-nav">
+    <div class="sports-nav-container">
+      <a href="#" class="active">[All Regions]</a>
+      <a href="#">[Asia]</a>
+      <a href="#">[Europe]</a>
+      <a href="#">[Americas]</a>
+      <a href="#">[Middle East]</a>
+      <a href="#">[Africa]</a>
+      <a href="#">[Oceania]</a>
+      <a href="#">[Climate]</a>
+      <a href="#">[Geopolitics]</a>
+      <a href="#">[Economy]</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- WORLD BRIEFING HERO (unique layout) -->
+      <section class="world-briefing">
+        <div class="briefing-hero">
+          <div class="briefing-top">
+            <span class="briefing-label">WORLD BRIEFING</span>
+            <div class="briefing-meta">
+              <span class="meta-pill">Updated: [Date]</span>
+              <span class="meta-pill">[Time Zone]</span>
+            </div>
+          </div>
+
+          <h1 class="briefing-title">[Top Global Headline Goes Here]</h1>
+          <p class="briefing-lede">
+            [Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+			[Write a short summary of the biggest world story today—2 to 3 sentences. Keep it clear and newsy.]
+          </p>
+
+          <div class="briefing-grid">
+            <article class="brief-card">
+              <div class="brief-tag">[BREAKING]</div>
+              <h3 class="brief-headline">[Headline]</h3>
+              <p class="brief-text">[1–2 line summary for the quick briefing card.]</p>
+              <div class="brief-foot">[Region] • [Time]</div>
+            </article>
+
+            <article class="brief-card">
+              <div class="brief-tag">[ANALYSIS]</div>
+              <h3 class="brief-headline">[Headline]</h3>
+              <p class="brief-text">[1–2 line summary for the quick briefing card.]</p>
+              <div class="brief-foot">[Region] • [Time]</div>
+            </article>
+
+            <article class="brief-card">
+              <div class="brief-tag">[LIVE]</div>
+              <h3 class="brief-headline">[Headline]</h3>
+              <p class="brief-text">[1–2 line summary for the quick briefing card.]</p>
+              <div class="brief-foot">[Region] • [Time]</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- map panel -->
+        <aside class="world-map">
+          <div class="map-header">
+            <h2 class="map-title">Global Pulse</h2>
+            <p class="map-sub">[Short note: “Track updates by region.”]</p>
+          </div>
+
+          <div class="map-box">[WORLD MAP / GRAPHIC]</div>
+
+          <div class="region-chips">
+            <button class="chip active">Asia</button>
+            <button class="chip">Europe</button>
+            <button class="chip">Americas</button>
+            <button class="chip">Middle East</button>
+            <button class="chip">Africa</button>
+          </div>
+
+          <div class="map-list">
+            <div class="map-item">
+              <span class="dot"></span>
+              <div class="map-item-text">
+                <div class="map-item-title">[Region update headline]</div>
+                <div class="map-item-meta">[Country] • [Time]</div>
+              </div>
+            </div>
+
+            <div class="map-item">
+              <span class="dot"></span>
+              <div class="map-item-text">
+                <div class="map-item-title">[Region update headline]</div>
+                <div class="map-item-meta">[Country] • [Time]</div>
+              </div>
+            </div>
+
+            <div class="map-item">
+              <span class="dot"></span>
+              <div class="map-item-text">
+                <div class="map-item-title">[Region update headline]</div>
+                <div class="map-item-meta">[Country] • [Time]</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ACROSS THE GLOBE (unique split layout) -->
+      <section class="globe-split">
+        <div class="section-header">
+          <h2 class="section-title">Across the Globe</h2>
+          <a href="#" class="section-link">[View All →]</a>
+        </div>
+
+        <div class="globe-grid">
+          <!-- Left: big feature -->
+          <article class="globe-feature">
+            <div class="feature-image">[FEATURE IMAGE]</div>
+            <span class="story-category">[FEATURE]</span>
+            <h3 class="feature-title">[Featured World Story Title]</h3>
+            <p class="feature-excerpt">
+              [3–4 lines for a featured story. This is longer than cards so it feels unique.]
+            </p>
+            <div class="story-meta">
+              <span class="story-author">[Author]</span>
+              <span>•</span>
+              <span>[Region] • [Time]</span>
+            </div>
+          </article>
+
+          <!-- Right: stacked cards -->
+          <div class="globe-stack">
+            <article class="stack-card">
+              <span class="stack-kicker">[ASIA]</span>
+              <h4 class="stack-title">[Headline]</h4>
+              <p class="stack-text">[Short summary, 1–2 lines.]</p>
+              <div class="stack-meta">[Country] • [Time]</div>
+            </article>
+
+            <article class="stack-card">
+              <span class="stack-kicker">[EUROPE]</span>
+              <h4 class="stack-title">[Headline]</h4>
+              <p class="stack-text">[Short summary, 1–2 lines.]</p>
+              <div class="stack-meta">[Country] • [Time]</div>
+            </article>
+
+            <article class="stack-card">
+              <span class="stack-kicker">[AMERICAS]</span>
+              <h4 class="stack-title">[Headline]</h4>
+              <p class="stack-text">[Short summary, 1–2 lines.]</p>
+              <div class="stack-meta">[Country] • [Time]</div>
+            </article>
+
+            <article class="stack-card">
+              <span class="stack-kicker">[AFRICA]</span>
+              <h4 class="stack-title">[Headline]</h4>
+              <p class="stack-text">[Short summary, 1–2 lines.]</p>
+              <div class="stack-meta">[Country] • [Time]</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- DEVELOPING (timeline style, unique) -->
+      <section class="developing">
+        <div class="section-header">
+          <h2 class="section-title">Developing</h2>
+          <a href="#" class="section-link">[Live Updates →]</a>
+        </div>
+
+        <div class="timeline">
+          <article class="tick">
+            <div class="tick-time">[08:10]</div>
+            <div class="tick-body">
+              <div class="tick-headline">[Update headline]</div>
+              <div class="tick-desc">[Short detail line about what changed / what was confirmed.]</div>
+              <div class="tick-meta">[Location] • [Source]</div>
+            </div>
+          </article>
+
+          <article class="tick">
+            <div class="tick-time">[09:35]</div>
+            <div class="tick-body">
+              <div class="tick-headline">[Update headline]</div>
+              <div class="tick-desc">[Short detail line about what changed / what was confirmed.]</div>
+              <div class="tick-meta">[Location] • [Source]</div>
+            </div>
+          </article>
+
+          <article class="tick">
+            <div class="tick-time">[11:20]</div>
+            <div class="tick-body">
+              <div class="tick-headline">[Update headline]</div>
+              <div class="tick-desc">[Short detail line about what changed / what was confirmed.]</div>
+              <div class="tick-meta">[Location] • [Source]</div>
+            </div>
+          </article>
+
+          <article class="tick">
+            <div class="tick-time">[13:05]</div>
+            <div class="tick-body">
+              <div class="tick-headline">[Update headline]</div>
+              <div class="tick-desc">[Short detail line about what changed / what was confirmed.]</div>
+              <div class="tick-meta">[Location] • [Source]</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- REGION SPOTLIGHT (unique blocks) -->
+      <section class="region-spotlight">
+        <div class="section-header">
+          <h2 class="section-title">Region Spotlight</h2>
+          <a href="#" class="section-link">[Browse Regions →]</a>
+        </div>
+
+        <div class="spotlight-grid">
+          <article class="spotlight-card">
+            <div class="spotlight-top">
+              <span class="spotlight-region">ASIA</span>
+              <span class="spotlight-badge">[TOP STORY]</span>
+            </div>
+            <h3 class="spotlight-title">[Headline for Asia]</h3>
+            <p class="spotlight-text">[2–3 lines summary]</p>
+            <div class="spotlight-foot">[Country] • [Time]</div>
+          </article>
+
+          <article class="spotlight-card">
+            <div class="spotlight-top">
+              <span class="spotlight-region">EUROPE</span>
+              <span class="spotlight-badge">[EXPLAINER]</span>
+            </div>
+            <h3 class="spotlight-title">[Headline for Europe]</h3>
+            <p class="spotlight-text">[2–3 lines summary]</p>
+            <div class="spotlight-foot">[Country] • [Time]</div>
+          </article>
+
+          <article class="spotlight-card">
+            <div class="spotlight-top">
+              <span class="spotlight-region">AMERICAS</span>
+              <span class="spotlight-badge">[ECONOMY]</span>
+            </div>
+            <h3 class="spotlight-title">[Headline for Americas]</h3>
+            <p class="spotlight-text">[2–3 lines summary]</p>
+            <div class="spotlight-foot">[Country] • [Time]</div>
+          </article>
+
+          <article class="spotlight-card">
+            <div class="spotlight-top">
+              <span class="spotlight-region">AFRICA</span>
+              <span class="spotlight-badge">[CLIMATE]</span>
+            </div>
+            <h3 class="spotlight-title">[Headline for Africa]</h3>
+            <p class="spotlight-text">[2–3 lines summary]</p>
+            <div class="spotlight-foot">[Country] • [Time]</div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer (same design language) -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column brand-info">
+        <h2 class="footer-logo">UrbanPulse</h2>
+        <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+          <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+          <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+          <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>CATEGORIES</h3>
+        <ul>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Sports</a></li>
+          <li><a href="#">Entertainment</a></li>
+          <li><a href="#">World News</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>COMPANY</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>LEGAL</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Editorial Guidelines</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+    </div>
+  </footer>
+
+  
+
+  <!-- Mobile Burger Menu (Off-canvas) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+    <div class="burger-top">
+      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"></path>
+          <path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="burger-brand">
+        <div class="burger-logo">UrbanPulse</div>
+        <div class="burger-tagline">Feel the Ripple!</div>
+      </div>
+    </div>
+
+    <div class="burger-body">
+      <div class="burger-section">
+        <div class="burger-section-title">Browse</div>
+        <nav class="burger-links" aria-label="Primary">
+          <a class="burger-link" data-nav href="index.html">Home</a>
+          <a class="burger-link" data-nav href="category-technology.html">Technology</a>
+          <a class="burger-link" data-nav href="category-sport.html">Sports</a>
+          <a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+          <a class="burger-link" data-nav href="world.html">World News</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section">
+        <div class="burger-section-title">Company</div>
+        <nav class="burger-links" aria-label="Company">
+          <a class="burger-link" data-nav href="about.html">About</a>
+          <a class="burger-link" data-nav href="contact.html">Contact</a>
+        </nav>
+      </div>
+
+      <div class="burger-divider"></div>
+
+      <div class="burger-section burger-account">
+        <div class="account-row">
+          <div class="account-left">
+            <span class="account-dot" aria-hidden="true"></span>
+            <span class="account-name">Guest</span>
+          </div>
+          <a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+        </div>
+
+        <a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+        <a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+  (() => {
+    const body = document.body;
+    const toggleBtn = document.getElementById('menuToggle');
+    const closeBtn  = document.getElementById('menuClose');
+    const menu      = document.getElementById('burgerMenu');
+    const overlay   = document.getElementById('menuOverlay');
+
+    if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+    let lastFocus = null;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    function setActiveLink() {
+      const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        a.classList.toggle('active', href === path);
+      });
+    }
+
+    function setMenuState(open) {
+      toggleBtn.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('is-open', open);
+      overlay.classList.toggle('is-open', open);
+
+      if (open) {
+        overlay.hidden = false;
+        menu.removeAttribute('inert');
+        menu.setAttribute('aria-hidden', 'false');
+        body.classList.add('menu-open');
+        lastFocus = document.activeElement;
+        setActiveLink();
+
+        // Focus first link for accessibility
+        const first = menu.querySelector(focusableSelector);
+        first && first.focus({ preventScroll: true });
+      } else {
+        overlay.hidden = true;
+        menu.setAttribute('inert', '');
+        menu.setAttribute('aria-hidden', 'true');
+        body.classList.remove('menu-open');
+
+        // return focus
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+          lastFocus.focus({ preventScroll: true });
+        }
+      }
+    }
+
+    function openMenu(){ setMenuState(true); }
+    function closeMenu(){ setMenuState(false); }
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    // Close on ESC + basic focus trap
+    document.addEventListener('keydown', (e) => {
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      const focusables = Array.from(menu.querySelectorAll(focusableSelector))
+        .filter(el => !el.hasAttribute('disabled'));
+
+      if (!focusables.length) return;
+
+      const first = focusables[0];
+      const last  = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    // Close when clicking a nav link
+    menu.querySelectorAll('[data-nav]').forEach(a => {
+      a.addEventListener('click', () => closeMenu());
+    });
+  })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
