@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - UrbanPulse - Feel the Ripple!</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="info.css">
+  <link rel="stylesheet" href="burger.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+  <div class="header-main">
+    <div class="container">
+      <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle"
+                aria-label="Open menu"
+                aria-controls="burgerMenu"
+                aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+
+        <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main">
+        <a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="search-toggle" aria-label="Search (placeholder)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M21 21l-4.3-4.3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div class="reveal">
+              <div class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>Contact</div>
+              <h2 class="hero-title">Send a message. We’ll keep it <span class="accent">simple</span>.</h2>
+              <p class="hero-lede">
+                Whether it’s feedback, a correction, a collaboration idea, or just a quick question —
+                this page routes your message to the right place.
+              </p>
+
+              <div class="hero-badges">
+                <span class="pill">Fast replies</span>
+                <span class="pill">Clear categories</span>
+                <span class="pill">No spam vibe</span>
+              </div>
+            </div>
+
+            <div class="hero-art reveal d2" aria-hidden="true">
+              <div class="pulse-panel">
+                <div class="pulse-header">
+                  <div class="pulse-title">Message Router</div>
+                  <div class="pulse-chip">READY</div>
+                </div>
+
+                <div class="pulse-graph">
+                  <div class="pulse-line">
+                    <svg viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M0,80 C35,85 60,40 95,45 C130,50 150,110 175,110
+                               C205,110 215,70 240,70 C268,70 280,25 310,25
+                               C340,25 355,75 380,75 C400,75 405,86 420,90" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="pulse-dots">
+                  <div class="pulse-stat">
+                    <div class="stat-label">Best time</div>
+                    <div class="stat-value">Weekdays</div>
+                  </div>
+                  <div class="pulse-stat">
+                    <div class="stat-label">Typical</div>
+                    <div class="stat-value">&lt; 24h</div>
+                  </div>
+                  <div class="pulse-stat">
+                    <div class="stat-label">Style</div>
+                    <div class="stat-value">Friendly</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- hero-grid -->
+        </div><!-- hero-shell -->
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Drop your message</div>
+            <div class="section-sub">Pick a topic so your message lands in the right inbox.</div>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="panel reveal">
+            <h3>Contact form</h3>
+            <p class="lead">This is a front-end layout only. You can connect it to a backend later.</p>
+
+            <form action="#" method="post">
+              <div class="form-grid">
+                <div class="field">
+                  <div class="label">First name</div>
+                  <input class="input" type="text" name="firstName" placeholder="e.g., John" />
+                </div>
+
+                <div class="field">
+                  <div class="label">Last name</div>
+                  <input class="input" type="text" name="lastName" placeholder="e.g., Rianzares" />
+                </div>
+
+                <div class="field full">
+                  <div class="label">Email</div>
+                  <input class="input" type="email" name="email" placeholder="you@example.com" />
+                </div>
+
+                <div class="field full">
+                  <div class="label">Topic</div>
+                  <div class="chip-row" role="list" aria-label="Topic suggestions">
+                    <span class="topic-chip" role="listitem"><strong>Feedback</strong> on design</span>
+                    <span class="topic-chip" role="listitem"><strong>Correction</strong> / update</span>
+                    <span class="topic-chip" role="listitem"><strong>Collab</strong> proposal</span>
+                    <span class="topic-chip" role="listitem"><strong>Other</strong> question</span>
+                  </div>
+                  <div class="hint" style="margin-top:.5rem;">(These chips are visual. You can connect them to inputs later.)</div>
+                </div>
+
+                <div class="field full">
+                  <div class="label">Message</div>
+                  <textarea class="textarea" name="message" placeholder="Write your message here..."></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-primary" aria-label="Send (placeholder)">Send message</button>
+                <div class="hint">We don’t display your message publicly.</div>
+              </div>
+            </form>
+          </article>
+
+          <aside class="panel reveal d2">
+            <h3>Other channels</h3>
+            <p class="lead">If you prefer a direct route, use one of these.</p>
+
+            <div class="channels">
+              <div class="channel">
+                <div class="channel-top">
+                  <div class="channel-title">Email</div>
+                  <div class="channel-pill">FAST</div>
+                </div>
+                <div class="channel-desc">urbanpulse.news@example.com (placeholder)</div>
+              </div>
+
+              <div class="channel">
+                <div class="channel-top">
+                  <div class="channel-title">Social</div>
+                  <div class="channel-pill">CASUAL</div>
+                </div>
+                <div class="channel-desc">Send a quick DM — best for short questions.</div>
+              </div>
+
+              <div class="channel">
+                <div class="channel-top">
+                  <div class="channel-title">Story tip</div>
+                  <div class="channel-pill">PRIVATE</div>
+                </div>
+                <div class="channel-desc">Share leads, screenshots, and context. We’ll verify before posting.</div>
+              </div>
+            </div>
+
+            <div class="faq">
+              <details>
+                <summary>
+                  How fast do you reply?
+                  <span class="chev" aria-hidden="true">›</span>
+                </summary>
+                <div class="details-body">Usually within 24 hours on weekdays, but it can be slower during exams or events.</div>
+              </details>
+
+              <details>
+                <summary>
+                  Can I request a correction?
+                  <span class="chev" aria-hidden="true">›</span>
+                </summary>
+                <div class="details-body">Yes. Send the link, the exact part that needs fixing, and your evidence or source.</div>
+              </details>
+
+              <details>
+                <summary>
+                  Do you accept collaborations?
+                  <span class="chev" aria-hidden="true">›</span>
+                </summary>
+                <div class="details-body">Yes — especially student projects, interviews, or community features. Pitch it clearly.</div>
+              </details>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <h2 class="footer-logo">UrbanPulse</h2>
+                <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+                    <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+                    <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+                    <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>CATEGORIES</h3>
+                <ul>
+                    <li><a href="category-technology.html">Technology</a></li>
+                    <li><a href="category-sport.html">Sports</a></li>
+                    <li><a href="category-entertainment.html">Entertainment</a></li>
+                    <li><a href="world.html">World News</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Advertise</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Editorial Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+        </div>
+    </footer>
+
+  <!-- Mobile Burger Menu (Off-canvas) -->
+	<div class="menu-overlay" id="menuOverlay" hidden></div>
+
+	<aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+		<div class="burger-top">
+			<button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M18 6 6 18"></path>
+					<path d="M6 6l12 12"></path>
+				</svg>
+			</button>
+
+			<div class="burger-brand">
+				<div class="burger-logo">UrbanPulse</div>
+				<div class="burger-tagline">Feel the Ripple!</div>
+			</div>
+		</div>
+
+		<div class="burger-body">
+			<div class="burger-section">
+				<div class="burger-section-title">Browse</div>
+				<nav class="burger-links" aria-label="Primary">
+					<a class="burger-link" data-nav href="index.html">Home</a>
+					<a class="burger-link" data-nav href="category-technology.html">Technology</a>
+					<a class="burger-link" data-nav href="category-sport.html">Sports</a>
+					<a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+					<a class="burger-link" data-nav href="world.html">World News</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section">
+				<div class="burger-section-title">Company</div>
+				<nav class="burger-links" aria-label="Company">
+					<a class="burger-link" data-nav href="about.html">About</a>
+					<a class="burger-link" data-nav href="contact.html">Contact</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section burger-account">
+				<div class="account-row">
+					<div class="account-left">
+						<span class="account-dot" aria-hidden="true"></span>
+						<span class="account-name">Guest</span>
+					</div>
+					<a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+				</div>
+
+				<a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+				<a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+			</div>
+		</div>
+	</aside>
+
+  <script>
+	(() => {
+		const body = document.body;
+		const toggleBtn = document.getElementById('menuToggle');
+		const closeBtn  = document.getElementById('menuClose');
+		const menu      = document.getElementById('burgerMenu');
+		const overlay   = document.getElementById('menuOverlay');
+
+		if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+		let lastFocus = null;
+
+		const focusableSelector = [
+			'a[href]',
+			'button:not([disabled])',
+			'textarea:not([disabled])',
+			'input:not([disabled])',
+			'select:not([disabled])',
+			'[tabindex]:not([tabindex="-1"])'
+		].join(',');
+
+		function setActiveLink() {
+			const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+			menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+				const href = (a.getAttribute('href') || '').toLowerCase();
+				a.classList.toggle('active', href === path);
+			});
+		}
+
+		function setMenuState(open) {
+			toggleBtn.setAttribute('aria-expanded', String(open));
+			menu.classList.toggle('is-open', open);
+			overlay.classList.toggle('is-open', open);
+
+			if (open) {
+				overlay.hidden = false;
+				menu.removeAttribute('inert');
+				menu.setAttribute('aria-hidden', 'false');
+				body.classList.add('menu-open');
+				lastFocus = document.activeElement;
+				setActiveLink();
+
+				const first = menu.querySelector(focusableSelector);
+				first && first.focus({ preventScroll: true });
+			} else {
+				overlay.hidden = true;
+				menu.setAttribute('inert', '');
+				menu.setAttribute('aria-hidden', 'true');
+				body.classList.remove('menu-open');
+
+				if (lastFocus && typeof lastFocus.focus === 'function') {
+					lastFocus.focus({ preventScroll: true });
+				}
+			}
+		}
+
+		function openMenu(){ setMenuState(true); }
+		function closeMenu(){ setMenuState(false); }
+
+		toggleBtn.addEventListener('click', () => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			isOpen ? closeMenu() : openMenu();
+		});
+
+		closeBtn.addEventListener('click', closeMenu);
+		overlay.addEventListener('click', closeMenu);
+
+		document.addEventListener('keydown', (e) => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			if (!isOpen) return;
+
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				closeMenu();
+				return;
+			}
+
+			if (e.key !== 'Tab') return;
+
+			const focusables = Array.from(menu.querySelectorAll(focusableSelector))
+				.filter(el => !el.hasAttribute('disabled'));
+
+			if (!focusables.length) return;
+
+			const first = focusables[0];
+			const last  = focusables[focusables.length - 1];
+
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		});
+
+		menu.querySelectorAll('[data-nav]').forEach(a => {
+			a.addEventListener('click', () => closeMenu());
+		});
+	})();
+	</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

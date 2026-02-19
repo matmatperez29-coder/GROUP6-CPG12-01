@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - UrbanPulse - Feel the Ripple!</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="info.css">
+  <link rel="stylesheet" href="burger.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+  <div class="header-main">
+    <div class="container">
+      <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle"
+                aria-label="Open menu"
+                aria-controls="burgerMenu"
+                aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+
+        <div class="Logo">
+          <h1>UrbanPulse</h1>
+          <p class="tagline">Feel the Ripple!</p>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main">
+        <a href="home.html" class="active">Home</a>
+                    <a href="category-technology_updated.html">Technology</a>
+                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-entertainment_updated.html">Entertainment</a>
+                    <a href="category-world_updated.html">World News</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="search-toggle" aria-label="Search (placeholder)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M21 21l-4.3-4.3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero-shell">
+          <div class="hero-grid">
+            <div class="reveal">
+              <div class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>About UrbanPulse</div>
+              <h2 class="hero-title">A newsroom built like a <span class="accent">pulse</span>.</h2>
+              <p class="hero-lede">
+                UrbanPulse is a modern news hub designed to feel fast, clean, and readable — like the city itself.
+                We focus on clarity, fairness, and stories that actually matter.
+              </p>
+
+              <div class="hero-badges">
+                <span class="pill">Readable-first layout</span>
+                <span class="pill">Category-driven</span>
+                <span class="pill">Student-made</span>
+                <span class="pill">Always improving</span>
+              </div>
+            </div>
+
+            <div class="hero-art reveal d2" aria-hidden="true">
+              <div class="pulse-panel">
+                <div class="pulse-header">
+                  <div class="pulse-title">Today’s Pulse</div>
+                  <div class="pulse-chip">LIVE</div>
+                </div>
+
+                <div class="pulse-graph">
+                  <div class="pulse-line">
+                    <svg viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M0,90 C40,92 60,68 90,70 C120,72 130,110 155,110
+                               C190,110 205,30 232,30 C255,30 270,95 290,95
+                               C318,95 330,58 355,58 C385,58 395,92 420,90" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="pulse-dots">
+                  <div class="pulse-stat">
+                    <div class="stat-label">Promise</div>
+                    <div class="stat-value">Clarity</div>
+                  </div>
+                  <div class="pulse-stat">
+                    <div class="stat-label">Focus</div>
+                    <div class="stat-value">Truth</div>
+                  </div>
+                  <div class="pulse-stat">
+                    <div class="stat-label">Style</div>
+                    <div class="stat-value">Clean</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- hero-grid -->
+        </div> <!-- hero-shell -->
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">What we stand for</div>
+            <div class="section-sub">Our “rules” are simple: respect readers, respect facts, and respect time.</div>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card reveal">
+            <div class="card-kicker">The Promise</div>
+            <div class="card-title">No drama. Just signal.</div>
+            <p class="card-text">
+              We design our pages to be calm — headlines breathe, sections stay organized, and the most important
+              stories don’t get buried. If something is urgent, it should feel urgent. If it’s not, it shouldn’t pretend.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <h4>Accuracy</h4>
+                <p>We prefer “right” over “fast.” We fix mistakes quickly and clearly.</p>
+              </div>
+              <div class="mini">
+                <h4>Balance</h4>
+                <p>We keep it fair: context first, opinions labeled, and sources respected.</p>
+              </div>
+              <div class="mini">
+                <h4>Design</h4>
+                <p>Typography + spacing = less stress. Your eyes should not work overtime.</p>
+              </div>
+              <div class="mini">
+                <h4>Community</h4>
+                <p>News should help people, not just inform them. That’s the goal.</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="about-card reveal d2">
+            <div class="card-kicker">The Vibe</div>
+            <div class="card-title">The “Ripple” idea</div>
+            <p class="card-text">
+              A single headline can spread into conversations, decisions, and even real change.
+              That’s why we say: <strong>Feel the Ripple!</strong>
+            </p>
+
+            <div class="mini" style="margin-top:.25rem;">
+              <h4>Micro-reads</h4>
+              <p>Short summaries for fast scanning, with room to expand when needed.</p>
+            </div>
+
+            <div class="mini" style="margin-top:1rem;">
+              <h4>Macro-context</h4>
+              <p>When a story needs background, we build it into the layout — not hidden behind clutter.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">How a story moves</div>
+            <div class="section-sub">A simple pipeline that keeps things organized — and keeps us honest.</div>
+          </div>
+        </div>
+
+        <div class="process reveal">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-title">Spot</div>
+            <div class="step-text">Find the real question behind the headline.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-title">Verify</div>
+            <div class="step-text">Cross-check details, avoid assumptions, confirm context.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-title">Write</div>
+            <div class="step-text">Clear structure: what happened, why it matters, what’s next.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-title">Refine</div>
+            <div class="step-text">Trim fluff, strengthen facts, polish the reading flow.</div>
+          </div>
+
+          <div class="process-line" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Small team, sharp roles</div>
+            <div class="section-sub">A newsroom can be tiny and still feel professional when roles are clear.</div>
+          </div>
+        </div>
+
+        <div class="team-grid">
+          <div class="member reveal">
+            <div class="avatar">ED</div>
+            <div>
+              <div class="role">Editor</div>
+              <h4>Story Direction</h4>
+              <p>Keeps the homepage clean, picks priorities, and makes sure we don’t chase noise.</p>
+            </div>
+          </div>
+
+          <div class="member reveal d2">
+            <div class="avatar">RF</div>
+            <div>
+              <div class="role">Research</div>
+              <h4>Fact Checking</h4>
+              <p>Verifies claims, checks timelines, and hunts for missing context.</p>
+            </div>
+          </div>
+
+          <div class="member reveal d3">
+            <div class="avatar">UX</div>
+            <div>
+              <div class="role">Design</div>
+              <h4>Reading Experience</h4>
+              <p>Makes the layout feel calm, consistent, and mobile-friendly.</p>
+            </div>
+          </div>
+
+          <div class="member reveal d4">
+            <div class="avatar">DV</div>
+            <div>
+              <div class="role">Dev</div>
+              <h4>Front-End Build</h4>
+              <p>Turns the design into code and keeps everything smooth and fast.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <h2 class="footer-logo">UrbanPulse</h2>
+                <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+                    <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+                    <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+                    <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>CATEGORIES</h3>
+                <ul>
+                    <li><a href="category-technology.html">Technology</a></li>
+                    <li><a href="category-sport.html">Sports</a></li>
+                    <li><a href="category-entertainment.html">Entertainment</a></li>
+                    <li><a href="world.html">World News</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Advertise</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>LEGAL</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Editorial Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+        </div>
+    </footer>
+
+  <!-- Mobile Burger Menu (Off-canvas) -->
+	<div class="menu-overlay" id="menuOverlay" hidden></div>
+
+	<aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+		<div class="burger-top">
+			<button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M18 6 6 18"></path>
+					<path d="M6 6l12 12"></path>
+				</svg>
+			</button>
+
+			<div class="burger-brand">
+				<div class="burger-logo">UrbanPulse</div>
+				<div class="burger-tagline">Feel the Ripple!</div>
+			</div>
+		</div>
+
+		<div class="burger-body">
+			<div class="burger-section">
+				<div class="burger-section-title">Browse</div>
+				<nav class="burger-links" aria-label="Primary">
+					<a class="burger-link" data-nav href="index.html">Home</a>
+					<a class="burger-link" data-nav href="category-technology.html">Technology</a>
+					<a class="burger-link" data-nav href="category-sport.html">Sports</a>
+					<a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
+					<a class="burger-link" data-nav href="world.html">World News</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section">
+				<div class="burger-section-title">Company</div>
+				<nav class="burger-links" aria-label="Company">
+					<a class="burger-link" data-nav href="about.html">About</a>
+					<a class="burger-link" data-nav href="contact.html">Contact</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section burger-account">
+				<div class="account-row">
+					<div class="account-left">
+						<span class="account-dot" aria-hidden="true"></span>
+						<span class="account-name">Guest</span>
+					</div>
+					<a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+				</div>
+
+				<a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+				<a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+			</div>
+		</div>
+	</aside>
+
+  <script>
+	(() => {
+		const body = document.body;
+		const toggleBtn = document.getElementById('menuToggle');
+		const closeBtn  = document.getElementById('menuClose');
+		const menu      = document.getElementById('burgerMenu');
+		const overlay   = document.getElementById('menuOverlay');
+
+		if (!toggleBtn || !closeBtn || !menu || !overlay) return;
+
+		let lastFocus = null;
+
+		const focusableSelector = [
+			'a[href]',
+			'button:not([disabled])',
+			'textarea:not([disabled])',
+			'input:not([disabled])',
+			'select:not([disabled])',
+			'[tabindex]:not([tabindex="-1"])'
+		].join(',');
+
+		function setActiveLink() {
+			const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+			menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
+				const href = (a.getAttribute('href') || '').toLowerCase();
+				a.classList.toggle('active', href === path);
+			});
+		}
+
+		function setMenuState(open) {
+			toggleBtn.setAttribute('aria-expanded', String(open));
+			menu.classList.toggle('is-open', open);
+			overlay.classList.toggle('is-open', open);
+
+			if (open) {
+				overlay.hidden = false;
+				menu.removeAttribute('inert');
+				menu.setAttribute('aria-hidden', 'false');
+				body.classList.add('menu-open');
+				lastFocus = document.activeElement;
+				setActiveLink();
+
+				const first = menu.querySelector(focusableSelector);
+				first && first.focus({ preventScroll: true });
+			} else {
+				overlay.hidden = true;
+				menu.setAttribute('inert', '');
+				menu.setAttribute('aria-hidden', 'true');
+				body.classList.remove('menu-open');
+
+				if (lastFocus && typeof lastFocus.focus === 'function') {
+					lastFocus.focus({ preventScroll: true });
+				}
+			}
+		}
+
+		function openMenu(){ setMenuState(true); }
+		function closeMenu(){ setMenuState(false); }
+
+		toggleBtn.addEventListener('click', () => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			isOpen ? closeMenu() : openMenu();
+		});
+
+		closeBtn.addEventListener('click', closeMenu);
+		overlay.addEventListener('click', closeMenu);
+
+		document.addEventListener('keydown', (e) => {
+			const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+			if (!isOpen) return;
+
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				closeMenu();
+				return;
+			}
+
+			if (e.key !== 'Tab') return;
+
+			const focusables = Array.from(menu.querySelectorAll(focusableSelector))
+				.filter(el => !el.hasAttribute('disabled'));
+
+			if (!focusables.length) return;
+
+			const first = focusables[0];
+			const last  = focusables[focusables.length - 1];
+
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		});
+
+		menu.querySelectorAll('[data-nav]').forEach(a => {
+			a.addEventListener('click', () => closeMenu());
+		});
+	})();
+	</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
