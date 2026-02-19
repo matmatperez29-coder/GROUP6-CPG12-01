@@ -10,6 +10,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* --- NEW ANIMATION & HOVER STYLES --- */
+    /* Slow Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1), transform 1.2s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Trending Section Hover Effects */
+    .trending-row {
+      transition: all 0.4s ease;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .trending-row:hover {
+      background-color: #fcfcfc;
+      transform: translateX(12px);
+      box-shadow: -5px 0px 0px 0px #d33f49; /* Adds a red left accent on hover */
+    }
+    .trending-row:hover .trending-num {
+      color: #d33f49;
+      transform: scale(1.1);
+    }
+    .trending-num {
+      transition: all 0.3s ease;
+    }
+    .trending-img {
+      transition: all 0.3s ease;
+    }
+    .trending-row:hover .trending-img {
+      filter: brightness(1.1);
+    }
+
     /* --- METADATA & CONTENT STYLING --- */
     .meta-block { font-family: "Source Sans 3", sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
     .m-cat { color: #d33f49; font-weight: 800; margin-right: 8px; }
@@ -166,7 +204,7 @@
   </nav>
 
   <main class="container my-5">
-    <section class="main-feature">
+    <section class="main-feature reveal">
       <article class="hero-article">
         <div class="hero-image"></div>
         <div class="meta-block">
@@ -179,7 +217,7 @@
       </article>
     </section>
 
-    <section class="mb-5">
+    <section class="mb-5 reveal">
       <h2 class="sidebar-heading">[Top Picks]</h2>
       <div class="scroll-container">
         <div class="scroll-item">
@@ -222,7 +260,7 @@
 
     <hr class="my-5">
 
-    <section>
+    <section class="reveal">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 style="font-family: 'Playfair Display', serif; font-weight: 700; color: #000;">[Pop Culture Buzz]</h2>
         <a href="#" class="text-danger fw-bold text-decoration-none small">VIEW ALL →</a>
@@ -238,7 +276,7 @@
     </section>
 
     <div class="row mt-5">
-      <div class="col-lg-8">
+      <div class="col-lg-8 reveal">
         <h2 class="sidebar-heading">[Latest News]</h2>
         <div class="news-grid-custom">
           <article class="news-card"><div class="news-card-img"></div><h3 class="news-card-title">[TITLE]</h3><div class="meta-block m-details mt-2"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div></article>
@@ -250,7 +288,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4 ps-lg-5">
+      <div class="col-lg-4 ps-lg-5 reveal">
         <h2 class="sidebar-heading">[Trending Now]</h2>
         <div class="trending-row"><span class="trending-num">01</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
         <div class="trending-row"><span class="trending-num">02</span><div class="trending-img"></div><div><div class="meta-block"><span class="m-cat">[CATEGORY]</span> • <span class="m-author">By [AUTHOR]</span></div><h4 class="h6 fw-bold">[TRENDING TITLE]</h4></div></div>
@@ -268,7 +306,65 @@
     </div>
   </main>
 
-  <footer class="py-4 text-center border-top"><p>&copy; 2026 UrbanPulse. Feel the Ripple!</p></footer>
+  <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column brand-info">
+            <h2 class="footer-logo">UrbanPulse</h2>
+            <p>Independent journalism you can trust. Delivering truth in every story since 2020.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/higherschoolngumakofficial" class="social-icon">FB</a>
+                <a href="https://www.youtube.com/@UMak-PH" class="social-icon">YT</a>
+                <a href="https://www.instagram.com/umakph/" class="social-icon">IG</a>
+                <a href="https://www.facebook.com/ICTSocHSU" class="social-icon">ICT</a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>CATEGORIES</h3>
+            <ul>
+                <li><a href="category-technology.html">Technology</a></li>
+                <li><a href="category-sport.html">Sports</a></li>
+                <li><a href="category-entertainment.html">Entertainment</a></li>
+                <li><a href="category-world.html">World News</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>COMPANY</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Advertise</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>LEGAL</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Editorial Guidelines</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Slow Reveal Intersection Observer
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
