@@ -28,15 +28,15 @@
                     <p class="tagline">Feel the Ripple!</p>
                 </div>
       </div>
-                <nav class="main-nav"> 
-					<a href="home.html" class="active">Home</a>
+                <nav class="main-nav">
+                    <a href="home.html">Home</a>
                     <a href="category-technology_updated.html">Technology</a>
-                    <a href="category-sport_updated.html">Sports</a>
+                    <a href="category-sport_updated.html" class="active">Sports</a>
                     <a href="category-entertainment_updated.html">Entertainment</a>
                     <a href="category-world_updated.html">World News</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
-				</nav>
+                </nav>
                 <div class="header-actions">
                     <button class="search-toggle" aria-label="Search">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -463,11 +463,11 @@
       <div class="burger-section">
         <div class="burger-section-title">Browse</div>
         <nav class="burger-links" aria-label="Primary">
-          <a class="burger-link" data-nav href="index.html">Home</a>
-          <a class="burger-link" data-nav href="category-technology.html">Technology</a>
-          <a class="burger-link" data-nav href="category-sport.html">Sports</a>
-          <a class="burger-link" data-nav href="category-entertainment.html">Entertainment</a>
-          <a class="burger-link" data-nav href="world.html">World News</a>
+          <a class="burger-link" data-nav href="home.html">Home</a>
+          <a class="burger-link" data-nav href="category-technology_updated.html">Technology</a>
+          <a class="burger-link" data-nav href="category-sport_updated.html">Sports</a>
+          <a class="burger-link" data-nav href="category-entertainment_updated.html">Entertainment</a>
+          <a class="burger-link" data-nav href="category-world_updated.html">World News</a>
         </nav>
       </div>
 
@@ -522,7 +522,7 @@
     ].join(',');
 
     function setActiveLink() {
-      const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      const path = (window.location.pathname.split('/').pop() || 'home.html').toLowerCase();
       menu.querySelectorAll('.burger-link[data-nav]').forEach(a => {
         const href = (a.getAttribute('href') || '').toLowerCase();
         a.classList.toggle('active', href === path);
