@@ -1,0 +1,189 @@
+/* --- Base Main Layout --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+}
+.news-related{
+	border: 1px solid black;
+	padding: 0.50rem 0.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-top: 20px;
+}
+.news-related-container{
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+/* --- Article Section (Left Side) --- */
+.hero-news {
+    flex: 2;
+    min-width: 300px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hero-subheadlines {
+    color: #e63946;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.hero-meta {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.hero-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+
+.hero-summary {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* --- Reactions & Related --- */
+.section-divider {
+    height: 1px;
+    background: #eee;
+    margin: 40px 0;
+}
+
+.reactions {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reactions span {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roundup-section {
+    background-color: #0084ce; /* Blue from your reference */
+    padding: 40px 20px;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    margin-top: 30px; /* Space between article and blue box */
+}
+
+.roundup-section h2 {
+    font-size: 2.8rem;
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+}
+
+.roundup-section p {
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+/* Forces input and button onto ONE LINE */
+.roundup-form {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.roundup-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px; /* Rounded only on left */
+    font-size: 1rem;
+}
+
+.roundup-form button {
+    background-color: #f7d300; /* Yellow from your reference */
+    color: #1a1a1a;
+    border: none;
+    padding: 0 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 0 4px 4px 0; /* Rounded only on right */
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.roundup-help {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Social Icons Styling */
+.roundup-social { margin-top: 25px; }
+.roundup-social p { font-size: 0.9rem; margin-bottom: 10px; }
+
+.social-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.soc-box {
+    background: white;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
