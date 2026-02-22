@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | UrbanPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Source+Sans+3:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-red: #d33f49; --brand-black: #121212; --bg-grey: #f8f9fa; }
+        body { background: var(--bg-grey); font-family: 'Source Sans 3', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        header { background: #fff; border-bottom: 5px solid #ddd; padding: 10px 5%; text-align: center; flex-shrink: 0; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--brand-black); text-decoration: none; letter-spacing: -1px; }
+        .tagline { display: block; color: #6c757d; font-weight: 700; font-size: 0.8rem; margin-top: 2px; letter-spacing: 1px; }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 10px; }
+        .card { background: #fff; width: 100%; max-width: 650px; border: 1px solid #ddd; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .card-top { background: var(--brand-red); height: 6px; width: 100%; }
+        .card-content { padding: 40px 60px; }
+        .header-group { border-bottom: 3px solid var(--brand-black); margin-bottom: 25px; padding-bottom: 10px; }
+        .sub { color: var(--brand-red); font-weight: 900; letter-spacing: 2px; font-size: 1rem; text-transform: uppercase; display: block; }
+        
+        .f-group { position: relative; margin-bottom: 20px; }
+        label { display: block; font-weight: 900; font-size: 0.8rem; margin-bottom: 6px; color: var(--brand-black); }
+        input { width: 100%; border: 2px solid #eee; padding: 14px; padding-right: 50px; font-size: 1rem; box-sizing: border-box; outline: none; transition: 0.2s; }
+        input:focus { border-color: var(--brand-red); background: #fffafa; }
+        
+        .err-msg { color: var(--brand-red); font-size: 0.7rem; font-weight: 900; margin-top: 5px; display: none; text-transform: uppercase; }
+        
+        .toggle-icon { position: absolute; right: 15px; top: 35px; cursor: pointer; color: var(--brand-red); background: none; border: none; padding: 0; display: flex; align-items: center; }
+        
+        .forgot { text-align: right; margin-top: 8px; }
+        .forgot a { font-size: 0.8rem; font-weight: 700; color: #666; text-decoration: none; }
+        .forgot a:hover { color: var(--brand-red); }
+        
+        .btn-main { width: 100%; background: var(--brand-black); color: #fff; border: none; padding: 16px; font-weight: 900; text-transform: uppercase; cursor: pointer; font-size: 1.1rem; letter-spacing: 2px; margin-top: 20px; transition: 0.3s; }
+        .btn-main:hover { background: var(--brand-red); }
+        
+        .switch { text-align: center; margin-top: 25px; font-weight: 700; font-size: 0.95rem; }
+        .switch a { color: var(--brand-red); text-decoration: none; }
+        footer { background: var(--brand-black); color: #fff; padding: 15px 5%; text-align: center; font-size: 0.75rem; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">UrbanPulse</a>
+        <span class="tagline">FEEL THE RIPPLE!</span>
+    </header>
+    <main>
+        <div class="card">
+            <div class="card-top"></div>
+            <div class="card-content">
+                <div class="header-group"><span class="sub">Member Access</span></div>
+                <form id="loginForm" novalidate>
+                    <div class="f-group">
+                        <label>EMAIL</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                        <span id="err-email" class="err-msg">Account profile not found</span>
+                    </div>
+                    <div class="f-group">
+                        <label>PASSWORD</label>
+                        <input type="password" id="pass" placeholder="Enter password">
+                        <button type="button" class="toggle-icon" onclick="togglePass()">
+                            <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                        <span id="err-pass" class="err-msg">Password incorrect</span>
+                    </div>
+                    <div class="forgot"><a href="newsforgotpass.html">Forgot password?</a></div>
+                    <button type="submit" class="btn-main">LOG IN</button>
+                </form>
+                <div class="switch">Don't have an acc? <a href="newssignup.html">Sign Up</a></div>
+            </div>
+        </div>
+    </main>
+    <footer>&copy; 2026 UrbanPulse News. All rights reserved.</footer>
+
+    <script>
+        function togglePass() {
+            const passInput = document.getElementById('pass');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                passInput.type = "password";
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
+        }
+
+        document.getElementById('loginForm').onsubmit = (e) => {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('email');
+            const passInput = document.getElementById('pass');
+            const errEmail = document.getElementById('err-email');
+            const errPass = document.getElementById('err-pass');
+            
+            const emailValue = emailInput.value.trim().toLowerCase();
+            const passValue = passInput.value;
+            const saved = JSON.parse(localStorage.getItem('urbanUser'));
+
+        
+            errEmail.style.display = 'none';
+            errPass.style.display = 'none';
+
+            let isValid = true;
+
+        
+            if (!emailValue) {
+                errEmail.textContent = "Field is required";
+                errEmail.style.display = "block";
+                isValid = false;
+            } 
+    
+            else if (!emailValue.endsWith('@gmail.com')) {
+                errEmail.textContent = "Enter a valid email";
+                errEmail.style.display = "block";
+                isValid = false;
+            } 
+
+            if (!passValue) {
+                errPass.textContent = "Field is required";
+                errPass.style.display = "block";
+                isValid = false;
+            }
+
+            if (isValid) {
+                if (!saved || saved.email.toLowerCase() !== emailValue) {
+                    errEmail.textContent = "Account profile not found";
+                    errEmail.style.display = "block";
+                } 
+                else if (saved.pass !== passValue) {
+                    errPass.textContent = "Incorrect password";
+                    errPass.style.display = "block";
+                } 
+                else {
+                    // Success!
+                    window.location.href = 'index.html';
+                }
+            }
+        };
+
+     
+        document.getElementById('email').oninput = () => document.getElementById('err-email').style.display = 'none';
+        document.getElementById('pass').oninput = () => document.getElementById('err-pass').style.display = 'none';
+    </script>
+</body>
+</html>
