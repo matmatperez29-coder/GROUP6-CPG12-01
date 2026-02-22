@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password | UrbanPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Source+Sans+3:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-red: #d33f49; --brand-black: #121212; --bg-grey: #f8f9fa; }
+        
+       
+        body { 
+            background: var(--bg-grey); 
+            font-family: 'Source Sans 3', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            height: 100vh; 
+        }
+
+        header { background: #fff; border-bottom: 5px solid #ddd; padding: 10px 5%; text-align: center; flex-shrink: 0; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--brand-black); text-decoration: none; letter-spacing: -1px; }
+        .tagline { display: block; color: #6c757d; font-weight: 700; font-size: 0.8rem; margin-top: 2px; letter-spacing: 1px; }
+
+        main { 
+            flex: 1; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow-y: auto; 
+            padding: 20px;
+        }
+
+        /* Scaled up the card size */
+        .card { 
+            background: #fff; 
+            width: 100%; 
+            max-width: 600px; 
+            border: 1px solid #ddd; 
+            position: relative; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .card-top { background: var(--brand-red); height: 8px; width: 100%; }
+        .card-content { padding: 50px; } /* More breathing room */
+
+        .header-group { border-bottom: 3px solid var(--brand-black); margin-bottom: 25px; padding-bottom: 10px; }
+        .sub { color: var(--brand-red); font-weight: 900; letter-spacing: 2px; font-size: 1rem; text-transform: uppercase; display: block; }
+        
+        .f-group { position: relative; margin-bottom: 25px; }
+        label { display: block; font-weight: 900; font-size: 0.85rem; margin-bottom: 8px; color: var(--brand-black); }
+        
+        /* Larger inputs */
+        input { 
+            width: 100%; 
+            border: 2px solid #eee; 
+            padding: 15px; 
+            font-size: 1rem; 
+            box-sizing: border-box; 
+            outline: none; 
+            transition: 0.2s; 
+        }
+        input:focus { border-color: var(--brand-red); background: #fffafa; }
+        
+        /* Scaled Error messages */
+        .err-msg { color: var(--brand-red); font-size: 0.75rem; font-weight: 900; margin-top: 6px; display: none; text-transform: uppercase; }
+        
+        .toggle-icon { position: absolute; right: 15px; top: 38px; cursor: pointer; color: var(--brand-red); background: none; border: none; padding: 0; }
+        
+        #pass-reqs { font-size: 0.75rem; font-weight: 700; color: #666; margin-top: 8px; display: block; line-height: 1.4; }
+        .s-line { height: 4px; background: #eee; margin-top: 10px; }
+        .s-fill { height: 100%; width: 0%; transition: 0.5s; }
+
+        .btn-main { 
+            width: 100%; 
+            background: var(--brand-black); 
+            color: #fff; 
+            border: none; 
+            padding: 18px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            font-size: 1.1rem; 
+            letter-spacing: 2px; 
+            margin-top: 10px; 
+            transition: 0.3s; 
+        }
+        .btn-main:hover { background: var(--brand-red); }
+        
+        .footer-nav { text-align: center; margin-top: 20px; font-size: 0.95rem; font-weight: 700; }
+        .footer-nav a { color: var(--brand-red); text-decoration: none; }
+        
+        footer { background: var(--brand-black); color: #fff; padding: 15px 5%; text-align: center; font-size: 0.75rem; flex-shrink: 0; }
+
+        #step2 { display: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">UrbanPulse</a>
+        <span class="tagline">FEEL THE RIPPLE!</span>
+    </header>
+    <main>
+        <div class="card">
+            <div class="card-top"></div>
+            <div class="card-content">
+                <div class="header-group"><span class="sub">Account Recovery</span></div>
+                
+                <form id="forgotForm" novalidate>
+                    <div id="step1">
+                        <p style="font-size: 1rem; color: #666; margin-bottom: 25px;">Verify your identity to unlock your account.</p>
+                        <div class="f-group">
+                            <label>EMAIL ADDRESS</label>
+                            <input type="email" id="reset-email" placeholder="e.g. urbanpulse@gmail.com">
+                            <span id="err-reset" class="err-msg"></span>
+                        </div>
+                        <button type="submit" class="btn-main">Verify Email</button>
+                    </div>
+
+                    <div id="step2">
+                        <p style="font-size: 1rem; color: #666; margin-bottom: 25px;">Identity verified. Create a strong new password.</p>
+                        
+                        <div class="f-group">
+                            <label>NEW PASSWORD</label>
+                            <input type="password" id="new-pass" placeholder="Enter new password" oninput="validatePassword(this.value)">
+                            <button type="button" class="toggle-icon" onclick="toggle('new-pass', 'eye1')">
+                                <svg id="eye1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                            <div class="s-line"><div id="fill" class="s-fill"></div></div>
+                            <div id="pass-reqs"></div>
+                            <span id="err-pass-main" class="err-msg"></span>
+                        </div>
+
+                        <div class="f-group">
+                            <label>CONFIRM NEW PASSWORD</label>
+                            <input type="password" id="confirm-new-pass" placeholder="Confirm new password">
+                            <button type="button" class="toggle-icon" onclick="toggle('confirm-new-pass', 'eye2')">
+                                <svg id="eye2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                            <span id="err-pass-match" class="err-msg"></span>
+                        </div>
+                        
+                        <button type="button" onclick="updatePassword()" class="btn-main">Update Password</button>
+                    </div>
+                </form>
+
+                <div class="footer-nav">Changed your mind? <a href="newslogin.html">Back to Login</a></div>
+            </div>
+        </div>
+    </main>
+    <footer>&copy; 2026 UrbanPulse News. All rights reserved.</footer>
+
+    <script>
+        const forgotForm = document.getElementById('forgotForm');
+        const emailInput = document.getElementById('reset-email');
+        const errReset = document.getElementById('err-reset');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+
+        function toggle(id, icoId) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(icoId);
+            if (el.type === "password") {
+                el.type = "text";
+                icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>`;
+            } else {
+                el.type = "password";
+                icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
+            }
+        }
+
+        forgotForm.onsubmit = (e) => {
+            e.preventDefault();
+            const emailValue = emailInput.value.trim().toLowerCase();
+            const saved = JSON.parse(localStorage.getItem('urbanUser'));
+
+            if (!emailValue) {
+                errReset.textContent = "Field is required";
+                errReset.style.display = "block";
+            } 
+            else if (!emailValue.endsWith('@gmail.com')) {
+                errReset.textContent = "Enter a valid email";
+                errReset.style.display = "block";
+            } 
+            else if (!saved || saved.email.toLowerCase() !== emailValue) {
+                errReset.textContent = "Account profile not found";
+                errReset.style.display = "block";
+            } 
+            else {
+                errReset.style.display = "none";
+                step1.style.display = "none";
+                step2.style.display = "block";
+                validatePassword(''); 
+            }
+        };
+
+        function validatePassword(v) {
+            if (!v) v = "";
+            const reqsDisplay = document.getElementById('pass-reqs');
+            const fill = document.getElementById('fill');
+            const errPass = document.getElementById('err-pass-main');
+            
+            const checks = [
+                { text: '8-15 characters', valid: v.length >= 8 && v.length <= 15 },
+                { text: 'big caps', valid: /[A-Z]/.test(v) },
+                { text: 'small caps', valid: /[a-z]/.test(v) },
+                { text: 'numbers', valid: /[0-9]/.test(v) },
+                { text: 'special characters', valid: /[^A-Za-z0-9]/.test(v) }
+            ];
+
+            const missing = checks.filter(c => !c.valid).map(c => c.text);
+            reqsDisplay.textContent = missing.length > 0 ? "Password must require: " + missing.join(", ") : "";
+            
+            errPass.style.display = 'none';
+            let score = checks.filter(c => c.valid).length;
+            fill.style.width = (score * 20) + "%";
+            fill.style.background = ['#eee', '#d33f49', '#ffa500', '#f1c40f', '#27ae60', '#2ecc71'][score];
+            
+            return score === 5;
+        }
+
+        function updatePassword() {
+            const passVal = document.getElementById('new-pass').value;
+            const confirmVal = document.getElementById('confirm-new-pass').value;
+            const errPass = document.getElementById('err-pass-main');
+            const errConfirm = document.getElementById('err-pass-match');
+            
+            let isValid = true;
+
+            if (!passVal) {
+                errPass.textContent = "Field is required"; errPass.style.display = "block"; isValid = false;
+            } else if (!validatePassword(passVal)) {
+                errPass.textContent = "Requirements not met"; errPass.style.display = "block"; isValid = false;
+            }
+
+            if (!confirmVal) {
+                errConfirm.textContent = "Field is required"; errConfirm.style.display = "block"; isValid = false;
+            } else if (confirmVal !== passVal) {
+                errConfirm.textContent = "Passwords must match"; errConfirm.style.display = "block"; isValid = false;
+            }
+
+            if (isValid) {
+                let saved = JSON.parse(localStorage.getItem('urbanUser'));
+                saved.pass = passVal;
+                localStorage.setItem('urbanUser', JSON.stringify(saved));
+                alert('Password updated successfully!');
+                window.location.href = 'newslogin.html';
+            }
+        }
+
+        emailInput.oninput = () => errReset.style.display = "none";
+        document.getElementById('new-pass').oninput = (e) => {
+            validatePassword(e.target.value);
+            document.getElementById('err-pass-main').style.display = "none";
+        };
+        document.getElementById('confirm-new-pass').oninput = () => {
+            document.getElementById('err-pass-match').style.display = "none";
+        };
+    </script>
+</body>
+</html>
