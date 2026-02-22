@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | UrbanPulse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Source+Sans+3:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-red: #d33f49; --brand-black: #121212; --bg-grey: #f8f9fa; }
+        body { background: var(--bg-grey); font-family: 'Source Sans 3', sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: #fff; border-bottom: 5px solid #ddd; padding: 15px 5%; text-align: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--brand-black); text-decoration: none; letter-spacing: -1px; }
+        .tagline { display: block; color: #6c757d; font-weight: 700; font-size: 0.8rem; margin-top: 2px; letter-spacing: 1px; }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px 0; }
+        .card { background: #fff; width: 100%; max-width: 650px; border: 1px solid #ddd; position: relative; margin: 10px; }
+        .card-top { background: var(--brand-red); height: 6px; width: 100%; }
+        .card-content { padding: 30px 40px; }
+        .header-group { border-bottom: 2px solid var(--brand-black); margin-bottom: 20px; padding-bottom: 8px; }
+        .sub { color: var(--brand-red); font-weight: 900; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; display: block; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full { grid-column: span 2; }
+        .f-group { position: relative; }
+        label { display: block; font-weight: 900; font-size: 0.7rem; margin-bottom: 5px; color: var(--brand-black); }
+        input { width: 100%; border: 2px solid #eee; padding: 10px; font-size: 0.9rem; box-sizing: border-box; outline: none; transition: 0.2s; }
+        input:focus { border-color: var(--brand-red); background: #fffafa; }
+        .err-msg { color: var(--brand-red); font-size: 0.65rem; font-weight: 900; margin-top: 4px; display: none; text-transform: uppercase; }
+        .s-line { height: 3px; background: #eee; margin-top: 8px; }
+        .s-fill { height: 100%; width: 0%; transition: 0.5s; }
+        .toggle-icon { position: absolute; right: 10px; top: 28px; cursor: pointer; color: var(--brand-red); background: none; border: none; padding: 0; }
+        #pass-reqs { font-size: 0.65rem; font-weight: 700; color: #666; margin-top: 5px; display: block; }
+        .legal { grid-column: span 2; display: flex; flex-direction: column; gap: 5px; margin-top: 5px; }
+        .legal-row { display: flex; align-items: center; gap: 10px; }
+        .legal input { width: 16px; height: 16px; accent-color: var(--brand-red); cursor: pointer; }
+        .legal label { font-size: 0.8rem; font-weight: 700; color: var(--brand-black); margin: 0; cursor: pointer;}
+        .legal a { color: var(--brand-red); text-decoration: underline; }
+        .btn-main { grid-column: span 2; background: var(--brand-black); color: #fff; border: none; padding: 15px; font-weight: 900; text-transform: uppercase; cursor: pointer; font-size: 1rem; letter-spacing: 2px; margin-top: 10px; transition: 0.3s; }
+        .btn-main:hover { background: var(--brand-red); }
+        .footer-nav { grid-column: span 2; text-align: center; margin-top: 15px; font-size: 0.85rem; font-weight: 700; }
+        .footer-nav a { color: var(--brand-red); text-decoration: none; }
+        footer { background: var(--brand-black); color: #fff; padding: 15px 5%; text-align: center; font-size: 0.75rem; }
+    </style>
+</head>
+<body onload="loadProgress(); validatePassword(document.getElementById('pass').value)">
+    <header>
+        <a href="index.html" class="logo">UrbanPulse</a>
+        <span class="tagline">FEEL THE RIPPLE!</span>
+    </header>
+    <main>
+        <div class="card">
+            <div class="card-top"></div>
+            <div class="card-content">
+                <div class="header-group"><span class="sub">Official Registration</span></div>
+                <form id="signupForm" class="grid" novalidate>
+                    <div class="f-group">
+                        <label>FIRST NAME</label>
+                        <input type="text" id="fname" placeholder="Enter your first name">
+                        <span id="err-fname" class="err-msg"></span>
+                    </div>
+                    <div class="f-group">
+                        <label>LAST NAME</label>
+                        <input type="text" id="lname" placeholder="Enter your last name">
+                        <span id="err-lname" class="err-msg"></span>
+                    </div>
+                    <div class="f-group full">
+                        <label>EMAIL ADDRESS</label>
+                        <input type="email" id="email" placeholder="e.g. urbanpulse@gmail.com">
+                        <span id="err-email" class="err-msg"></span>
+                    </div>
+                    <div class="f-group">
+                        <label>PASSWORD</label>
+                        <input type="password" id="pass" placeholder="Enter your password" oninput="validatePassword(this.value)">
+                        <button type="button" class="toggle-icon" onclick="toggle('pass', 'eye1')">
+                            <svg id="eye1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                        <div class="s-line"><div id="fill" class="s-fill"></div></div>
+                        <div id="pass-reqs"></div>
+                        <span id="err-pass" class="err-msg"></span>
+                    </div>
+                    <div class="f-group">
+                        <label>CONFIRM PASSWORD</label>
+                        <input type="password" id="confirm" placeholder="Confirm your password">
+                        <button type="button" class="toggle-icon" onclick="toggle('confirm', 'eye2')">
+                            <svg id="eye2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                        <span id="err-confirm" class="err-msg"></span>
+                    </div>
+                    <div class="legal">
+                        <div class="legal-row">
+                            <input type="checkbox" id="terms">
+                            <label for="terms">I accept the <a href="terms.html">Terms and Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+                        </div>
+                        <span id="err-terms" class="err-msg">You must accept the terms to continue</span>
+                    </div>
+                    <button type="submit" class="btn-main">Create Account</button>
+                    <div class="footer-nav">Already a member? <a href="newslogin.html">Log In</a></div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>&copy; 2026 UrbanPulse News. All rights reserved.</footer>
+
+    <script>
+ 
+        ['fname', 'lname', 'email', 'pass', 'confirm'].forEach(id => {
+            document.getElementById(id).addEventListener('input', (e) => {
+                sessionStorage.setItem('draft_' + id, e.target.value);
+            });
+        });
+
+        function loadProgress() {
+            ['fname', 'lname', 'email', 'pass', 'confirm'].forEach(id => {
+                const savedValue = sessionStorage.getItem('draft_' + id);
+                if (savedValue) {
+                    document.getElementById(id).value = savedValue;
+                }
+            });
+        }
+
+
+        document.getElementById('terms').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('err-terms').style.display = 'none';
+            }
+        });
+
+     
+        function toggle(id, icoId) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(icoId);
+            if (el.type === "password") {
+                el.type = "text";
+                icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>`;
+            } else {
+                el.type = "password";
+                icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
+            }
+        }
+
+        function validatePassword(v) {
+            if (!v) v = "";
+            const reqsDisplay = document.getElementById('pass-reqs');
+            const fill = document.getElementById('fill');
+            const errPass = document.getElementById('err-pass');
+            const checks = [
+                { text: '8-15 characters', valid: v.length >= 8 && v.length <= 15 },
+                { text: 'big caps', valid: /[A-Z]/.test(v) },
+                { text: 'small caps', valid: /[a-z]/.test(v) },
+                { text: 'numbers', valid: /[0-9]/.test(v) },
+                { text: 'special characters', valid: /[^A-Za-z0-9]/.test(v) }
+            ];
+            const missing = checks.filter(c => !c.valid).map(c => c.text);
+            reqsDisplay.textContent = missing.length > 0 ? "Password must require: " + missing.join(", ") : "";
+            errPass.style.display = 'none';
+            let score = checks.filter(c => c.valid).length;
+            fill.style.width = (score * 20) + "%";
+            fill.style.background = ['#eee', '#d33f49', '#ffa500', '#f1c40f', '#27ae60', '#2ecc71'][score];
+        }
+
+        ['fname', 'lname', 'email', 'confirm'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                document.getElementById('err-' + id).style.display = 'none';
+            });
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            ['fname', 'lname'].forEach(id => {
+                const input = document.getElementById(id);
+                const err = document.getElementById('err-' + id);
+                let val = input.value.trim();
+                if (val.length > 0) {
+                    val = val.charAt(0).toUpperCase() + val.slice(1);
+                    input.value = val;
+                }
+                if (!val) {
+                    err.textContent = "Field is required"; err.style.display = "block"; isValid = false;
+                } else if (!/^[A-Z]/.test(val)) {
+                    err.textContent = "Must start with a capital letter"; err.style.display = "block"; isValid = false;
+                } else if (val.length < 2) {
+                    err.textContent = "Must be a valid name"; err.style.display = "block"; isValid = false;
+                } else if (!/^[A-Za-z]+$/.test(val)) {
+                    err.textContent = "Letters only"; err.style.display = "block"; isValid = false;
+                } else {
+                    err.style.display = "none";
+                }
+            });
+
+            const emailInput = document.getElementById('email');
+            const errEmail = document.getElementById('err-email');
+            const emailValue = emailInput.value.trim().toLowerCase();
+            emailInput.value = emailValue;
+
+            if (!emailValue) {
+                errEmail.textContent = "Field is required";
+                errEmail.style.display = "block";
+                isValid = false;
+            } else if (!emailValue.endsWith('@gmail.com')) {
+                errEmail.textContent = "Enter a valid email";
+                errEmail.style.display = "block";
+                isValid = false;
+            } else {
+                errEmail.style.display = "none";
+            }
+
+            const passVal = document.getElementById('pass').value;
+            const errPass = document.getElementById('err-pass');
+            if (!passVal) {
+                errPass.textContent = "Field is required"; errPass.style.display = "block"; isValid = false;
+            } else if (!(passVal.length >= 8 && passVal.length <= 15 && /[A-Z]/.test(passVal) && /[a-z]/.test(passVal) && /[0-9]/.test(passVal) && /[^A-Za-z0-9]/.test(passVal))) {
+                errPass.textContent = "Requirements not met"; errPass.style.display = "block"; isValid = false;
+            }
+
+            const confirmVal = document.getElementById('confirm').value;
+            const errConfirm = document.getElementById('err-confirm');
+            if (!confirmVal) {
+                errConfirm.textContent = "Field is required"; errConfirm.style.display = "block"; isValid = false;
+            } else if (confirmVal !== passVal) {
+                errConfirm.textContent = "Passwords must match"; errConfirm.style.display = "block"; isValid = false;
+            }
+
+            if (!document.getElementById('terms').checked) {
+                document.getElementById('err-terms').style.display = "block"; isValid = false;
+            }
+
+            if (isValid) {
+                const userData = {
+                    fname: document.getElementById('fname').value.trim(),
+                    lname: document.getElementById('lname').value.trim(),
+                    email: emailValue,
+                    pass: passVal
+                };
+                localStorage.setItem('urbanUser', JSON.stringify(userData));
+                sessionStorage.clear();
+                alert('Account created successfully!');
+                window.location.href = 'newslogin.html';
+            }
+        });
+    </script>
+</body>
+</html>
