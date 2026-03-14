@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search — UrbanPulse</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="navfooter.css" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="burgermenu.css" />
+  <link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png" />
+  <style>
+    /* ── SEARCH PAGE STYLES ── */
+    .search-page { background: var(--color-surface); min-height: 80vh; padding: 2rem 0 4rem; }
+    .search-page-inner { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem; align-items: start; }
+
+    /* Top search bar */
+    .sp-searchbar {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: white; border: 2px solid var(--color-border);
+      border-radius: 8px; padding: 0.7rem 1rem;
+      margin-bottom: 2rem; transition: border-color 0.2s;
+    }
+    .sp-searchbar:focus-within { border-color: var(--color-secondary); }
+    .sp-searchbar svg { flex-shrink: 0; color: var(--color-text-muted); }
+    .sp-searchbar input {
+      flex: 1; border: none; outline: none;
+      font-family: var(--font-body); font-size: 1.05rem;
+      font-weight: 600; color: var(--color-text);
+      background: transparent;
+    }
+    .sp-searchbar input::placeholder { color: #bbb; font-weight: 400; }
+    .sp-searchbar button {
+      background: var(--color-secondary); color: white;
+      border: none; border-radius: 6px; padding: 0.45rem 1.1rem;
+      font-family: var(--font-body); font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.5px; cursor: pointer;
+      transition: background 0.18s;
+    }
+    .sp-searchbar button:hover { background: #a30c26; }
+
+    /* Query heading */
+    .sp-heading {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--color-secondary);
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .sp-heading strong { color: var(--color-primary); font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0; text-transform: none; }
+    .sp-count { color: var(--color-text-muted); font-weight: 600; font-size: 0.75rem; margin-left: 0.5rem; }
+
+    /* Results grid */
+    .sp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+    /* Result card */
+    .sp-card {
+      background: white; border: 1px solid var(--color-border);
+      border-radius: 4px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .sp-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .sp-card-img {
+      height: 160px; background: #e5e5e5;
+      display: flex; align-items: center; justify-content: center;
+      color: #bbb; font-size: 0.8rem; font-weight: 700;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .sp-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .sp-card-body { padding: 1rem 1rem 0.85rem; flex: 1; display: flex; flex-direction: column; }
+    .sp-card-cat {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 1.2px;
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .sp-card-title {
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 700; line-height: 1.35; color: var(--color-primary);
+      margin-bottom: 0.5rem; flex: 1;
+    }
+    .sp-card-title mark {
+      background: rgba(200,16,46,0.12); color: var(--color-secondary);
+      font-weight: 800; border-radius: 2px; padding: 0 1px;
+    }
+    .sp-card-desc {
+      font-size: 0.8rem; color: var(--color-text-light);
+      line-height: 1.5; margin-bottom: 0.65rem;
+    }
+    .sp-card-desc mark { background: rgba(200,16,46,0.08); color: var(--color-secondary); font-weight: 700; }
+    .sp-card-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.72rem; color: var(--color-text-muted); font-weight: 600;
+      border-top: 1px solid var(--color-border); padding-top: 0.6rem; margin-top: auto;
+    }
+    .sp-card-share { display: flex; gap: 0.5rem; }
+    .sp-card-share a {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      font-size: 0.68rem; font-weight: 700; color: var(--color-text-muted);
+      text-decoration: none; padding: 0.15rem 0.4rem;
+      border: 1px solid var(--color-border); border-radius: 4px;
+      transition: all 0.15s;
+    }
+    .sp-card-share a:hover { border-color: #1877f2; color: #1877f2; }
+
+    /* No results */
+    .sp-no-results {
+      grid-column: 1 / -1; text-align: center;
+      padding: 4rem 2rem; color: var(--color-text-muted);
+    }
+    .sp-no-results svg { margin-bottom: 1rem; opacity: 0.3; }
+    .sp-no-results h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text); }
+    .sp-no-results p { font-size: 0.9rem; }
+
+    /* ── SIDEBAR ── */
+    .sp-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .sp-sidebar-panel {
+      background: white; border: 1px solid var(--color-border); padding: 1.25rem;
+    }
+    .sp-sidebar-title {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--color-text-muted);
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--color-secondary);
+    }
+
+    /* Date filter pills */
+    .sp-date-pills { display: flex; flex-direction: column; gap: 0.35rem; }
+    .sp-date-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.45rem 0.65rem; border-radius: 6px;
+      font-size: 0.82rem; font-weight: 600; color: var(--color-text-light);
+      cursor: pointer; transition: background 0.15s, color 0.15s;
+      border: none; background: transparent; text-align: left; width: 100%;
+    }
+    .sp-date-pill::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-border); flex-shrink: 0; transition: background 0.15s;
+    }
+    .sp-date-pill:hover { background: var(--color-surface); color: var(--color-text); }
+    .sp-date-pill.active { color: var(--color-secondary); font-weight: 700; }
+    .sp-date-pill.active::before { background: var(--color-secondary); }
+
+    /* Category filter */
+    .sp-cat-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .sp-cat-pill {
+      padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.75rem;
+      font-weight: 700; cursor: pointer; transition: all 0.15s;
+      border: 2px solid var(--color-border); background: transparent;
+      color: var(--color-text-light);
+    }
+    .sp-cat-pill:hover { border-color: currentColor; }
+    .sp-cat-pill.active { color: white; border-color: transparent; }
+
+    /* Animate cards in */
+    @keyframes cardFadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .sp-card { animation: cardFadeUp 0.3s ease both; }
+
+    @media (max-width: 900px) {
+      .search-page-inner { grid-template-columns: 1fr; }
+      .sp-sidebar { display: none; }
+    }
+    @media (max-width: 600px) {
+      .sp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BREAKING NEWS -->
+  <div class="BreakingNews">
+    <span class="BreakingNewsLabel">Breaking News</span>
+    <div class="BreakingNewsContent"><span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span><span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span><span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span><span class="BreakingNewsItem">Eagles defeat Chiefs 40–22 in Super Bowl LIX</span><span class="BreakingNewsItem">Mars Base Alpha reports first successful greenhouse harvest</span><span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span><span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span><span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span><span class="BreakingNewsItem">Eagles defeat Chiefs 40–22 in Super Bowl LIX</span><span class="BreakingNewsItem">Mars Base Alpha reports first successful greenhouse harvest</span></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="header-main">
+    <div class="header-container">
+      <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle"
+          aria-label="Open menu" aria-controls="burgerMenu" aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <a href="home.html" class="header-logo">
+          <h1>UrbanPulse</h1>
+          <p class="header-logo-tagline">Feel the Ripple!</p>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="technology.html">Technology</a>
+        <a href="sports.html">Sports</a>
+        <a href="entertainment.html">Entertainment</a>
+        <a href="worldnews.html">World News</a>
+      </nav>
+      <div class="header-right">
+        <button class="search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+        <span class="header-right-divider"></span>
+        <div class="header-login">
+          <a href="Login.html"><img src="IMAGES/usericon.png" alt="User" width="24" height="24" /></a>
+        </div>
+        <span class="header-right-divider"></span>
+        <div class="header-subscription">
+          <a href="subscription.html"><strong>Subscribe</strong></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEARCH DROP-DOWN (same as home.html) -->
+  <div class="search-bar-drop" id="searchBarDrop" aria-hidden="true">
+    <div class="search-bar-inner">
+      <svg class="search-bar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <input type="text" id="searchBox" class="search-bar-input"
+        placeholder="Search UrbanPulse… (press Enter to see all results)"
+        autocomplete="off" aria-label="Search" />
+      <button class="search-bar-close" id="searchClose" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="results" class="search-bar-results"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SEARCH RESULTS PAGE
+  ══════════════════════════════════════ -->
+  <div class="search-page">
+    <div class="search-page-inner">
+
+      <!-- MAIN COLUMN -->
+      <div class="sp-main">
+
+        <!-- Re-search bar -->
+        <div class="sp-searchbar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="pageSearchInput" placeholder="Search again…" />
+          <button id="pageSearchBtn">Search</button>
+        </div>
+
+        <!-- Heading -->
+        <div class="sp-heading" id="spHeading">
+          SEARCH FOR "<strong id="spQuery">…</strong>"
+          <span class="sp-count" id="spCount"></span>
+        </div>
+
+        <!-- Results grid -->
+        <div class="sp-grid" id="spGrid"></div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sp-sidebar">
+
+        <div class="sp-sidebar-panel">
+          <div class="sp-sidebar-title">Date Published</div>
+          <div class="sp-date-pills">
+            <button class="sp-date-pill active" data-date="all">All time</button>
+            <button class="sp-date-pill" data-date="day">Past 24 hours</button>
+            <button class="sp-date-pill" data-date="week">Past 7 days</button>
+            <button class="sp-date-pill" data-date="month">Past 30 days</button>
+            <button class="sp-date-pill" data-date="year">Past 12 months</button>
+          </div>
+        </div>
+
+        <div class="sp-sidebar-panel">
+          <div class="sp-sidebar-title">Category</div>
+          <div class="sp-cat-pills">
+            <button class="sp-cat-pill active" data-cat="all">All</button>
+            <button class="sp-cat-pill" data-cat="technology" style="--c:#0066cc">Technology</button>
+            <button class="sp-cat-pill" data-cat="sports"     style="--c:#ff6b35">Sports</button>
+            <button class="sp-cat-pill" data-cat="entertainment" style="--c:#9b59b6">Entertainment</button>
+            <button class="sp-cat-pill" data-cat="worldnews"  style="--c:#27ae60">World News</button>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>UrbanPulse</h3>
+          <p>Independent journalism you can trust. Delivering truth in every story since 2026.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Twitter">TW</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Github">GH</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="sports.html">Sports</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="worldnews.html">World News</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Advertise</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Pledge</h4>
+          <p>We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BURGER MENU -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+    <div class="burger-top">
+      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path><path d="M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="burger-brand">
+        <div class="burger-logo">UrbanPulse</div>
+        <div class="burger-tagline">Feel the Ripple!</div>
+      </div>
+    </div>
+    <div class="burger-body">
+      <div class="burger-section">
+        <div class="burger-section-title">Browse</div>
+        <nav class="burger-links">
+          <a class="burger-link" data-nav href="home.html">Home</a>
+          <a class="burger-link" data-nav href="technology.html">Technology</a>
+          <a class="burger-link" data-nav href="sports.html">Sports</a>
+          <a class="burger-link" data-nav href="entertainment.html">Entertainment</a>
+          <a class="burger-link" data-nav href="worldnews.html">World News</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="burger.js"></script>
+  <script src="search.js"></script>
+  <script>
+  (() => {
+    'use strict';
+
+    const CAT_COLORS = { technology:'#0066cc', sports:'#ff6b35', entertainment:'#9b59b6', worldnews:'#27ae60' };
+    const CAT_LABELS = { technology:'Technology', sports:'Sports', entertainment:'Entertainment', worldnews:'World News' };
+    const ARTICLES   = window.UP_SEARCH_DATA || [];
+    const hl         = window.UP_SEARCH_HL   || (t => t);
+
+    let currentQ   = '';
+    let filterDate = 'all';
+    let filterCat  = 'all';
+
+    /* ── Read query from URL ── */
+    function getQuery() {
+      return new URLSearchParams(window.location.search).get('q') || '';
+    }
+
+    /* ── Render results ── */
+    function render() {
+      const q    = currentQ.toLowerCase();
+      const grid = document.getElementById('spGrid');
+      const head = document.getElementById('spQuery');
+      const count= document.getElementById('spCount');
+      if (!grid) return;
+
+      if (head) head.textContent = currentQ || '…';
+
+      let hits = q
+        ? ARTICLES.filter(a =>
+            a.title.toLowerCase().includes(q) ||
+            a.kw.toLowerCase().includes(q) ||
+            a.desc.toLowerCase().includes(q))
+        : ARTICLES;
+
+      if (filterCat !== 'all') hits = hits.filter(a => a.cat === filterCat);
+
+      if (count) count.textContent = hits.length ? `— ${hits.length} result${hits.length!==1?'s':''}` : '';
+
+      if (!hits.length) {
+        grid.innerHTML = `<div class="sp-no-results">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <h3>No results found</h3>
+          <p>Try different keywords or browse our categories above.</p>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = hits.map((r, i) => {
+        const color = CAT_COLORS[r.cat] || '#888';
+        const label = CAT_LABELS[r.cat] || '';
+        return `<a class="sp-card" href="${r.url}" style="animation-delay:${i*0.04}s">
+          <div class="sp-card-img">[IMAGE]</div>
+          <div class="sp-card-body">
+            ${label ? `<div class="sp-card-cat" style="color:${color}">${label}</div>` : ''}
+            <div class="sp-card-title">${hl(r.title, currentQ)}</div>
+            <div class="sp-card-desc">${hl(r.desc, currentQ)}</div>
+            <div class="sp-card-meta">
+              <span>UrbanPulse</span>
+              <div class="sp-card-share">
+                <a href="#">FB SHARE</a>
+                <a href="#">TW TWEET</a>
+              </div>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    /* ── Init ── */
+    currentQ = getQuery();
+    const pageInput = document.getElementById('pageSearchInput');
+    if (pageInput) pageInput.value = currentQ;
+    render();
+
+    /* Re-search from page bar */
+    document.getElementById('pageSearchBtn')?.addEventListener('click', () => {
+      const v = pageInput?.value.trim();
+      if (v) window.location.href = `search.html?q=${encodeURIComponent(v)}`;
+    });
+    pageInput?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('pageSearchBtn')?.click();
+    });
+
+    /* Date pills (UI only for now) */
+    document.querySelectorAll('.sp-date-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sp-date-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterDate = btn.dataset.date;
+        render();
+      });
+    });
+
+    /* Cat pills */
+    document.querySelectorAll('.sp-cat-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sp-cat-pill').forEach(b => {
+          b.classList.remove('active');
+          b.style.background = '';
+          b.style.color = '';
+          b.style.borderColor = '';
+        });
+        btn.classList.add('active');
+        filterCat = btn.dataset.cat;
+        if (filterCat !== 'all') {
+          const c = CAT_COLORS[filterCat];
+          btn.style.background = c;
+          btn.style.color = '#fff';
+          btn.style.borderColor = c;
+        }
+        render();
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

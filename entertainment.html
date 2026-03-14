@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> UrbanPulse | Landing Page </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="navfooter.css">
+	<link rel="stylesheet" href="entertainment.css">
+	<link rel="stylesheet" href="burgermenu.css">
+	<link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png">
+	<style>
+	.active{
+		color: #c8102e;
+		text-decoration-color: #c8102;
+		text-decoration: underline;
+		text-decoration-thickness: 1.5px;
+	}
+	/* BREAKING NEWS */
+	.BreakingNews{
+		background-color: var(--color-secondary);
+		color: white;
+		padding: 0.75rem 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+		font-size: 0.9rem;
+		overflow: hidden;
+	}
+
+	.BreakingNewsLabel{
+		background-color: var(--color-primary);
+		padding: 0.25rem 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-family: var(--font-body);
+		letter-spacing: 1px;
+		box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+		flex-shrink: 0;
+		z-index: 10;
+		display: inline-block;
+	}
+
+	.BreakingNewsContent{
+		display: inline-block;
+		white-space: nowrap;
+		animation: scroll-left 30s linear infinite;
+	}
+	.BreakingNewsItem{
+		padding: 0 3rem;
+		font-weight: 700;
+		z-index: 1;
+	}
+
+	@keyframes scroll-left {
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+	</style>
+</head>
+<body>
+	<!-- BREAKING NEWS STICKER --!>
+	<div class="BreakingNews">
+		<span class="BreakingNewsLabel"> Breaking News </span>
+		<div class="BreakingNewsContent">
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+		</div>
+	</div>
+	<!-- NAVIGATION BAR --!>
+	<header class="header-main">
+		<div class="header-container">
+			<!-- LEFT: Burger + Logo -->
+			<div class="header-left">
+				<button type="button" class="menu-toggle" id="menuToggle"
+							aria-label="Open menu"
+							aria-controls="burgerMenu"
+							aria-expanded="false">
+							<span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+						</button>
+				<!-- LOGO & TAGLINE --!>
+				<span class="header-logo">
+					<h1> UrbanPulse </h1>
+					<p class="header-logo-tagline"> Feel the Ripple! </p>
+				</span>
+			</div>
+
+			<!-- CENTER: Navigation -->
+			<nav class="main-nav">
+				<a href="home.html" > Home </a>
+				<a href="technology.html"> Technology </a>
+				<a href="sports.html"> Sports </a>
+				<a href="entertainment.html" class="active"> Entertainment </a>
+				<a href="worldnews.html"> World News</a>
+			</nav>
+
+			<!-- RIGHT: Search + Login + Subscribe -->
+			<div class="header-right">
+				<div class="header-search">
+					<button class="search-toggle" id="searchToggle" aria-label="Search">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="11" cy="11" r="8"></circle>
+							<path d="m21 21-4.35-4.35"></path>
+						</svg>
+					</button>
+				</div>
+				<span class="header-right-divider"></span>
+				<div class="header-login">
+					<a href="Login.html" target="_blank">
+						<img src="IMAGES/usericon.png" alt="User" width="24" height="24"> 
+					</a>
+				</div>
+				<span class="header-right-divider"></span>
+				<div class="header-subscription">
+					<a href="subscription.html"><strong>Subscribe</strong></a>
+				</div>
+			</div>
+		</div>
+	</header>
+     <!-- Main Content -->
+  <main>
+    <div class="container my-4">
+      <div class="page-layout d-flex gap-4 flex-wrap">
+        <!-- LEFT: MAIN CONTENT -->
+        <div class="main-content flex-grow-1" style="min-width: 300px; max-width: 720px;">
+          <!-- Hero Article -->
+          <article class="hero-article">
+            <div
+              class="hero-image"
+              style="background-image: url('');"
+              aria-label="Hero image"
+              role="img"
+            ></div>
+            <span class="hero-category" style="color: inherit;">[CATEGORY]</span>
+            <h1 class="hero-title">
+              [TITLE]
+            </h1>
+            <p class="hero-excerpt">
+              [....]
+            </p>
+            <div class="hero-meta">
+              <span class="hero-author">[AUTHOR]</span> <span>•</span>
+              <span>[DATE]</span> <span>•</span> <span>[MIN READ]</span>
+            </div>
+          </article>
+
+          <!-- Pop Culture Buzz (Horizontal Scroll) -->
+          <section>
+            <div class="section-header d-flex justify-content-between align-items-center mb-3">
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Pop Culture Buzz
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+            <div class="pop-culture-buzz" aria-label="Pop Culture Buzz Articles">
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category movies">[CATEGORY]</span>
+                <h3 class="buzz-title">
+                 [TILE]
+                </h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category music">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category tv">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category celebrity">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+              <div class="buzz-item" tabindex="0">
+                <span class="buzz-category streaming">[CATEGORY]</span>
+                <h3 class="buzz-title">[TITLE]</h3>
+              </div>
+            </div>
+          </section>
+
+          <div class="section-divider my-4"></div>
+
+      <!-- Latest News  -->
+<section>
+  <div class="section-header d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title" style="font-family: 'Playfair Display', serif;">Latest News</h2>
+    <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">View All →</a>
+  </div>
+
+  <div class="news-grid row row-cols-1 row-cols-md-3 g-1">
+    <!-- Article 1 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 2 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 3 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 4 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 5 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+
+    <!-- Article 6 -->
+    <article class="news-card col">
+      <div class="news-card-image" style="background: #ddd; height: 160px; border-radius: 4px;"></div>
+      <span class="news-card-category" style="background-color: #d33f49; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">[CATEGORY]</span>
+      <h3 class="news-card-title">[TITLE]</h3>
+      <p class="news-card-excerpt">[INFO]</p>
+      <div class="news-card-meta"><span>[AUTHOR]</span> • <span>[DATE]</span></div>
+    </article>
+  </div>
+</section>
+
+<div class="section-divider my-4"></div>
+
+
+
+          <!-- Trending Topics -->
+          <section class="trending-section">
+            <div
+              class="section-header d-flex justify-content-between align-items-center mb-3"
+            >
+              <h2 class="section-title" style="font-family: 'Playfair Display', serif;">
+                Trending
+              </h2>
+              <a href="#" class="section-link" style="font-weight: 600; color: #d33f49;">
+                View All →
+              </a>
+            </div>
+
+            <div class="trending-list d-flex flex-column gap-3">
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">01</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">02</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">03</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">04</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+
+              <div class="trending-item d-flex gap-3 align-items-start">
+                <div class="trending-number" style="font-weight: 700; font-size: 1.2rem; color:#d33f49;">05</div>
+                <div class="trending-content">
+                  <span class="trending-category" style="color:#d33f49;">[CATEGORY]</span>
+                  <h3 class="trending-title" style="margin: 0.2rem 0;">
+                    [TILE]
+                  </h3>
+                  <div class="trending-meta" style="color:#666;">[AUTHOR] • [DATE]</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <aside class="sidebar">
+          <section class="sidebar-section">
+            <h2 class="sidebar-heading">Trending Articles</h2>
+            <div class="sidebar-stories">
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+              <div class="sidebar-story" tabindex="0">
+                <span class="sidebar-category">[CATEGORY]</span>
+                <h3 class="sidebar-title">[TITLE]</h3>
+                <div class="sidebar-meta">[AUTHOR] • [DATE]</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="sidebar-promo">
+            <div class="sidebar-promo-label">Subscribe</div>
+            <div class="sidebar-promo-title">Get Our Newsletter</div>
+            <div class="sidebar-promo-text">
+              Stay updated with the latest entertainment buzz. Join our mailing
+              list now!
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+	<!--FOOTER--!>
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="footer-content">
+				<div class="footer-section">
+					<h3> UrbanPulse </h3>
+					<p> Independent journalism you can trust. Delivering truth in every story since 2026. </p>
+					
+					<div class="footer-social">
+						<a href="#" aria-label="Facebook"> FB </a>
+						<a href="#" aria-label="Twitter"> TW </a>
+						<a href="#" aria-label="Instagram"> IG </a>
+						<a href="#" aria-label="Github"> GH </a>
+					</div>
+				</div>
+				
+				<div class="footer-section">
+					<h4> Categories </h4>
+					<ul>
+						<li> <a href="technology.html"> Technology </a> </li>
+						<li> <a href="sports.html"> Sports </a> </li>
+						<li> <a href="entertainment.html"> Entertainment</a> </li>
+						<li> <a href="worldnews.html"> World Names </a> </li>
+					</ul>
+				</div>
+					
+				<div class="footer-section">
+					<h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                    </ul>
+				</div>
+				<div class="footer-section">
+					<h4> Pledge </h4>
+					<p id="pledge"> We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated.
+Inspired by our school’s champion radio broadcasting team, we carry the same goal: to share information clearly, quickly, and with purpose.</p> 
+				</div>
+			</div>
+				<div class="footer-bottom">
+					<p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+				</div>
+		</div>
+	</footer>
+	<!-- Mobile Burger Menu (Off-canvas) -->
+	<div class="menu-overlay" id="menuOverlay" hidden></div>
+
+	<aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+		<div class="burger-top">
+			<button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M18 6 6 18"></path>
+					<path d="M6 6l12 12"></path>
+				</svg>
+			</button>
+
+			<div class="burger-brand">
+				<div class="burger-logo">UrbanPulse</div>
+				<div class="burger-tagline">Feel the Ripple!</div>
+			</div>
+		</div>
+
+		<div class="burger-body">
+			<div class="burger-section">
+				<div class="burger-section-title">Browse</div>
+				<nav class="burger-links" aria-label="Primary">
+					<a class="burger-link" data-nav href="home.html">Home</a>
+					<a class="burger-link" data-nav href="category-technology_updated.html">Technology</a>
+					<a class="burger-link" data-nav href="category-sport_updated.html">Sports</a>
+					<a class="burger-link" data-nav href="category-entertainment_updated.html">Entertainment</a>
+					<a class="burger-link" data-nav href="category-world_updated.html">World News</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section">
+				<div class="burger-section-title">Company</div>
+				<nav class="burger-links" aria-label="Company">
+					<a class="burger-link" data-nav href="about.html">About</a>
+					<a class="burger-link" data-nav href="contact.html">Contact</a>
+				</nav>
+			</div>
+
+			<div class="burger-divider"></div>
+
+			<div class="burger-section burger-account">
+				<div class="account-row">
+					<div class="account-left">
+						<span class="account-dot" aria-hidden="true"></span>
+						<span class="account-name">Guest</span>
+					</div>
+					<a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+				</div>
+
+				<a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+				<a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+			</div>
+		</div>
+	</aside>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="burger.js"></script>
+</body>
+</html>

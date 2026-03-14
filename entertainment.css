@@ -1,0 +1,527 @@
+:root {
+	/* EDITORIAL ELEGANCY */
+	 --color-primary: #1a1a1a;
+    --color-secondary: #c8102e;
+    --color-accent: #d4af37;
+    --color-background: #ffffff;
+    --color-surface: #f8f8f8;
+    --color-border: #e0e0e0;
+    --color-text: #2d2d2d;
+    --color-text-light: #666666;
+    --color-text-muted: #999999;
+	
+	/* CATEGORY COLORS */
+	--color-technology: #0066cc;
+    --color-sports: #ff6b35;
+    --color-entertainment: #9b59b6;
+    --color-world: #27ae60;
+	
+	/* TYPOGRAPHY */
+	--font-display: 'Playfair Display', serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+	overflow-x: hidden;
+	font-family: var(--font-body);
+	color: var(--color-text);
+	background-color: var(--color-background);
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { background: none; border: none; cursor: pointer; }
+
+.entertainment-nav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 73px;
+    z-index: 999;
+}
+
+.entertainment-nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.entertainment-nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.entertainment-nav-container a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.entertainment-nav-container a:hover,
+.entertainment-nav-container a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-entertainment);
+}
+
+/* ============================================
+   MAIN LAYOUT
+   ============================================ */
+main {
+    flex: 1;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* TWO COLUMN LAYOUT */
+.page-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    padding: 2rem 0;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0; /* Important for flexbox */
+    max-width: 800px;
+}
+
+.sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 150px;
+}
+
+/* ============================================
+   HERO ARTICLE - FIXED
+   ============================================ */
+.hero-article {
+    margin-bottom: 3rem;
+}
+
+.hero-image {
+    width: 100%;
+    height: 400px;
+    background: #e5e5e5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-category {
+    display: inline-block;
+    background: var(--color-entertainment);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.hero-excerpt {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    flex-wrap: wrap;
+}
+
+.hero-author {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* ============================================
+   SECTION HEADERS - FIXED
+   ============================================ */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--color-entertainment);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.section-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-entertainment);
+    transition: var(--transition);
+}
+
+.section-link:hover {
+    text-decoration: underline;
+}
+
+.section-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 3rem 0;
+}
+
+/* ============================================
+   POP CULTURE BUZZ - FIXED HORIZONTAL SCROLL
+   ============================================ */
+.pop-culture-buzz {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pop-culture-buzz::-webkit-scrollbar {
+    height: 6px;
+}
+
+.pop-culture-buzz::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.pop-culture-buzz::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.pop-culture-buzz::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.buzz-item {
+    flex: 0 0 auto;
+    width: 240px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buzz-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-entertainment);
+}
+
+.buzz-category {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    background: var(--color-entertainment);
+}
+
+.buzz-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+}
+
+/* ============================================
+   NEWS GRID - FIXED 3 COLUMNS
+   ============================================ */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-image {
+    width: 100%;
+    height: 160px;
+    background: #e5e5e5;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: 700;
+	aspect-ratio: 16/9;
+}
+
+.news-card-category {
+    display: inline-block;
+    background: var(--color-entertainment);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.news-card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+}
+
+.news-card-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: auto;
+}
+
+/* ============================================
+   SIDEBAR - FIXED
+   ============================================ */
+.sidebar-section {
+    margin-bottom: 2.5rem;
+}
+
+.sidebar-heading {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-entertainment);
+    color: var(--color-primary);
+}
+
+.sidebar-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.sidebar-story {
+    border-left: 4px solid transparent;
+    padding-left: 0.75rem;
+    transition: border-color 0.3s;
+    cursor: pointer;
+}
+
+.sidebar-story:hover {
+    border-color: var(--color-entertainment);
+}
+
+.sidebar-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-entertainment);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.sidebar-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0.25rem 0;
+    color: var(--color-primary);
+    line-height: 1.3;
+}
+
+.sidebar-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.sidebar-promo {
+    background: linear-gradient(135deg, var(--color-entertainment) 0%, #b82e3c 100%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+}
+
+.sidebar-promo-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+}
+
+.sidebar-promo-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.sidebar-promo-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+
+/* ============================================
+   RESPONSIVE - FIXED BREAKPOINTS
+   ============================================ */
+@media (max-width: 1200px) {
+    .page-layout {
+        gap: 2rem;
+    }
+    
+    .sidebar {
+        width: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .page-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .buzz-item {
+        width: 200px;
+    }
+    
+    .hero-image {
+        height: 250px;
+    }
+    
+    .page-layout {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .Logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .pop-culture-buzz {
+        margin: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
