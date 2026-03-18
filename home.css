@@ -470,3 +470,33 @@ main { background: var(--color-surface); }
   object-position: center;
   display: block;
 }
+/* ── CLICKABLE CARD LINKS ── */
+a.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+a.card-link .story-card,
+a.card-link .category-card,
+a.card-link .compact-story,
+a.card-link .more-card,
+a.card-link .hero-story {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+a.card-link:hover .story-card,
+a.card-link:hover .category-card,
+a.card-link:hover .compact-story,
+a.card-link:hover .more-card {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+  transform: translateY(-2px);
+}
+a.card-link:hover .hero-story {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+}
+a.card-link:hover .story-title,
+a.card-link:hover .category-card h3,
+a.card-link:hover .compact-content h4,
+a.card-link:hover .more-card h4 {
+  color: var(--color-secondary);
+}
