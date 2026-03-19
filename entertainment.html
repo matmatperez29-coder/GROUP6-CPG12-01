@@ -8,48 +8,102 @@
     <link rel="stylesheet" href="navfooter.css">
     <link rel="stylesheet" href="entertainment.css">
     <link rel="stylesheet" href="burgermenu.css">
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/ios-filled/50/000000/pulse.png">
+    <link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png">
+   
+    <style>
+        .active {
+            color: #c8102e !important;
+            text-decoration: underline !important;
+            text-decoration-color: #c8102e !important;
+            text-decoration-thickness: 2px !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="BreakingNews" style="background-color: #1a1a1a; color: white; padding: 0.75rem 0; display: flex; align-items: center; overflow: hidden;">
-        <span class="BreakingNewsLabel" style="background-color: #c8102e; padding: 0.25rem 1rem; font-weight: 700; text-transform: uppercase; z-index: 10;"> Breaking News </span>
-        <div class="BreakingNewsContent" style="display: inline-block; white-space: nowrap; animation: scroll-left 30s linear infinite;">
-            <span class="BreakingNewsItem" style="padding: 0 3rem; font-weight: 700;">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
-            <span class="BreakingNewsItem" style="padding: 0 3rem; font-weight: 700;">AI Rapper 'AERO' Hits Number One on Global Charts</span>
-            <span class="BreakingNewsItem" style="padding: 0 3rem; font-weight: 700;">UrbanStream+ Announces 12 New Original Series for 2026</span>
+
+
+    <div class="BreakingNews">
+        <span class="BreakingNewsLabel">Breaking News</span>
+        <div class="BreakingNewsContent">
+            <span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipino RB will be fighting in RSPC NCR</span>
+            <span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipino RB will be fighting in RSPC NCR</span>
         </div>
     </div>
+
 
     <header class="header-main">
         <div class="header-container">
             <div class="header-left">
-                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu">
-                    <span class="burger-icon"><span></span><span></span><span></span></span>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-controls="burgerMenu" aria-expanded="false">
+                    <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
                 <span class="header-logo">
-                    <h1> UrbanPulse </h1>
-                    <p class="header-logo-tagline"> Feel the Ripple! </p>
+                    <h1>UrbanPulse</h1>
+                    <p class="header-logo-tagline">Feel the Ripple!</p>
                 </span>
             </div>
+
+
             <nav class="main-nav">
-                <a href="home.html"> Home </a>
-                <a href="technology.html"> Technology </a>
-                <a href="sports.html"> Sports </a>
-                <a href="entertainment.html" class="active"> Entertainment </a>
-                <a href="worldnews.html"> World News</a>
+                <a href="home.html">Home</a>
+                <a href="technology.html">Technology</a>
+                <a href="sports.html">Sports</a>
+                <a href="entertainment.html" class="active">Entertainment</a>
+                <a href="worldnews.html">World News</a>
             </nav>
+
+
             <div class="header-right">
                 <div class="header-search">
-                    <button class="search-toggle" id="searchToggle">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    <button class="search-toggle" id="searchToggle" aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
                     </button>
                 </div>
+                <span class="header-right-divider"></span>
                 <div class="header-login">
-                    <a href="Login.html"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" alt="User" width="24" height="24"></a>
+                    <a href="Login.html" target="_blank">
+                        <img src="IMAGES/usericon.png" alt="User" width="24" height="24">
+                    </a>
+                </div>
+                <span class="header-right-divider"></span>
+                <div class="header-subscription">
+                    <a href="subscription.html"><strong>Subscribe</strong></a>
                 </div>
             </div>
         </div>
     </header>
+
+
+    <div class="filter-bar">
+        <div class="container d-flex align-items-center flex-wrap py-2">
+            <label for="categoryFilter" class="me-2">Filter by Category:</label>
+            <select id="categoryFilter" class="form-select form-select-sm w-auto me-4">
+                <option value="all">All</option>
+                <option value="celebrity">Celebrity</option>
+                <option value="movies">Movies</option>
+                <option value="tv">TV</option>
+                <option value="music">Music</option>
+                <option value="buzz">Buzz</option>
+                <option value="style">Style</option>
+            </select>
+           
+            <label for="dateFilter" class="me-2">Filter by Date:</label>
+            <select id="dateFilter" class="form-select form-select-sm w-auto">
+                <option value="all">All</option>
+                <option value="today">Today</option>
+                <option value="this-week">This Week</option>
+                <option value="this-month">This Month</option>
+            </select>
+        </div>
+    </div>
+
 
     <main>
         <div class="container">
@@ -59,113 +113,95 @@
                         <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200')"></div>
                         <span class="hero-category">Movies</span>
                         <h1 class="hero-title">The Renaissance of Cinema: 2026's Boldest Directors</h1>
-                        <p class="hero-excerpt">Immersive AI-driven narratives and the return of 70mm film are reshaping the big screen experience.</p>
-                        <div class="hero-meta">
+                        <p class="hero-excerpt">2026’s cinema renaissance is being driven by bold directors like Paul Thomas Anderson and Ryan Coogler alongside rising global voices such as Bi Gan, blending innovation with powerful storytelling. Together, they’re redefining film through diverse perspectives, experimental styles, and stories that resonate across cultures.</p>
+                          <div class="hero-meta">
                             <span class="hero-author">Elena Thorne</span> • March 18, 2026
                         </div>
                     </article>
 
+
                     <section>
                         <div class="section-header">
                             <h2 class="section-title">Latest News</h2>
-                        </div>
+                       </div>
                         <div class="news-grid">
+        
                             <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1593784991095-a2050594a0b6?w=400')"></div>
-                                <span class="news-card-category">Business</span>
-                                <h3 class="news-card-title">Streaming Giant Cancels Top-Rated Show</h3>
-                                <div class="news-card-meta">T. Cook • March 15, 2026</div>
-                            </article>
-
-                            <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=400')"></div>
-                                <span class="news-card-category">Stage</span>
-                                <h3 class="news-card-title">Interactive Theatre: New Shakespeare</h3>
-                                <div class="news-card-meta">W. Shake • March 14, 2026</div>
-                            </article>
-
-                            <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400')"></div>
+                                <div class="news-card-image" style="background-image: url('')"></div>
                                 <span class="news-card-category">Music</span>
-                                <h3 class="news-card-title">AI Rapper 'AERO' Hits Number One</h3>
-                                <div class="news-card-meta">Binary B. • March 13, 2026</div>
-                            </article>
-
-                            <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400')"></div>
-                                <span class="news-card-category">Festivals</span>
                                 <h3 class="news-card-title">Coachella 2026 Lineup Leaked</h3>
-                                <div class="news-card-meta">J. Rivera • March 12, 2026</div>
+                                <p class="news-card-excerpt">The leaked Coachella lineup has fans speculating about the festival’s headliners and surprise collaborations. The early reveal stirs excitement and debate, showing how anticipation drives engagement in live music culture.</p>
+                                 <div class="news-card-meta">J. Rivera • March 15, 2026</div>
                             </article>
 
                             <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400')"></div>
-                                <span class="news-card-category">Cinema</span>
+                                <div class="news-card-image" style="background-image: url('')"></div>
+                                <span class="news-card-category">TV</span>
+                                <h3 class="news-card-title">Streaming Giant Cancels Top-Rated Show</h3>
+                                <p class="news-card-excerpt">The cancellation of the hit series highlights tensions between audience demand and business strategies. Fans are frustrated as metrics-driven decisions override creative success, sparking discussions on how streaming platforms value content.</p>
+                               <div class="news-card-meta">T.Cook • March 12, 2026</div>
+                            </article>
+
+                             <article class="news-card">
+                                <div class="news-card-image" style="background-image: url('')"></div>
+                                <span class="news-card-category">Movies</span>
                                 <h3 class="news-card-title">The Return of 35mm Projection</h3>
-                                <div class="news-card-meta">A. Varda • March 11, 2026</div>
+                                <p class="news-card-excerpt">The revival of 35mm projection celebrates the tactile artistry of film. Audiences enjoy a more authentic cinematic experience, emphasizing nostalgia and craftsmanship in an era of digital dominance.</p>
+                           <div class="news-card-meta">A.Varda • March 12, 2026</div>
                             </article>
 
                             <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400')"></div>
-                                <span class="news-card-category">Streaming</span>
-                                <h3 class="news-card-title">UrbanStream+ Price Hike</h3>
-                                <div class="news-card-meta">Staff • March 10, 2026</div>
+                                <div class="news-card-image" style="background-image: url('')"></div>
+                                <span class="news-card-category">TV</span>
+                                <h3 class="news-card-title">UrbanStream + PriceHike</h3>
+                                <p class="news-card-excerpt">UrbanStream’s price hike reflects the challenges of balancing rising production costs with customer retention. The move has fueled debate about subscription value, showing how pricing changes impact streaming loyalty.</p>
+                            <div class="news-card-meta">Staff • March 10, 2026</div>
                             </article>
 
                             <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1616469829581-73993eb86b02?w=400')"></div>
-                                <span class="news-card-category">Fashion</span>
-                                <h3 class="news-card-title">Digital Couture on Red Carpet</h3>
-                                <div class="news-card-meta">L. Gucci • March 09, 2026</div>
+                                <div class="news-card-image" style="background-image: url('')"></div>
+                                <span class="news-card-category">Buzz</span>
+                             <h3 class="news-card-title">Interactive Theatre: New Shakespeare</h3>
+                                <p class="news-card-excerpt"> Interactive Shakespeare blends classic storytelling with audience participation, creating a dynamic theatrical experience. This approach revitalizes theatre by making viewers part of the narrative, merging tradition with innovation.</p>
+                              <div class="news-card-meta"> W.Shake • March 14, 2026</div>
                             </article>
 
                             <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1514525253344-f814d074358a?w=400')"></div>
-                                <span class="news-card-category">Nightlife</span>
-                                <h3 class="news-card-title">Silent Discos Resurgence</h3>
-                                <div class="news-card-meta">DJ Pulse • March 08, 2026</div>
-                            </article>
-
-                            <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400')"></div>
-                                <span class="news-card-category">Tech</span>
-                                <h3 class="news-card-title">Smart Glasses as New Screen</h3>
-                                <div class="news-card-meta">K. Jobs • March 07, 2026</div>
-                            </article>
-
-                            <article class="news-card">
-                                <div class="news-card-image" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400')"></div>
-                                <span class="news-card-category">Events</span>
+                                <div class="news-card-image" style="background-image: url('')"></div>
+                                <span class="news-card-category">Music</span>
                                 <h3 class="news-card-title">Meta-Festival: Coachella VR</h3>
-                                <div class="news-card-meta">Z. G • March 06, 2026</div>
+                                <p class="news-card-excerpt">The Coachella VR festival expands access to live music, letting audiences participate from anywhere. Virtual reality brings immersive performances to fans, blending technology with traditional festival culture.</p>
+                              <div class="news-card-meta"> Z. G • March 06, 2026</div>
                             </article>
+
                         </div>
                     </section>
-
+        
                     <section class="mt-5">
                         <div class="section-header">
-                            <h2 class="section-title">Trending Pop Culture</h2>
+                            <h2 class="section-title">Pop Culture Buzz</h2>
                         </div>
                         <div class="trending-bottom-grid">
                             <div class="trending-bottom-item">
-                                <span class="item-category">Awards</span>
+                                <span class="item-category">Movies</span>
                                 <h3 class="sidebar-title">Oscars 2026 Highlights</h3>
                                 <div class="item-meta">Film Critic • March 18, 2026</div>
+
                             </div>
                             <div class="trending-bottom-item">
-                                <span class="item-category">Viral</span>
+                                <span class="item-category">Style</span>
                                 <h3 class="sidebar-title">The Neon Green Trend</h3>
                                 <div class="item-meta">Style Watch • March 17, 2026</div>
                             </div>
                             <div class="trending-bottom-item">
-                                <span class="item-category">Gaming</span>
+                                <span class="item-category">Buzz</span>
                                 <h3 class="sidebar-title">Next-Gen Console Specs</h3>
                                 <div class="item-meta">Gamer Hub • March 16, 2026</div>
                             </div>
                             <div class="trending-bottom-item">
-                                <span class="item-category">Wellness</span>
-                                <h3 class="sidebar-title">Digital Detox Retreats</h3>
-                                <div class="item-meta">Health Ed • March 15, 2026</div>
+                                <span class="item-category">Buzz</span>
+                                <h3 class="sidebar-title">Smart Glasses as New Screen</h3>
+                                <div class="item-meta">K. Jobs • March 07, 2026</div>
                             </div>
                             <div class="trending-bottom-item">
                                 <span class="item-category">Music</span>
@@ -176,58 +212,164 @@
                     </section>
                 </div>
 
-                <aside class="sidebar">
-                    <section class="sidebar-section">
-                        <h2 class="sidebar-heading">Trending Now</h2>
-                        <div class="sidebar-stories">
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Celeb</span>
-                                <h3 class="sidebar-title">Secret Bali Wedding Rumors</h3>
-                                <div class="sidebar-meta">Rumor Mill • March 18, 2026</div>
-                            </div>
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Exclusive</span>
-                                <h3 class="sidebar-title">Director's Cut Leaked</h3>
-                                <div class="sidebar-meta">Daily Buzz • March 17, 2026</div>
-                            </div>
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Music</span>
-                                <h3 class="sidebar-title">Hologram Tour Sells Out</h3>
-                                <div class="sidebar-meta">Stage Life • March 16, 2026</div>
-                            </div>
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Style</span>
-                                <h3 class="sidebar-title">Retro-Futurism Comeback</h3>
-                                <div class="sidebar-meta">Vogue • March 15, 2026</div>
-                            </div>
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Tech</span>
-                                <h3 class="sidebar-title">AI Screenwriters Union</h3>
-                                <div class="sidebar-meta">Industry News • March 14, 2026</div>
-                            </div>
-                            <div class="sidebar-story">
-                                <span class="sidebar-category">Box Office</span>
-                                <h3 class="sidebar-title">Indie Film Breaks Records</h3>
-                                <div class="sidebar-meta">Cinema Data • March 13, 2026</div>
-                            </div>
-                        </div>
-                    </section>
-                </aside>
+
+            <aside class="sidebar">
+    <section class="sidebar-section">
+        <h2 class="sidebar-heading">Trending Now</h2>
+        <div class="sidebar-stories">
+            <div class="sidebar-story">
+                <span class="sidebar-category">Celeb</span>
+                <h3 class="sidebar-title">Secret Bali Wedding Rumors</h3>
+                <div class="sidebar-meta">Rumor Mill • March 18, 2026</div>
+            </div>
+            <div class="sidebar-story">
+                <span class="sidebar-category">Box Office</span>
+                <h3 class="sidebar-title">Indie Film Breaks Records</h3>
+                <div class="sidebar-meta">Cinema Data • March 13, 2026</div>
             </div>
         </div>
-    </main>
+    </section>
 
+    <section class="sidebar-section mt-4">
+        <h2 class="sidebar-heading">Editor's Pick</h2>
+        <div class="sidebar-stories">
+            <div class="sidebar-story">
+                <span class="sidebar-category">Movies</span>
+                <h3 class="sidebar-title">The Future of 70mm</h3>
+                <div class="sidebar-meta">A. Varda • March 19, 2026</div>
+            </div>
+        </div>
+    </section>
+</aside>
+        </div>
+    </div>
+</main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3> UrbanPulse </h3>
+                    <p> Independent journalism you can trust. Delivering truth in every story since 2026. </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"> FB </a>
+                        <a href="#" aria-label="Twitter"> TW </a>
+                        <a href="#" aria-label="Instagram"> IG </a>
+                        <a href="#" aria-label="Github"> GH </a>
+                    </div>
+                </div>
+               
+                <div class="footer-section">
+                    <h4> Categories </h4>
+                    <ul>
+                        <li> <a href="technology.html"> Technology </a> </li>
+                        <li> <a href="sports.html"> Sports </a> </li>
+                        <li> <a href="entertainment.html"> Entertainment</a> </li>
+                        <li> <a href="worldnews.html"> World News </a> </li>
+                    </ul>
+                </div>
+                 
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4> Pledge </h4>
+                    <p id="pledge"> We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated.
+                    Inspired by our school’s champion radio broadcasting team, we carry the same goal: to share information clearly, quickly, and with purpose.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+
+    <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+        <div class="burger-top">
+            <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 6 6 18"></path>
+                    <path d="M6 6l12 12"></path>
+                </svg>
+            </button>
+
+
+            <div class="burger-brand">
+                <div class="burger-logo">UrbanPulse</div>
+                <div class="burger-tagline">Feel the Ripple!</div>
+            </div>
+        </div>
+
+
+        <div class="burger-body">
+            <div class="burger-section">
+                <div class="burger-section-title">Browse</div>
+                <nav class="burger-links" aria-label="Primary">
+                    <a class="burger-link" data-nav href="home.html">Home</a>
+                    <a class="burger-link" data-nav href="category-technology_updated.html">Technology</a>
+                    <a class="burger-link" data-nav href="category-sport_updated.html">Sports</a>
+                    <a class="burger-link" data-nav href="category-entertainment_updated.html">Entertainment</a>
+                    <a class="burger-link" data-nav href="category-world_updated.html">World News</a>
+                </nav>
+            </div>
+
+
+            <div class="burger-divider"></div>
+
+
+            <div class="burger-section">
+                <div class="burger-section-title">Company</div>
+                <nav class="burger-links" aria-label="Company">
+                    <a class="burger-link" data-nav href="about.html">About</a>
+                    <a class="burger-link" data-nav href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+
+            <div class="burger-divider"></div>
+
+
+            <div class="burger-section burger-account">
+                <div class="account-row">
+                    <div class="account-left">
+                        <span class="account-dot" aria-hidden="true"></span>
+                        <span class="account-name">Guest</span>
+                    </div>
+                    <a class="account-register" href="#" aria-label="Register (placeholder)">Register</a>
+                </div>
+                <a class="burger-cta" href="#" aria-label="Sign in (placeholder)">SIGN IN</a>
+                <a class="burger-support" href="#" aria-label="Support (placeholder)">Support</a>
+            </div>
+        </div>
+    </aside>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="burger.js"></script>
     <script>
         // Menu Toggle Functionality
         document.getElementById('menuToggle').addEventListener('click', () => {
             document.querySelector('.main-nav').classList.toggle('active');
         });
 
+
         // Search Prompt Functionality
         document.getElementById('searchToggle').addEventListener('click', () => {
             const query = prompt("Search UrbanPulse:");
             if (query) alert("Searching for: " + query);
         });
+
 
         // Click interaction for all news items
         document.querySelectorAll('.news-card, .sidebar-story, .trending-bottom-item').forEach(item => {
@@ -239,3 +381,6 @@
     </script>
 </body>
 </html>
+
+
+
