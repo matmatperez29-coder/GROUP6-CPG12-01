@@ -205,3 +205,119 @@
 .header-subscription a:hover {
 	color: var(--color-secondary);
 }
+/* ── UPDATED HEADER RIGHT STYLES ── */
+.header-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.header-username {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a1a);
+  white-space: nowrap;
+}
+.header-submit-btn {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a1a);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.header-submit-btn:hover { color: var(--color-secondary, #c8102e); }
+
+.header-admin-btn {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-secondary, #c8102e);
+  text-decoration: none;
+  background: rgba(200,16,46,0.08);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.header-admin-btn:hover {
+  background: var(--color-secondary, #c8102e);
+  color: white;
+}
+.header-logout-btn {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #999;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header-logout-btn:hover { color: var(--color-secondary, #c8102e); }
+
+.header-signin-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a1a);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header-signin-btn:hover { color: var(--color-secondary, #c8102e); }
+
+/* ── FIX: Bootstrap override for header avatar + submit button ── */
+.header-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  text-decoration: none !important;
+  background-image: none !important;
+}
+.header-submit-btn {
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  color: var(--color-primary, #1a1a1a) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: color 0.2s !important;
+}
+.header-submit-btn:hover {
+  color: var(--color-secondary, #c8102e) !important;
+  background: none !important;
+}
+.header-admin-btn {
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  color: var(--color-secondary, #c8102e) !important;
+  text-decoration: none !important;
+  background: rgba(200,16,46,0.08) !important;
+  padding: 0.3rem 0.65rem !important;
+  border-radius: 6px !important;
+  white-space: nowrap !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.header-admin-btn:hover {
+  background: var(--color-secondary, #c8102e) !important;
+  color: white !important;
+}

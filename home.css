@@ -191,9 +191,51 @@ main { background: var(--color-surface); }
 .more-card h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.4rem; color: var(--color-primary); }
 .more-meta { font-size: 0.8rem; color: var(--color-text-light); }
 
-/* COMMENTS */
-.comment-section { margin: 2.5rem 0 3rem; background: white; border: 1px solid var(--color-border); padding: 2rem; }
-.comment-section h3 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--color-secondary); color: var(--color-primary); }
+/* ══════════════════════════════════
+   FILTER ANIMATIONS & TOAST
+══════════════════════════════════ */
+.hero-story,
+.story-card,
+.category-card,
+.compact-story,
+.more-card {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.filter-hidden  { opacity: 0 !important; transform: scale(0.97) !important; pointer-events: none; }
+.filter-visible { opacity: 1; transform: scale(1); }
+
+/* Active select highlight */
+.tools-select.filter-active {
+  border-color: var(--color-secondary) !important;
+  background: #fff5f6 !important;
+  color: var(--color-secondary) !important;
+  font-weight: 700 !important;
+}
+
+/* Filter toast */
+#filterToast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-family: var(--font-body, sans-serif);
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.22);
+  z-index: 9000;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  border-left: 3px solid var(--color-secondary);
+}
+#filterToast.ft-show    { opacity: 1; transform: translateX(-50%) translateY(0); }
+#filterToast.ft-empty   { background: #7f1d1d; border-color: #fca5a5; }
+#filterToast strong     { color: var(--color-accent, #d4af37); }
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
@@ -236,6 +278,54 @@ main { background: var(--color-surface); }
 }
 .search-toggle:hover  { color: var(--color-secondary); background: rgba(200,16,46,0.07); }
 .search-toggle[aria-expanded="true"] { color: var(--color-secondary); }
+
+/* ══════════════════════════════════
+   HOME TOOLS BAR (matched to sports/technology)
+══════════════════════════════════ */
+.tools-bar {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(2, minmax(160px, 220px));
+  gap: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 1rem;
+  margin: 2rem 0 1.5rem;
+}
+.tools-field { display: flex; flex-direction: column; gap: 0.45rem; }
+.tools-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-light);
+}
+.tools-input,
+.tools-select {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  background: #fff;
+}
+.tools-input:focus,
+.tools-select:focus {
+  outline: 2px solid rgba(200,16,46,0.18);
+  border-color: var(--color-secondary);
+}
+.filter-empty {
+  display: none;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.2rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 14px;
+  color: var(--color-text-light);
+  background: #fffaf9;
+}
+.filter-empty.is-visible { display: block; }
+.hero-featured-home { margin-bottom: 1.5rem; }
 
 /* ══════════════════════════════════════════════════
    PHILSTAR-STYLE SEARCH DROP BAR
@@ -470,6 +560,9 @@ main { background: var(--color-surface); }
   object-position: center;
   display: block;
 }
+@media (max-width: 800px) {
+  .tools-bar { grid-template-columns: 1fr; }
+}
 /* ── CLICKABLE CARD LINKS ── */
 a.card-link {
   display: block;
@@ -480,23 +573,24 @@ a.card-link {
 a.card-link .story-card,
 a.card-link .category-card,
 a.card-link .compact-story,
-a.card-link .more-card,
-a.card-link .hero-story {
-  transition: box-shadow 0.2s, transform 0.2s;
+a.card-link .more-card {
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
 }
 a.card-link:hover .story-card,
 a.card-link:hover .category-card,
 a.card-link:hover .compact-story,
 a.card-link:hover .more-card {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.13);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+  transform: translateY(-3px);
 }
 a.card-link:hover .hero-story {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.13);
 }
 a.card-link:hover .story-title,
 a.card-link:hover .category-card h3,
 a.card-link:hover .compact-content h4,
-a.card-link:hover .more-card h4 {
-  color: var(--color-secondary);
+a.card-link:hover .more-card h4,
+a.card-link:hover .hero-title {
+  color: var(--color-secondary, #c8102e);
+  transition: color 0.2s;
 }

@@ -62,6 +62,18 @@
   }
   function searchURL(q) { return `search.html?q=${encodeURIComponent(q.trim())}`; }
 
+  /* ── Fetch approved DB articles and merge into search index ── */
+  (async () => {
+    try {
+      const res = await fetch('api-search.php');
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.success && Array.isArray(data.articles) && data.articles.length) {
+        ARTICLES.push(...data.articles);
+      }
+    } catch (e) { /* silently fail — static articles still work */ }
+  })();
+
   /* ── DOM ── */
   const header   = document.querySelector('.header-main');
   const toggle   = document.getElementById('searchToggle');

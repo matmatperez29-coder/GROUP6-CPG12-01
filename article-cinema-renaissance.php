@@ -1,0 +1,301 @@
+<?php
+require_once 'db.php';
+require_once 'auth.php'; // This also starts the session and connects to the DB
+$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall — UrbanPulse</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall">
+  <meta property="og:description" content="From immersive AI-driven narratives to the return of 70mm film, this year's festival circuit is proving that the big screen experience is more alive than ever.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=900&auto=format&fit=crop">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="navfooter.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="burgermenu.css">
+  <link rel="stylesheet" href="article.css">
+  <link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png">
+</head>
+<body>
+
+  <div class="BreakingNews">
+    <span class="BreakingNewsLabel">Breaking News</span>
+    <div class="BreakingNewsContent"><span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span><span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span><span class="BreakingNewsItem">Eagles defeat Chiefs 40-22 in Super Bowl LIX</span><span class="BreakingNewsItem">Mars Base Alpha reports first successful greenhouse harvest</span><span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span><span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span><span class="BreakingNewsItem">Eagles defeat Chiefs 40-22 in Super Bowl LIX</span><span class="BreakingNewsItem">Mars Base Alpha reports first successful greenhouse harvest</span></div>
+  </div>
+
+  <header class="header-main">
+    <div class="header-container">
+      <div class="header-left">
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-controls="burgerMenu" aria-expanded="false">
+          <span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <a href="home.php" class="header-logo">
+          <h1>UrbanPulse</h1>
+          <p class="header-logo-tagline">Feel the Ripple!</p>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="home.php">Home</a>
+        <a href="technology.php">Technology</a>
+        <a href="sports.php">Sports</a>
+        <a href="entertainment.php">Entertainment</a>
+        <a href="worldnews.php">World News</a>
+      </nav>
+     <div class="header-right">
+    <?php if ($currentUser): ?>
+        <div class="header-user-profile" style="display: flex; align-items: center; gap: 0.5rem;">
+            <div class="user-avatar" style="
+                width: 32px; 
+                height: 32px; 
+                border-radius: 50%; 
+                background-color: <?= htmlspecialchars($currentUser['avatar_color']) ?>; 
+                color: white; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                font-weight: 800; 
+                font-size: 0.9rem;">
+                <?= strtoupper(substr($currentUser['name'], 0, 1)) ?>
+            </div>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary);">
+                Hi, <?= htmlspecialchars(explode(' ', $currentUser['name'])[0]) ?>!
+            </span>
+        </div>
+
+        <div class="header-right-divider"></div>
+
+        <div class="header-subscription">
+            <a href="logout.php" style="color: var(--color-secondary);">Log Out</a>
+        </div>
+
+    <?php else: ?>
+        <a href="login.php" class="header-login">
+            <img src="assets/user-icon.svg" alt="Sign In" style="width: 24px; height: 24px;"> 
+        </a>
+        
+        <div class="header-right-divider"></div>
+        
+        <div class="header-subscription">
+            <a href="subscription.php">Subscribe</a>
+        </div>
+    <?php endif; ?>
+</div>
+    </div>
+  </header>
+
+  <div class="search-bar-drop" id="searchBarDrop" aria-hidden="true">
+    <div class="search-bar-inner">
+      <div id="searchBox" role="searchbox" contenteditable="true" aria-label="Search UrbanPulse" data-placeholder="Enter search item" spellcheck="false"></div>
+      <button class="search-bar-close" id="searchClose" aria-label="Close search">&#10005;</button>
+    </div>
+    <div id="results" class="search-bar-results"></div>
+  </div>
+
+  <main class="article-page">
+    <div class="article-container">
+
+      <div class="hero-news">
+        <article>
+          <p class="hero-subheadlines" style="color:#9b59b6">ENTERTAINMENT</p>
+          <h1 class="hero-title">The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall</h1>
+          <div class="hero-meta">
+            <strong>Elena Thorne</strong>
+            <span>UrbanPulse.com</span>
+            <span>February 22, 2026 · 9:00 AM EST</span>
+          </div>
+
+          <!-- SHARE BAR -->
+          <div class="share-bar" style="margin-bottom:1.5rem">
+            <span class="share-label">Share:</span>
+            <a class="share-btn fb" href="#" title="Share on Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook
+            </a>
+            <a class="share-btn tw" href="#" title="Share on Twitter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg> Tweet
+            </a>
+            <button class="share-btn copy">🔗 Copy Link</button>
+            <span class="share-toast">Link copied!</span>
+          </div>
+
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=900&auto=format&fit=crop" alt="The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall" loading="lazy">
+          </div>
+          <p class="hero-summary">From immersive AI-driven narratives to the return of 70mm film, this year's festival circuit is proving that the big screen experience is more alive than ever.</p>
+          <div class="hero-description">The 2026 film festival circuit is proving to be one of the most creatively fertile in decades. From Sundance to Cannes, a new generation of directors is rejecting the conventions of mainstream cinema in favor of bold formal experiments — and audiences are responding with genuine enthusiasm.<br><br>The most talked-about trend is the use of AI-driven adaptive narratives. Several films at this year's Sundance featured sequences that literally changed based on biometric data collected from audience members. Heart rate, galvanic skin response, and eye-tracking data were fed into real-time AI systems that adjusted pacing, music, and even dialogue choices.<br><br>"We're not making films anymore," said director Kaito Mori, whose debut feature 'Signal/Noise' won Sundance's Grand Jury Prize. "We're creating experiences that respond to you. Every screening is different. Every audience gets a different film."<br><br>At the same time, a countercultural movement toward analog filmmaking is gaining momentum. A surprising number of directors announced plans to shoot their next projects on 70mm film stock — a format that had been largely abandoned for decades.<br><br>"Digital is perfect, and perfection is boring," said director Sofia Reyes, whose 70mm debut premiered at Cannes. "I want audiences to feel the sweat and imperfection of real light hitting real celluloid."<br><br>The streaming wars have paradoxically strengthened cinema. With so much content available at home, theatrical releases have had to become genuine events — pushing directors to swing bigger, take more risks, and trust their audiences with more challenging material.</div>
+
+          <div class="section-divider"></div>
+
+          <!-- REACTIONS -->
+          <div class="reactions">
+            <div class="reactions-title">How do you feel about this article?</div>
+            <div class="reaction-buttons">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- RELATED STORIES -->
+          <div class="news-related">
+            <h5 class="news-related-title">RELATED STORIES</h5>
+            <a class="news-related-container" href="article-aero.php">
+          <div class="news-related-image"><img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100&auto=format&fit=crop" alt="AI Rapper AERO Hits No.1 on Global Charts"></div>
+          <span class="news-related-headline">AI Rapper AERO Hits No.1 on Global Charts</span>
+        </a><a class="news-related-container" href="article-vinyl.php">
+          <div class="news-related-image"><img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=100&auto=format&fit=crop" alt="Vinyl Outsells Digital Downloads Third Year Running"></div>
+          <span class="news-related-headline">Vinyl Outsells Digital Downloads Third Year Running</span>
+        </a>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- COMMENTS -->
+          <div class="comments-section">
+    <h3 class="comments-heading">
+        Leave a Comment <span class="comment-count-badge" style="display:none">0</span>
+    </h3>
+
+    <?php if ($currentUser): ?>
+        <form id="commentForm" class="comment-form">
+            <div class="form-group" style="margin-bottom: 0;">
+                <textarea id="commentText" placeholder="Share your thoughts, <?= htmlspecialchars(explode(' ', $currentUser['name'])[0]) ?>..." required></textarea>
+                <div id="charCount" class="comment-char-count">500 characters remaining</div>
+            </div>
+            <button type="submit" class="comment-submit" style="margin-top: 0.75rem;">Post Comment</button>
+        </form>
+    <?php else: ?>
+        <div class="comment-form" style="text-align: center; padding: 2.5rem 1rem; background: var(--color-surface); border: 1px dashed var(--color-border);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="1.5" style="margin-bottom: 1rem;">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <h4 style="font-family: var(--font-display); color: var(--color-primary); margin-bottom: 0.5rem;">Join the Conversation</h4>
+            <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 1.5rem;">You must be logged in to leave a comment or react to this article.</p>
+            <a href="login.php" class="comment-submit" style="text-decoration: none; display: inline-block;">Log In or Register</a>
+        </div>
+    <?php endif; ?>
+
+    <div id="commentList" class="comment-list">
+        </div>
+</div>
+
+        </article>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <h3 class="sidebar-heading">Recommended</h3>
+        <div class="sidebar-stories">
+          <div class="sidebar-story">
+            <div class="sidebar-image"><img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&auto=format&fit=crop" alt="AI Rapper AERO Hits No.1 on Global Charts" loading="lazy"></div>
+            <div class="sidebar-story1">
+              <a href="article-aero.php"><h3 class="sidebar-headline">AI Rapper AERO Hits No.1 on Global Charts</h3></a>
+              <span class="sidebar-category">Entertainment</span>
+              <div class="sidebar-meta">
+                <button class="sidebar-share">FB SHARE</button>
+                <button class="sidebar-tweet">TWEET</button>
+              </div>
+            </div>
+          </div><div class="sidebar-story">
+            <div class="sidebar-image"><img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=300&auto=format&fit=crop" alt="Vinyl Outsells Digital Downloads Third Year Running" loading="lazy"></div>
+            <div class="sidebar-story1">
+              <a href="article-vinyl.php"><h3 class="sidebar-headline">Vinyl Outsells Digital Downloads Third Year Running</h3></a>
+              <span class="sidebar-category">Entertainment</span>
+              <div class="sidebar-meta">
+                <button class="sidebar-share">FB SHARE</button>
+                <button class="sidebar-tweet">TWEET</button>
+              </div>
+            </div>
+          </div><div class="sidebar-story">
+            <div class="sidebar-image"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=300&auto=format&fit=crop" alt="GPT-6 Beta: Near-Human Emotional Reasoning" loading="lazy"></div>
+            <div class="sidebar-story1">
+              <a href="article-gpt6-beta.php"><h3 class="sidebar-headline">GPT-6 Beta: Near-Human Emotional Reasoning</h3></a>
+              <span class="sidebar-category">Technology</span>
+              <div class="sidebar-meta">
+                <button class="sidebar-share">FB SHARE</button>
+                <button class="sidebar-tweet">TWEET</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="roundup-section">
+          <h2>Independent News</h2>
+          <p>Independent journalism you can trust.</p>
+          <form class="roundup-form" onsubmit="return false">
+            <input type="email" placeholder="Your Email Address">
+            <button type="submit">SIGN-UP</button>
+          </form>
+          <div class="roundup-help">Please enter a valid email address.</div>
+          <div class="roundup-social">
+            <p>or sign in with</p>
+            <div class="social-row">
+              <span class="soc-box">f</span>
+              <span class="soc-box">G</span>
+              <span class="soc-box">A</span>
+              <span class="soc-box">M</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>UrbanPulse</h3>
+          <p>Independent journalism you can trust. Delivering truth in every story since 2026.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Twitter">TW</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Github">GH</a>
+          </div>
+        </div>
+        <div class="footer-section"><h4>Categories</h4><ul><li><a href="technology.php">Technology</a></li><li><a href="sports.php">Sports</a></li><li><a href="entertainment.php">Entertainment</a></li><li><a href="worldnews.php">World News</a></li></ul></div>
+        <div class="footer-section"><h4>Company</h4><ul><li><a href="about.php">About Us</a></li><li><a href="contact.php">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Advertise</a></li></ul></div>
+        <div class="footer-section"><h4>Pledge</h4><p>We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated.</p></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 UrbanPulse News. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
+    <div class="burger-top">
+      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>
+      </button>
+      <div class="burger-brand"><div class="burger-logo">UrbanPulse</div><div class="burger-tagline">Feel the Ripple!</div></div>
+    </div>
+    <div class="burger-body">
+      <div class="burger-section">
+        <div class="burger-section-title">Browse</div>
+        <nav class="burger-links">
+          <a class="burger-link" data-nav href="home.php">Home</a>
+          <a class="burger-link" data-nav href="technology.php">Technology</a>
+          <a class="burger-link" data-nav href="sports.php">Sports</a>
+          <a class="burger-link" data-nav href="entertainment.php">Entertainment</a>
+          <a class="burger-link" data-nav href="worldnews.php">World News</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="burger.js"></script>
+  <script src="search.js"></script>
+  <script>
+    // Pass PHP login status to JavaScript
+    const UP_IS_LOGGED_IN = <?php echo $currentUser ? 'true' : 'false'; ?>;
+</script>
+<script src="article-interactions.js"></script>
+</body>
+</html>

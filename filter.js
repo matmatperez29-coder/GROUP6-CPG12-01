@@ -136,6 +136,55 @@
     runFilter();
   });
 
+  /* ── Text search on tools-bar input ── */
+  const searchInput = document.getElementById('articleSearch');
+  if (searchInput) {
+    let searchTimer;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        const q = this.value.trim().toLowerCase();
+        const articles = document.querySelectorAll(
+          '.story-card, .category-card, .compact-story, .more-card, .hero-story'
+        );
+        let visible = 0;
+        articles.forEach(article => {
+          const searchData = (article.dataset.search || '').toLowerCase();
+          const titleEl    = article.querySelector('h1,h2,h3,h4');
+          const titleText  = (titleEl ? titleEl.textContent : '').toLowerCase();
+          const matches    = !q || searchData.includes(q) || titleText.includes(q);
+          if (matches) {
+            article.style.display = '';
+            article.classList.remove('filter-hidden');
+            visible++;
+          } else {
+            article.classList.add('filter-hidden');
+            setTimeout(() => {
+              if (article.classList.contains('filter-hidden')) article.style.display = 'none';
+            }, 250);
+          }
+        });
+        // Show/hide filterEmpty notice
+        const filterEmpty = document.getElementById('filterEmpty');
+        if (filterEmpty) {
+          filterEmpty.classList.toggle('is-visible', q !== '' && visible === 0);
+        }
+        // Update search input highlight
+        searchInput.style.borderColor = q ? '#c8102e' : '';
+      }, 150);
+    });
+    // Clear on X button
+    searchInput.addEventListener('search', function () {
+      if (!this.value) {
+        document.querySelectorAll('.story-card, .category-card, .compact-story, .more-card, .hero-story')
+          .forEach(a => { a.style.display = ''; a.classList.remove('filter-hidden'); });
+        const filterEmpty = document.getElementById('filterEmpty');
+        if (filterEmpty) filterEmpty.classList.remove('is-visible');
+        searchInput.style.borderColor = '';
+      }
+    });
+  }
+
   /* ── CSS injected by JS for filter animations ── */
   const style = document.createElement('style');
   style.textContent = `
