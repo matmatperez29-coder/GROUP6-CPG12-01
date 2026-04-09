@@ -1,14 +1,20 @@
-<?php
-require_once 'db.php';
-require_once 'auth.php'; // This also starts the session and connects to the DB
-$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
-?>
+<?php $pageId = 'sports'; ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title> UrbanPulse | Sports Page </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('up_theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (error) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,12 +32,96 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
       }
     </style>
 
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="pulse-features.css">
 </head>
-<body>
+<body data-page="<?php echo htmlspecialchars($pageId, ENT_QUOTES, 'UTF-8'); ?>">
 
 	<!-- BREAKING NEWS STICKER -->
-	<?php require_once 'nav.php'; ?>
+	<div class="BreakingNews">
+		<span class="BreakingNewsLabel"> Breaking News </span>
+		<div class="BreakingNewsContent">
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+		</div>
+	</div>
 
+
+
+<!-- NAVIGATION BAR -->
+<header class="header-main">
+  <div class="header-container">
+    <!-- LEFT: Burger + Logo -->
+    <div class="header-left">
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-controls="burgerMenu"
+        aria-expanded="false"
+      >
+        <span class="burger-icon" aria-hidden="true"
+          ><span></span><span></span><span></span
+        ></span>
+      </button>
+      <!-- LOGO & TAGLINE -->
+      <span class="header-logo">
+        <h1>UrbanPulse</h1>
+        <p class="header-logo-tagline">Feel the Ripple!</p>
+      </span>
+    </div>
+
+    <!-- CENTER: Navigation -->
+    <nav class="main-nav">
+      <a href="home.php"> Home </a>
+      <a href="technology.php"> Technology </a>
+      <a href="sports.php" class="active"> Sports </a>
+      <a href="entertainment.php"> Entertainment </a>
+      <a href="worldnews.php"> World News</a>
+    </nav>
+
+    <!-- RIGHT: Search + Login + Subscribe -->
+    <div class="header-right">
+      <!-- Search icon only -->
+      <button class="search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+      <button class="pulse-alert-trigger" id="pulseAlertToggle" type="button" aria-label="Open UrbanPulse alerts">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"></path>
+          <path d="M10 21a2 2 0 0 0 4 0"></path>
+        </svg>
+        <span class="pulse-alert-badge" id="pulseAlertBadge" hidden>0</span>
+      </button>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle light and dark mode">
+            <span class="theme-toggle-track" aria-hidden="true">
+              <span class="theme-toggle-icon theme-toggle-sun">☀</span>
+              <span class="theme-toggle-thumb"></span>
+              <span class="theme-toggle-icon theme-toggle-moon">☾</span>
+            </span>
+          </button>
+
+      <span class="header-right-divider"></span>
+      <div class="header-login">
+        <a href="login.php" target="_blank">
+          <img src="IMAGES/usericon.png" alt="User" width="24" height="24" />
+        </a>
+      </div>
+      <span class="header-right-divider"></span>
+      <div class="header-subscription">
+        <a href="subscription.php"><strong>Subscribe</strong></a>
+      </div>
+    </div>
+  </div>
+</header>
 
 
 
@@ -73,10 +163,12 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                 </div>
             </section>
 
+<?php include __DIR__ . '/includes/editorial-tools.php'; ?>
+
             <div id="filterEmpty" class="filter-empty">No sports stories match your current search and filter combination.</div>
 
             <section class="hero-featured" data-filter-section>
-                <article class="hero-main filter-item" data-category="football" data-date="2025-02-09" data-search="Eagles Chiefs Super Bowl LIX Jalen Hurts Patrick Mahomes Cooper DeJean Marcus Thompson football NFL title">
+                <a href="article-eagles-super-bowl.php" class="card-link"><article class="hero-main filter-item" data-category="football" data-date="2025-02-09" data-search="Eagles Chiefs Super Bowl LIX Jalen Hurts Patrick Mahomes Cooper DeJean Marcus Thompson football NFL title">
                     <div class="media-slot hero-image"><span>Hero image slot</span><small>Insert 16:9 Eagles vs Chiefs image</small></div>
                     <span class="hero-category">American Football</span>
                     <h2 class="hero-title">Eagles Dethrone Chiefs to Claim Super Bowl LIX Title</h2>
@@ -93,7 +185,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                         <span>•</span>
                         <span>6:30 PM EST</span>
                     </div>
-                </article>
+                </article></a>
 
                 <aside class="hero-sidebar">
                     <article class="sidebar-story filter-item" data-category="basketball" data-date="2025-06-22" data-search="Thunder OKC NBA Finals Gilgeous-Alexander Holmgren Haliburton Sarah Jenkins basketball championship">
@@ -106,11 +198,11 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                         <h3 class="sidebar-title">PSG Complete a Historic Treble with a Ruthless 5-0 Final</h3>
                         <div class="sidebar-meta"><span>James Pratt</span><span>•</span><span>May 31, 2025</span></div>
                     </article>
-                    <article class="sidebar-story filter-item" data-category="tennis" data-date="2025-07-13" data-search="Wimbledon Sinner Swiatek Carlos Alcaraz Amanda Anisimova Elena Costas tennis finals">
+                    <a href="article-wimbledon.php" class="card-link"><article class="sidebar-story filter-item" data-category="tennis" data-date="2025-07-13" data-search="Wimbledon Sinner Swiatek Carlos Alcaraz Amanda Anisimova Elena Costas tennis finals">
                         <span class="sidebar-category">Tennis</span>
                         <h3 class="sidebar-title">Sinner and Swiatek Own the Wimbledon Spotlight</h3>
                         <div class="sidebar-meta"><span>Elena Costas</span><span>•</span><span>July 13, 2025</span></div>
-                    </article>
+                    </article></a>
                     <article class="sidebar-story filter-item" data-category="baseball" data-date="2025-11-02" data-search="Dodgers Blue Jays World Series Ohtani Yamamoto David Sutherland baseball back to back titles">
                         <span class="sidebar-category">Baseball</span>
                         <h3 class="sidebar-title">Dodgers Go Back-to-Back in an 11-Inning World Series Thriller</h3>
@@ -172,7 +264,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                         <button class="read-more-btn" type="button" data-read-more="sportsCard2" aria-expanded="false">Read more</button>
                         <div class="story-meta"><span class="story-author">James Pratt</span><span>•</span><span>May 31, 2025</span></div>
                     </article>
-                    <article class="story-card filter-item" data-category="tennis" data-date="2025-07-13" data-search="Sinner Swiatek Wimbledon Alcaraz Anisimova tennis grass Elena Costas">
+                    <a href="article-wimbledon.php" class="card-link"><article class="story-card filter-item" data-category="tennis" data-date="2025-07-13" data-search="Sinner Swiatek Wimbledon Alcaraz Anisimova tennis grass Elena Costas">
                         <div class="media-slot story-image"><span>Image slot</span><small>Insert Wimbledon finals image</small></div>
                         <span class="story-pill">Tennis</span>
                         <h3 class="story-title">Sinner and Swiatek Dominate Historic Wimbledon Finals</h3>
@@ -180,7 +272,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                         <div id="sportsCard3" class="read-more-content" hidden><p class="sport-copy">Sinner stopped Alcaraz's 20-match grass winning streak, and Swiatek's 6-0, 6-0 victory became the first double-bagel Grand Slam final since 1988.</p></div>
                         <button class="read-more-btn" type="button" data-read-more="sportsCard3" aria-expanded="false">Read more</button>
                         <div class="story-meta"><span class="story-author">Elena Costas</span><span>•</span><span>July 13, 2025</span></div>
-                    </article>
+                    </article></a>
                 </div>
             </section>
 
@@ -206,11 +298,11 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                     </article>
 
                     <aside class="sport-sidebar">
-                        <article class="compact-story filter-item" data-category="football" data-date="2025-02-09" data-search="Hurts MVP tush push Chiefs Eagles Super Bowl football">
+                        <a href="article-eagles-super-bowl.php" class="card-link"><article class="compact-story filter-item" data-category="football" data-date="2025-02-09" data-search="Hurts MVP tush push Chiefs Eagles Super Bowl football">
                             <span class="story-pill">Football</span>
                             <h4 class="compact-title">Hurts' all-around control turned the Super Bowl into a statement performance</h4>
                             <div class="compact-meta"><span>Marcus Thompson</span><span>•</span><span>Player of the night</span></div>
-                        </article>
+                        </article></a>
                         <article class="compact-story filter-item" data-category="basketball" data-date="2025-06-22" data-search="Holmgren 5 blocks Jalen Williams 20 points Thunder Pacers basketball">
                             <span class="story-pill">Basketball</span>
                             <h4 class="compact-title">Holmgren and Williams gave OKC the push it needed in the third quarter</h4>
@@ -221,11 +313,11 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                             <h4 class="compact-title">Luis Enrique finally led PSG to the European breakthrough they chased for years</h4>
                             <div class="compact-meta"><span>James Pratt</span><span>•</span><span>Historic night</span></div>
                         </article>
-                        <article class="compact-story filter-item" data-category="tennis" data-date="2025-07-13" data-search="double bagel Grand Slam final Swiatek Sinner Wimbledon tennis">
+                        <a href="article-wimbledon.php" class="card-link"><article class="compact-story filter-item" data-category="tennis" data-date="2025-07-13" data-search="double bagel Grand Slam final Swiatek Sinner Wimbledon tennis">
                             <span class="story-pill">Tennis</span>
                             <h4 class="compact-title">Wimbledon delivered one breakthrough and one unforgettable statement win</h4>
                             <div class="compact-meta"><span>Elena Costas</span><span>•</span><span>Centre Court story</span></div>
-                        </article>
+                        </article></a>
                     </aside>
                 </div>
             </section>
@@ -238,7 +330,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                     <span class="section-link">List layout</span>
                 </div>
                 <div class="story-list">
-                    <article class="list-story filter-item" data-category="football" data-date="2025-02-09" data-search="Eagles Chiefs Super Bowl DeJean Hurts football">
+                    <a href="article-eagles-super-bowl.php" class="card-link"><article class="list-story filter-item" data-category="football" data-date="2025-02-09" data-search="Eagles Chiefs Super Bowl DeJean Hurts football">
                         <div class="media-slot list-image"><span>Image slot</span><small>Insert Super Bowl celebration image</small></div>
                         <div class="list-content">
                             <span class="story-pill">American Football</span>
@@ -246,7 +338,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                             <p class="list-copy">Six sacks, three turnovers, and a pick-six from Cooper DeJean turned the biggest game of the year into a showcase for the Eagles' balance on both sides of the ball.</p>
                             <div class="story-meta"><span class="story-author">Marcus Thompson</span><span>•</span><span>Super Bowl LIX</span></div>
                         </div>
-                    </article>
+                    </article></a>
                     <article class="list-story filter-item" data-category="basketball" data-date="2025-06-22" data-search="Shai MVP scoring title Finals MVP Thunder basketball">
                         <div class="media-slot list-image"><span>Image slot</span><small>Insert Shai or Thunder finals image</small></div>
                         <div class="list-content">
@@ -453,8 +545,11 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
     </aside>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="burger.js"></script>
+		<script src="burger.js"></script>
+	<script src="theme.js"></script>
 	<script src="interactions.js"></script>
 	<script src="comments_updated.js"></script>
+<script src="pulse-features.js"></script>
+<script src="editorial-tools.js"></script>
 </body>
 </html>

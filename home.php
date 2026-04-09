@@ -1,27 +1,9 @@
 <?php
+$pageId = 'home';
+session_start();
 require_once 'db.php';
-require_once 'auth.php'; // This also starts the session and connects to the DB
-$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
-
-// Fetch approved submitted articles from DB
-$db = getDB();
-$dbArticles = [];
-try {
-    $stmt = $db->query("
-        SELECT s.id, s.title, s.category, s.summary, s.image_url, s.submitted_at,
-               u.name AS author_name
-        FROM article_submissions s
-        JOIN users u ON s.author_id = u.id
-        WHERE s.status = 'approved'
-        ORDER BY s.submitted_at DESC
-        LIMIT 20
-    ");
-    $dbArticles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (Exception $e) {
-    $dbArticles = [];
-}
-
-$catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b59b6','worldnews'=>'#27ae60'];
+require_once 'auth.php';
+$currentUser = getCurrentUser();
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,6 +11,16 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
     <title>UrbanPulse | Landing Page</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('up_theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (error) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -61,12 +53,19 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
         background: #fff !important;
       }
     </style>
+      <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="pulse-features.css" />
+    <link rel="stylesheet" href="editorial-tools.css" />
   </head>
-  <body>
-    <!-- BREAKING NEWS STICKER -->
+  <body data-page="<?php echo htmlspecialchars($pageId, ENT_QUOTES, 'UTF-8'); ?>">
+
+    <!-- NAVIGATION BAR -->
     <?php require_once 'nav.php'; ?>
 
-<main>
+
+
+    <!-- MAIN CONTENT - BBC STYLE LAYOUT -->
+    <main>
       <div class="container">
         <section class="tools-bar" aria-label="Home page tools">
           <div class="tools-field">
@@ -94,6 +93,8 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           </div>
         </section>
 
+<?php include __DIR__ . '/includes/editorial-tools.php'; ?>
+
         <div id="filterEmpty" class="filter-empty">No home page stories match your current search and filter combination.</div>
         <!-- Top Stories Banner -->
         <div class="top-banner">
@@ -102,7 +103,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
 
         <!-- Hero Story (Large Top Story) -->
         <section class="hero-featured-home" data-filter-section>
-        <a href="article-ai-agentic-revolution.php" class="card-link"><div class="hero-story filter-item" data-category="technology" data-date="2026-01-12" data-search="agentic AI autonomous systems enterprise productivity human-in-the-loop oversight Aris Thorne technology 2026">
+        <a href="article-ai-agentic-revolution.php" class="card-link"><div class="hero-story filter-item" data-category="technology" data-date="2026-01-12">
           <div class="hero-image"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&auto=format&fit=crop" alt="Artificial Intelligence concept" loading="lazy"></div>
           <div class="hero-content">
             <h1 class="hero-title">The Transition to Agentic AI and Autonomous Systems</h1>
@@ -115,6 +116,12 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
               <span class="category-tag">TECHNOLOGY</span>
               <span class="time-stamp">Jan 12, 2026 · 10:00 AM PST · Aris Thorne</span>
             </div>
+            <button class="pulse-transcript-trigger" type="button" data-transcript-id="tech-agentic">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Transcript Lens
+</button>
           </div>
         </div></a>
         </section>
@@ -122,7 +129,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
         <!-- Secondary Stories Grid (BBC 3-column layout) -->
         <div class="stories-grid" data-filter-section>
 
-          <a href="article-eagles-super-bowl.php" class="card-link"><div class="story-card filter-item" data-category="sports" data-date="2025-02-09" data-search="Philadelphia Eagles Super Bowl LIX Kansas City Chiefs Marcus Thompson football NFL championship">
+          <a href="article-eagles-super-bowl.php" class="card-link"><div class="story-card filter-item" data-category="sports" data-date="2025-02-09">
             <div class="story-image"><img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&auto=format&fit=crop" alt="News" loading="lazy"></div>
             <div class="story-content">
               <h3 class="story-title">Philadelphia Eagles Triumph in Super Bowl LIX</h3>
@@ -131,10 +138,16 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <span class="category-tag">Sports</span>
                 <span class="time-stamp">Feb 9, 2025 · Marcus Thompson</span>
               </div>
+              <button class="pulse-transcript-trigger" type="button" data-transcript-id="sports-eagles">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Game transcript
+</button>
             </div>
           </div></a>
 
-          <a href="article-gpt6-beta.php" class="card-link"><div class="story-card filter-item" data-category="technology" data-date="2026-02-18" data-search="GPT-6 beta emotional reasoning AI digital consciousness ethicists Julian Vane technology 2026">
+          <a href="article-gpt6-beta.php" class="card-link"><div class="story-card filter-item" data-category="technology" data-date="2026-02-18">
             <div class="story-image"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop" alt="News" loading="lazy"></div>
             <div class="story-content">
               <h3 class="story-title">GPT-6 Early Beta: Users Report "Near-Human" Emotional Reasoning</h3>
@@ -143,10 +156,16 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <span class="category-tag">Technology</span>
                 <span class="time-stamp">Feb 18, 2026 · Julian Vane</span>
               </div>
+              <button class="pulse-transcript-trigger" type="button" data-transcript-id="tech-gpt6">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Transcript Lens
+</button>
             </div>
           </div></a>
 
-          <a href="article-plastic-oceans.php" class="card-link"><div class="story-card filter-item" data-category="worldnews" data-date="2026-02-21" data-search="plastic-free oceans Blue Horizon accord Geneva G20 coral reefs Julian Vane world news 2026">
+          <a href="article-plastic-oceans.php" class="card-link"><div class="story-card filter-item" data-category="worldnews" data-date="2026-02-21">
             <div class="story-image"><img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&auto=format&fit=crop" alt="News" loading="lazy"></div>
             <div class="story-content">
               <h3 class="story-title">Global Summit Targets Plastic-Free Oceans by 2040</h3>
@@ -155,6 +174,12 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <span class="category-tag">World News</span>
                 <span class="time-stamp">Feb 21, 2026 · Julian Vane</span>
               </div>
+              <button class="pulse-transcript-trigger" type="button" data-transcript-id="home-blue-horizon">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Transcript Lens
+</button>
             </div>
           </div></a>
 
@@ -170,7 +195,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <!-- Compact Story List (BBC style) -->
           <div class="compact-stories">
 
-            <a href="article-gpt6-beta.php" class="card-link"><div class="compact-story filter-item" data-category="technology" data-date="2026-02-18" data-search="GPT-6 beta emotional reasoning AI Julian Vane technology">
+            <a href="article-gpt6-beta.php" class="card-link"><div class="compact-story filter-item" data-category="technology" data-date="2026-02-18">
               <div class="compact-image"><img src="https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=300&auto=format&fit=crop" alt="News" loading="lazy"></div>
               <div class="compact-content">
                 <h4>GPT-6 Early Beta: Users Report "Near-Human" Emotional Reasoning</h4>
@@ -178,7 +203,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
               </div>
             </div></a>
 
-            <a href="article-eagles-super-bowl.php" class="card-link"><div class="compact-story filter-item" data-category="sports" data-date="2025-02-09" data-search="Philadelphia Eagles Super Bowl LIX Marcus Thompson football NFL championship Kansas City Chiefs">
+            <a href="article-eagles-super-bowl.php" class="card-link"><div class="compact-story filter-item" data-category="sports" data-date="2025-02-09">
               <div class="compact-image"><img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=300&auto=format&fit=crop" alt="News" loading="lazy"></div>
               <div class="compact-content">
                 <h4>Philadelphia Eagles Triumph in Super Bowl LIX</h4>
@@ -186,7 +211,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
               </div>
             </div></a>
 
-            <a href="article-wimbledon.php" class="card-link"><div class="compact-story filter-item" data-category="sports" data-date="2025-07-13" data-search="Jannik Sinner Iga Swiatek Wimbledon 2025 tennis Elena Costas grass court finals">
+            <a href="article-wimbledon.php" class="card-link"><div class="compact-story filter-item" data-category="sports" data-date="2025-07-13">
               <div class="compact-image"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=300&auto=format&fit=crop" alt="News" loading="lazy"></div>
               <div class="compact-content">
                 <h4>Jannik Sinner and Iga Świątek Rule Wimbledon 2025</h4>
@@ -194,7 +219,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
               </div>
             </div></a>
 
-            <a href="article-asean.php" class="card-link"><div class="compact-story filter-item" data-category="worldnews" data-date="2026-02-23" data-search="ASEAN trade pact digital currency framework Southeast Asia Aris Thorne world news 2026">
+            <a href="article-asean.php" class="card-link"><div class="compact-story filter-item" data-category="worldnews" data-date="2026-02-23">
               <div class="compact-image"><img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=300&auto=format&fit=crop" alt="News" loading="lazy"></div>
               <div class="compact-content">
                 <h4>ASEAN Trade Pact Establishes Digital Currency Framework</h4>
@@ -202,7 +227,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
               </div>
             </div></a>
 
-            <a href="article-cinema-renaissance.php" class="card-link"><div class="compact-story filter-item" data-category="entertainment" data-date="2026-02-22" data-search="cinema directors fourth wall AI film festival 70mm Elena Thorne entertainment 2026">
+            <a href="article-cinema-renaissance.php" class="card-link"><div class="compact-story filter-item" data-category="entertainment" data-date="2026-02-22">
               <div class="compact-image"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=300&auto=format&fit=crop" alt="News" loading="lazy"></div>
               <div class="compact-content">
                 <h4>The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall</h4>
@@ -221,7 +246,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <h2 class="section-heading">TECHNOLOGY</h2>
           <div class="category-grid">
 
-            <a href="article-humanoid-robots.php" class="card-link"><div class="category-card filter-item" data-category="technology" data-date="2025-11-14" data-search="humanoid robots manufacturing bipedal AI labor automotive Sarah Jenkins technology 2025">
+            <div class="category-card filter-item" data-category="technology" data-date="2025-11-14">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&auto=format&fit=crop" alt="Technology" loading="lazy"></div>
               <h3>Humanoid Robots Join Global Manufacturing Lines</h3>
               <p class="story-summary">Major automotive plants integrated bipedal robots to handle hazardous materials and repetitive assembly tasks.
@@ -231,9 +256,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Nov 14, 2025 · 9:45 AM GMT · Sarah Jenkins</span>
-            </div></a>
+            </div>
 
-            <a href="article-meta-messenger.php" class="card-link"><div class="category-card filter-item" data-category="technology" data-date="2026-02-18" data-search="Meta Messenger desktop shutdown Facebook April 2026 Sharona Nicole Semilla technology">
+            <div class="category-card filter-item" data-category="technology" data-date="2026-02-18">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=600&auto=format&fit=crop" alt="Technology" loading="lazy"></div>
               <h3>Meta to Shut Down Messenger Desktop Website</h3>
               <p class="story-summary">Meta is officially pulling the plug on Messenger.com in April 2026, ending the platform's decade-long run as a standalone desktop experience.
@@ -243,9 +268,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 18, 2026 · 10:09 PM PHT · Sharona Nicole Semilla</span>
-            </div></a>
+            </div>
 
-            <a href="article-infinix.php" class="card-link"><div class="category-card filter-item" data-category="technology" data-date="2026-02-23" data-search="Infinix NOTE 60 solid-state battery smartphone Sam Chen technology 2026">
+            <div class="category-card filter-item" data-category="technology" data-date="2026-02-23">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&auto=format&fit=crop" alt="Technology" loading="lazy"></div>
               <h3>Infinix Unveils NOTE 60 Series with Revolutionary Battery Tech</h3>
               <p class="story-summary">The NOTE 60 Series introduces a solid-state battery hybrid that allows for a week of moderate usage on a single charge.
@@ -255,7 +280,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 23, 2026 · 2:30 PM CST · Sam Chen</span>
-            </div></a>
+            </div>
 
           </div>
         </div>
@@ -268,7 +293,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <h2 class="section-heading">SPORTS</h2>
           <div class="category-grid">
 
-            <a href="article-okc-thunder.php" class="card-link"><div class="category-card filter-item" data-category="sports" data-date="2025-06-22" data-search="Oklahoma City Thunder NBA championship Shai Gilgeous-Alexander Indiana Pacers Sarah Jenkins basketball 2025">
+            <div class="category-card filter-item" data-category="sports" data-date="2025-06-22">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1546519638405-a4d4e8df12b5?w=600&auto=format&fit=crop" alt="Sports" loading="lazy"></div>
               <h3>Oklahoma City Thunder Win First Title in 46 Years</h3>
               <p class="story-summary">In the first NBA Finals Game 7 since 2016, the OKC Thunder defeated the Indiana Pacers 103–91 to capture the 2025 NBA Championship.
@@ -278,9 +303,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Jun 22, 2025 · 8:00 PM CST · Sarah Jenkins</span>
-            </div></a>
+            </div>
 
-            <a href="article-psg.php" class="card-link"><div class="category-card filter-item" data-category="sports" data-date="2025-05-31" data-search="PSG Paris Saint-Germain Champions League Inter Milan Desire Doue treble James Pratt soccer football 2025">
+            <div class="category-card filter-item" data-category="sports" data-date="2025-05-31">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&auto=format&fit=crop" alt="Sports" loading="lazy"></div>
               <h3>PSG Claims Maiden Champions League Trophy</h3>
               <p class="story-summary">Paris Saint-Germain finally achieved their long-sought European glory, dismantling Inter Milan 5–0 in the UEFA Champions League Final at the Allianz Arena in Munich.
@@ -290,9 +315,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">May 31, 2025 · 9:00 PM CET · James Pratt</span>
-            </div></a>
+            </div>
 
-            <a href="article-dodgers.php" class="card-link"><div class="category-card filter-item" data-category="sports" data-date="2025-11-02" data-search="Dodgers World Series Blue Jays back-to-back Miguel Rojas Will Smith Yamamoto David Sutherland baseball 2025">
+            <div class="category-card filter-item" data-category="sports" data-date="2025-11-02">
               <div class="category-image"><img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?w=600&auto=format&fit=crop" alt="Sports" loading="lazy"></div>
               <h3>Dodgers Repeat as World Series Champions</h3>
               <p class="story-summary">The Los Angeles Dodgers became the first team in the 21st century to win back-to-back World Series titles, defeating the Toronto Blue Jays 5–4 in an 11-inning Game 7 thriller.
@@ -302,7 +327,7 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Nov 2, 2025 · 8:00 PM EST · David Sutherland</span>
-            </div></a>
+            </div>
 
           </div>
         </div>
@@ -315,7 +340,8 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <h2 class="section-heading">ENTERTAINMENT</h2>
           <div class="category-grid">
 
-            <a href="article-cinema-renaissance.php" class="card-link"><div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22" data-search="cinema directors fourth wall AI film festival 70mm Elena Thorne entertainment renaissance 2026">
+            <a href="article-cinema-renaissance.php" class="card-link"><div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&auto=format&fit=crop" alt="Entertainment" loading="lazy"></div>
               <h3>The Renaissance of Cinema: 2026's Boldest Directors Breaking the Fourth Wall</h3>
               <p class="story-summary">From immersive AI-driven narratives to the return of 70mm film, this year's festival circuit is proving that the big screen experience is more alive than ever.
                 <span class="more-text" style="display: none">
@@ -324,9 +350,10 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 22, 2026 · 8 MIN READ · Elena Thorne</span>
-            </div></a>
+            </div>
 
-            <a href="article-aero.php" class="card-link"><div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22" data-search="AERO AI rapper music streaming charts record labels Binary B. entertainment 2026">
+            <div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&auto=format&fit=crop" alt="Entertainment" loading="lazy"></div>
               <h3>AI Rapper 'AERO' Hits Number One on Global Charts</h3>
               <p class="story-summary">The AI-generated artist AERO has topped global streaming charts for the second consecutive week, reigniting fierce debates about authenticity in the music industry.
                 <span class="more-text" style="display: none">
@@ -335,9 +362,10 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 22, 2026 · Binary B.</span>
-            </div></a>
+            </div>
 
-            <a href="article-vinyl.php" class="card-link"><div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22" data-search="vinyl records digital downloads music sales Liam West entertainment record stores 2026">
+            <div class="category-card filter-item" data-category="entertainment" data-date="2026-02-22">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600&auto=format&fit=crop" alt="Entertainment" loading="lazy"></div>
               <h3>Vinyl Sales Outpace Digital Downloads for Third Year Running</h3>
               <p class="story-summary">Physical vinyl records have outsold digital downloads for the third consecutive year, marking a seismic shift in how audiences choose to experience music.
                 <span class="more-text" style="display: none">
@@ -346,9 +374,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 22, 2026 · Liam West</span>
-            </div></a>
+            </div>
 
-          </div>
+          </div></a>
         </div>
 
         <!-- Section Divider -->
@@ -359,7 +387,8 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <h2 class="section-heading">WORLD NEWS</h2>
           <div class="category-grid">
 
-            <a href="article-plastic-oceans.php" class="card-link"><div class="category-card filter-item" data-category="worldnews" data-date="2026-02-21" data-search="plastic-free oceans Blue Horizon accord Geneva G20 coral reefs Julian Vane world news 2026">
+            <a href="article-plastic-oceans.php" class="card-link"><div class="category-card filter-item" data-category="worldnews" data-date="2026-02-21">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1484291470158-b8f8d608850d?w=600&auto=format&fit=crop" alt="World News" loading="lazy"></div>
               <h3>Global Summit Targets Plastic-Free Oceans by 2040</h3>
               <p class="story-summary">World leaders ratified the "Blue Horizon" accord in Geneva, mandating a 90% reduction in single-use plastics across G20 nations.
                 <span class="more-text" style="display: none">
@@ -368,9 +397,10 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 21, 2026 · 10:00 AM GMT · Julian Vane</span>
-            </div></a>
+            </div>
 
-            <a href="article-mars.php" class="card-link"><div class="category-card filter-item" data-category="worldnews" data-date="2026-02-22" data-search="Mars Base Alpha greenhouse harvest microgreens colony Sarah Jenkins world news 2026">
+            <div class="category-card filter-item" data-category="worldnews" data-date="2026-02-22">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=600&auto=format&fit=crop" alt="World News" loading="lazy"></div>
               <h3>Mars Base Alpha Reports First Successful Greenhouse Harvest</h3>
               <p class="story-summary">Scientists at the Mars Base Alpha colony successfully harvested their first crop of self-sustaining microgreens, a critical milestone in long-term human habitation beyond Earth.
                 <span class="more-text" style="display: none">
@@ -379,9 +409,10 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 22, 2026 · 11:30 PM EST · Sarah Jenkins</span>
-            </div></a>
+            </div>
 
-            <a href="article-asean.php" class="card-link"><div class="category-card filter-item" data-category="worldnews" data-date="2026-02-23" data-search="ASEAN trade pact digital currency Southeast Asia Aris Thorne world news 2026">
+            <div class="category-card filter-item" data-category="worldnews" data-date="2026-02-23">
+              <div class="category-image"><img src="https://images.unsplash.com/photo-1467912407355-245f30185020?w=600&auto=format&fit=crop" alt="World News" loading="lazy"></div>
               <h3>ASEAN Trade Pact Establishes Digital Currency Framework</h3>
               <p class="story-summary">Ten Southeast Asian nations signed a landmark trade pact introducing a unified digital currency framework to stabilize regional markets against global volatility.
                 <span class="more-text" style="display: none">
@@ -390,9 +421,9 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
                 <button class="toggle-btn" onclick="toggleReadMore(this)">Read more</button>
               </p>
               <span class="time-tag">Feb 23, 2026 · 8:15 AM PHT · Aris Thorne</span>
-            </div></a>
+            </div>
 
-          </div>
+          </div></a>
         </div>
 
         <!-- Section Divider -->
@@ -403,88 +434,39 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
           <h2 class="section-heading">MORE STORIES</h2>
           <div class="more-grid">
 
-            <a href="article-quantum.php" class="card-link"><div class="more-card filter-item" data-category="technology" data-date="2026-02-23" data-search="quantum materials 1D electron behavior scientists Elena Costas technology 2026">
+            <div class="more-card filter-item" data-category="technology" data-date="2026-02-23">
               <h4>Quantum Materials: Scientists Confirm "True" 1D Electron Behavior</h4>
               <p class="more-meta"><span class="category-tag">TECHNOLOGY</span> · Feb 23, 2026 · Elena Costas</p>
-            </div></a>
+            </div>
 
-            <a href="article-australia-ai.php" class="card-link"><div class="more-card filter-item" data-category="technology" data-date="2026-02-22" data-search="Australia sovereign AI factory Marcus Thompson technology 2026">
+            <div class="more-card filter-item" data-category="technology" data-date="2026-02-22">
               <h4>Australia Launches First Secure Sovereign AI Factory</h4>
               <p class="more-meta"><span class="category-tag">TECHNOLOGY</span> · Feb 22, 2026 · Marcus Thompson</p>
-            </div></a>
+            </div>
 
-            <a href="article-spacex.php" class="card-link"><div class="more-card filter-item" data-category="technology" data-date="2025-11-22" data-search="SpaceX Starship 5 orbital fuel transfer David Sutherland technology 2025">
+            <div class="more-card filter-item" data-category="technology" data-date="2025-11-22">
               <h4>SpaceX Starship 5 Completes First Orbital Fuel Transfer</h4>
               <p class="more-meta"><span class="category-tag">TECHNOLOGY</span> · Nov 22, 2025 · David Sutherland</p>
-            </div></a>
+            </div>
 
-            <a href="article-satellites.php" class="card-link"><div class="more-card filter-item" data-category="worldnews" data-date="2026-02-23" data-search="internet satellite sub-orbital webs Elena Rodriguez world news 2026">
+            <div class="more-card filter-item" data-category="worldnews" data-date="2026-02-23">
               <h4>The Internet's New Frontier: Sub-Orbital Satellite Webs</h4>
               <p class="more-meta"><span class="category-tag">WORLD NEWS</span> · Feb 23, 2026 · Elena Rodriguez</p>
-            </div></a>
+            </div>
 
-            <a href="article-disconnect.php" class="card-link"><div class="more-card filter-item" data-category="worldnews" data-date="2026-02-23" data-search="Brussels right to disconnect EU workers law Marcus Thompson world news 2026">
+            <div class="more-card filter-item" data-category="worldnews" data-date="2026-02-23">
               <h4>Brussels Proposes 'Right to Disconnect' Law for EU Workers</h4>
               <p class="more-meta"><span class="category-tag">WORLD NEWS</span> · Feb 23, 2026 · Marcus Thompson</p>
-            </div></a>
+            </div>
 
-            <a href="article-amazon.php" class="card-link"><div class="more-card filter-item" data-category="worldnews" data-date="2026-02-20" data-search="Amazon reforestation Brazil five-year high David Sutherland world news 2026">
+            <div class="more-card filter-item" data-category="worldnews" data-date="2026-02-20">
               <h4>Amazon Reforestation Hits Five-Year High in Brazil</h4>
               <p class="more-meta"><span class="category-tag">WORLD NEWS</span> · Feb 20, 2026 · David Sutherland</p>
-            </div></a>
+            </div>
 
           </div>
         </div>
       </div>
-
-
-      <!-- APPROVED SUBMITTED ARTICLES FROM DATABASE -->
-      <?php if (!empty($dbArticles)): ?>
-      <div class="container" style="margin-top:2.5rem;">
-        <div class="section-banner" style="background:var(--color-secondary);padding:.75rem 1.5rem;margin-bottom:1.5rem;">
-          <h2 style="color:white;font-family:var(--font-display);font-size:1.1rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin:0;">
-            📰 FROM OUR AUTHORS
-          </h2>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
-          <?php foreach ($dbArticles as $da):
-            $slug = preg_replace('/[^a-z0-9]+/','-', strtolower($da['title']));
-            $dateFormatted = date('M j, Y', strtotime($da['submitted_at']));
-          ?>
-          <a href="view-article.php?id=<?= $da['id'] ?>" class="card-link">
-            <div class="category-card filter-item"
-                 data-category="<?= htmlspecialchars($da['category']) ?>"
-                 data-date="<?= date('Y-m-d', strtotime($da['submitted_at'])) ?>"
-                 data-search="<?= htmlspecialchars($da['title'].' '.$da['summary'].' '.$da['author_name'].' '.$da['category']) ?>">
-              <?php if ($da['image_url']): ?>
-              <div class="category-image">
-                <img src="<?= htmlspecialchars($da['image_url']) ?>"
-                     alt="<?= htmlspecialchars($da['title']) ?>"
-                     loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-              </div>
-              <?php else: ?>
-              <div class="category-image" style="background:<?= $catColors[$da['category']] ?? '#ccc' ?>;display:flex;align-items:center;justify-content:center;">
-                <span style="color:white;font-size:2rem;opacity:.5;">📰</span>
-              </div>
-              <?php endif; ?>
-              <div class="category-content">
-                <span class="category-tag" style="background:<?= $catColors[$da['category']] ?? '#ccc' ?>">
-                  <?= strtoupper(htmlspecialchars($da['category'])) ?>
-                </span>
-                <h3><?= htmlspecialchars($da['title']) ?></h3>
-                <p class="category-excerpt"><?= htmlspecialchars($da['summary']) ?></p>
-                <div class="category-meta">
-                  <span><?= $dateFormatted ?></span>
-                  <span>·</span>
-                  <span><?= htmlspecialchars($da['author_name']) ?></span>
-                </div>
-              </div>
-            </div>
-          </a>
-          <?php endforeach; ?>
-        </div>
-      </div>
-      <?php endif; ?>
 
     <!--FOOTER-->
     <footer class="footer">
@@ -586,19 +568,19 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
             <a
               class="burger-link"
               data-nav
-              href="category-technology_updated.php"
+              href="technology.php"
               >Technology</a
             >
-            <a class="burger-link" data-nav href="category-sport_updated.php"
+            <a class="burger-link" data-nav href="sports.php"
               >Sports</a
             >
             <a
               class="burger-link"
               data-nav
-              href="category-entertainment_updated.php"
+              href="entertainment.php"
               >Entertainment</a
             >
-            <a class="burger-link" data-nav href="category-world_updated.php"
+            <a class="burger-link" data-nav href="worldnews.php"
               >World News</a
             >
           </nav>
@@ -642,95 +624,26 @@ $catColors = ['technology'=>'#0066cc','sports'=>'#ff6b35','entertainment'=>'#9b5
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="burger.js"></script>
-    <script src="filter.js"></script>
-
+    <script src="theme.js"></script>
+    <script src="search.js"></script>
+    <script src="home.js"></script>
+    <script src="comments.js"></script>
     <script>
-      /* ── Read More toggle ── */
       function toggleReadMore(btn) {
-        const more = btn.previousElementSibling;
-        const open = more.style.display === 'inline';
-        more.style.display = open ? 'none' : 'inline';
+        if (window.UrbanPulseEditorial && typeof window.UrbanPulseEditorial.handleLegacyToggle === 'function') {
+          window.UrbanPulseEditorial.handleLegacyToggle(btn);
+          return;
+        }
+        const targetId = btn.dataset.detailTarget;
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        target.hidden = open;
+        btn.setAttribute('aria-expanded', String(!open));
         btn.textContent = open ? 'Read more' : 'Read less';
       }
-
-      /* ── Inline search: filters .filter-item by data-search + heading text ── */
-      (() => {
-        const searchInput = document.getElementById('articleSearch');
-        if (!searchInput) return;
-
-        searchInput.addEventListener('input', function () {
-          const query = this.value.trim().toLowerCase();
-          const items = document.querySelectorAll('.filter-item');
-          let visibleCount = 0;
-
-          items.forEach(item => {
-            const searchData = (item.dataset.search || '').toLowerCase();
-            const headingEl  = item.querySelector('h1, h2, h3, h4');
-            const headingText = headingEl ? headingEl.textContent.toLowerCase() : '';
-            const summaryEl  = item.querySelector('p');
-            const summaryText = summaryEl ? summaryEl.textContent.toLowerCase() : '';
-
-            const matches = !query ||
-              searchData.includes(query) ||
-              headingText.includes(query) ||
-              summaryText.includes(query);
-
-            if (matches) {
-              item.style.display = '';
-              item.classList.remove('filter-hidden');
-              item.classList.add('filter-visible');
-              visibleCount++;
-            } else {
-              item.classList.add('filter-hidden');
-              item.classList.remove('filter-visible');
-              setTimeout(() => {
-                if (item.classList.contains('filter-hidden')) item.style.display = 'none';
-              }, 250);
-            }
-          });
-
-          /* Hide empty parent sections */
-          document.querySelectorAll('[data-filter-section]').forEach(sec => {
-            const hasVisible = Array.from(sec.querySelectorAll('.filter-item'))
-              .some(el => el.style.display !== 'none' && !el.classList.contains('filter-hidden'));
-            sec.style.display = hasVisible ? '' : 'none';
-          });
-
-          /* Show/hide empty notice */
-          const emptyEl = document.getElementById('filterEmpty');
-          if (emptyEl) emptyEl.classList.toggle('is-visible', visibleCount === 0 && query.length > 0);
-        });
-      })();
-
-      /* ── Philstar-style search drop bar toggle ── */
-      (() => {
-        const toggle = document.getElementById('searchToggle');
-        const bar    = document.getElementById('searchBarDrop');
-        const close  = document.getElementById('searchClose');
-        const box    = document.getElementById('searchBox');
-        if (!toggle || !bar) return;
-
-        function openBar() {
-          bar.classList.add('is-open');
-          bar.setAttribute('aria-hidden', 'false');
-          toggle.setAttribute('aria-expanded', 'true');
-          if (box) setTimeout(() => box.focus(), 50);
-        }
-        function closeBar() {
-          bar.classList.remove('is-open');
-          bar.setAttribute('aria-hidden', 'true');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-
-        toggle.addEventListener('click', () => {
-          bar.classList.contains('is-open') ? closeBar() : openBar();
-        });
-        if (close) close.addEventListener('click', closeBar);
-        document.addEventListener('keydown', e => {
-          if (e.key === 'Escape' && bar.classList.contains('is-open')) closeBar();
-        });
-      })();
     </script>
-  </body>
-</html>
+  <script src="pulse-features.js"></script>
+<script src="editorial-tools.js"></script>
+</body>
 </html>

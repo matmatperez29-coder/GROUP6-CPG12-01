@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subscribe - UrbanPulse - Feel the Ripple!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-red: #d33f49;
+      --brand-dark: #222222;
+      --brand-gray: #f8f9fa;
+      --transition-main: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      border-top: 3px solid #000;
+      padding-top: 10px;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      color: #000;
+    }
+
+    /* --- HERO SECTION --- */
+    .sub-hero {
+      padding: 8rem 1rem;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=2069');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      border-bottom: 5px solid var(--brand-red);
+    }
+    .sub-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.5rem; margin-bottom: 1rem; }
+    
+    .btn-hero {
+      background-color: var(--brand-red);
+      color: white;
+      padding: 15px 35px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--brand-red);
+      transition: var(--transition-main);
+      margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-hero:hover { background-color: transparent; color: white; border-color: white; }
+
+    /* --- WHY JOIN CARDS --- */
+    .benefit-box {
+      border: 1px solid #eee;
+      padding: 2rem;
+      transition: var(--transition-main);
+      height: 100%;
+      background: #fff;
+    }
+    .benefit-box:hover {
+      border-color: var(--brand-red);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
+    .benefit-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #eee;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: var(--transition-main);
+    }
+    .benefit-box:hover .benefit-num { color: var(--brand-red); }
+    .benefit-box h3 { font-weight: 800; font-size: 1.15rem; margin-bottom: 0.8rem; }
+
+    /* --- PRICING GRID --- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 5rem;
+    }
+    .price-card {
+      border: 1px solid #ddd;
+      padding: 2.5rem 1.2rem;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      transition: var(--transition-main);
+    }
+    .price-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-color: var(--brand-red);
+    }
+    .price-card.popular {
+      background: var(--brand-dark);
+      color: #fff;
+      border-color: var(--brand-dark);
+      transform: scale(1.05);
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .price-card.popular:hover {
+      transform: scale(1.08) translateY(-10px);
+    }
+    .badge-pop {
+      background: var(--brand-red);
+      color: #fff;
+      padding: 4px 12px;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .price-amt { font-size: 1.8rem; font-weight: 900; margin: 1rem 0; }
+    .price-amt small { font-size: 0.8rem; font-weight: 400; opacity: 0.7; }
+    .price-features { list-style: none; padding: 0; margin-bottom: 1.5rem; text-align: left; flex-grow: 1; font-size: 0.85rem; }
+    .price-features li { margin-bottom: 8px; display: flex; align-items: flex-start; }
+    .price-features li::before { content: "+"; color: var(--brand-red); margin-right: 8px; font-weight: 700; }
+    .popular .price-features li::before { color: #fff; }
+
+    .btn-sub { font-weight: 700; border-radius: 0; padding: 10px; text-transform: uppercase; font-size: 0.8rem; transition: var(--transition-main); width: 100%; }
+    .btn-outline-dark:hover { background-color: var(--brand-dark); color: #fff; }
+    .btn-brand-red { background-color: var(--brand-red); color: white; border: 2px solid var(--brand-red); }
+    .btn-brand-red:hover { background: transparent; color: white; border-color: white; }
+
+    /* --- ACCORDION FAQ --- */
+    .accordion-item { border-radius: 0 !important; border-left: none; border-right: none; }
+    .accordion-button { font-weight: 700; color: #000; font-family: 'Playfair Display', serif; transition: var(--transition-main); }
+    .accordion-button:hover { color: var(--brand-red); background-color: var(--brand-gray); }
+    .accordion-button:not(.collapsed) { background: #fff; color: var(--brand-red); }
+
+    @media (max-width: 1200px) {
+      .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .price-card.popular { transform: none; margin: 20px 0; }
+      .price-card.popular:hover { transform: translateY(-10px); }
+    }
+
+    footer { background: #111; color: #fff; padding: 4rem 0 2rem; }
+  </style>
+</head>
+<body>
+
+  <header class="py-4 text-center">
+    <div class="Logo">
+      <h1 style="font-family: 'Playfair Display', serif; font-weight: 900;">UrbanPulse</h1>
+      <p style="color: var(--brand-red); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Feel the Ripple!</p>
+    </div>
+  </header>
+
+  <section class="sub-hero">
+    <div class="container">
+      <h1>Unlock The Full Pulse</h1>
+      <p>Independent journalism needs independent funding. Deep investigations. Unfiltered reports. Real impact.</p>
+      <a href="#plans" class="btn-hero">View Subscription Plans</a>
+    </div>
+  </section>
+
+  <main class="container my-5">
+
+    <h2 class="section-heading">Why Join UrbanPulse</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 col-lg">
+        <div class="benefit-box">
+          <span class="benefit-num">01</span>
+          <h3>Unfiltered Access</h3>
+          <p class="small">Read every story, archive, and deep-dive investigation without hitting a paywall.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg">
+        <div class="benefit-box">
+          <span class="benefit-num">02</span>
+          <h3>Member Reports</h3>
+          <p class="small">Exclusive weekly briefings from our lead editors on the stories that matter most.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg">
+        <div class="benefit-box">
+          <span class="benefit-num">03</span>
+          <h3>Impact Tracker</h3>
+          <p class="small">See exactly how your subscription funds real-world investigations and social change.</p>
+        </div>
+      </div>
+    </div>
+   
+    <h2 class="section-heading" id="plans">Subscription Plans</h2>
+    <div class="pricing-grid">
+      
+      <div class="price-card">
+        <h4 class="fw-bold small">Student</h4>
+        <div class="price-amt">₱149<small>/mo</small></div>
+        <ul class="price-features">
+          <li>Verified .edu access</li>
+          <li>Unlimited standard articles</li>
+          <li>Weekly Student Brief newsletter</li>
+          <li>Ad-light browsing experience</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-sub">Verify & Sub</button>
+      </div>
+
+      <div class="price-card">
+        <h4 class="fw-bold small">Monthly</h4>
+        <div class="price-amt">₱399<small>/mo</small></div>
+        <ul class="price-features">
+          <li>Unlimited access to all articles</li>
+          <li>Daily Morning Brief newsletter</li>
+          <li>Breaking news alerts</li>
+          <li>Community commenting access</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-sub">Select Monthly</button>
+      </div>
+
+      <div class="price-card popular">
+        <div class="badge-pop">Best Seller / Most Popular</div>
+        <h4 class="fw-bold small">Annual</h4>
+        <div class="price-amt">₱3,999<small>/yr</small></div>
+        <ul class="price-features">
+          <li><strong>Save ₱789 per year</strong></li>
+          <li>Priority access to reports</li>
+          <li>Annual appreciation bonus</li>
+          <li>Locked-in yearly savings</li>
+        </ul>
+        <button class="btn btn-brand-red btn-sub">Get Best Deal</button>
+      </div>
+
+      <div class="price-card">
+        <h4 class="fw-bold small">Premium</h4>
+        <div class="price-amt">₱699<small>/mo</small></div>
+        <ul class="price-features">
+          <li>Everything in Monthly</li>
+          <li>Ad-free browsing experience</li>
+          <li>Deep-dive investigations</li>
+          <li>Digital magazine access</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-sub">Go Premium</button>
+      </div>
+
+      <div class="price-card">
+        <h4 class="fw-bold small">Patron</h4>
+        <div class="price-amt">₱7,999<small>/yr</small></div>
+        <ul class="price-features">
+          <li>Everything in Premium</li>
+          <li>Quarterly insider briefings</li>
+          <li>Patron web recognition</li>
+          <li>Direct editorial feedback</li>
+        </ul>
+        <button class="btn btn-outline-dark btn-sub">Support Us</button>
+      </div>
+    </div>
+
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="accordion accordion-flush mb-5" id="subFaq">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f1">How do I verify my Student status?</button></h2>
+        <div id="f1" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">Use your .edu email at checkout. Our system performs an instant check. If your school is not listed, you can upload a photo of your Student ID for manual approval.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">What is Patron Recognition?</button></h2>
+        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">Patrons help fund our biggest investigations. You'll be listed on our "Founding Supporters" page (optional) and receive a unique digital badge for your profile.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3">Can I upgrade my plan later?</button></h2>
+        <div id="f3" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">Yes. You can upgrade from Monthly to Annual or Premium at any time. We will credit your remaining Monthly balance toward your new plan.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f4">How many devices can I use?</button></h2>
+        <div id="f4" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">Standard plans allow for 2 simultaneous logins. Premium and Patron plans support up to 5 devices including smartphones, tablets, and desktops.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f5">Is there a corporate or group rate?</button></h2>
+        <div id="f5" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">Yes, we offer bulk discounts for organizations or academic institutions with 10 or more users. Please contact our sales team at groups@urbanpulse.com.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f6">What is the cancellation policy?</button></h2>
+        <div id="f6" class="accordion-collapse collapse" data-bs-parent="#subFaq">
+          <div class="accordion-body">You can cancel your subscription at any time through your account settings. You will continue to have access to the service until the end of your current billing period.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; font-weight: 900;">UrbanPulse</h2>
+      <p class="text-white-50 small">Truth. Impact. Independence.</p>
+      <hr class="border-secondary my-4">
+      <p class="small text-white-50">&copy; 2026 UrbanPulse News. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

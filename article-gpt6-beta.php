@@ -1,11 +1,11 @@
 <?php
+session_start();
 require_once 'db.php';
-require_once 'auth.php'; // This also starts the session and connects to the DB
-$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
+require_once 'auth.php';
+$currentUser = getCurrentUser();
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
 <head>
   <title>GPT-6 Early Beta: Users Report "Near-Human" Emotional Reasoning — UrbanPulse</title>
   <meta charset="UTF-8">
@@ -20,21 +20,14 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
   <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="burgermenu.css">
   <link rel="stylesheet" href="article.css">
+  <script>(function(){try{if(localStorage.getItem('up_theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})()</script>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="pulse-features.css">
   <link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png">
 </head>
 <body>
 
   <?php require_once 'nav.php'; ?>
-
-
-
-  <div class="search-bar-drop" id="searchBarDrop" aria-hidden="true">
-    <div class="search-bar-inner">
-      <div id="searchBox" role="searchbox" contenteditable="true" aria-label="Search UrbanPulse" data-placeholder="Enter search item" spellcheck="false"></div>
-      <button class="search-bar-close" id="searchClose" aria-label="Close search">&#10005;</button>
-    </div>
-    <div id="results" class="search-bar-results"></div>
-  </div>
 
   <main class="article-page">
     <div class="article-container">
@@ -206,37 +199,14 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
       <div class="footer-bottom"><p>&copy; 2026 UrbanPulse News. All rights reserved.</p></div>
     </div>
   </footer>
-
-  <div class="menu-overlay" id="menuOverlay" hidden></div>
-  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
-    <div class="burger-top">
-      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>
-      </button>
-      <div class="burger-brand"><div class="burger-logo">UrbanPulse</div><div class="burger-tagline">Feel the Ripple!</div></div>
-    </div>
-    <div class="burger-body">
-      <div class="burger-section">
-        <div class="burger-section-title">Browse</div>
-        <nav class="burger-links">
-          <a class="burger-link" data-nav href="home.php">Home</a>
-          <a class="burger-link" data-nav href="technology.php">Technology</a>
-          <a class="burger-link" data-nav href="sports.php">Sports</a>
-          <a class="burger-link" data-nav href="entertainment.php">Entertainment</a>
-          <a class="burger-link" data-nav href="worldnews.php">World News</a>
-        </nav>
-      </div>
-    </div>
-  </aside>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="burger.js"></script>
+  <script src="theme.js"></script>
   <script src="search.js"></script>
+  <script src="pulse-features.js"></script>
 <script>
-    // Pass PHP login status to JavaScript
     const UP_IS_LOGGED_IN = <?php echo $currentUser ? 'true' : 'false'; ?>;
     const UP_IS_ADMIN     = <?php echo ($currentUser && $currentUser['role'] === 'admin') ? 'true' : 'false'; ?>;
 </script>
-<script src="article-interactions.js"></script>
 </body>
 </html>

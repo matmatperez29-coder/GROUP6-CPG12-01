@@ -1,4 +1,14 @@
 <?php
+// Safety: ensure $currentUser is always available
+if (!isset($currentUser)) {
+    if (!function_exists('getCurrentUser')) {
+        require_once __DIR__ . '/db.php';
+        require_once __DIR__ . '/auth.php';
+    }
+    $currentUser = getCurrentUser();
+}
+?>
+<?php
 // nav.php — Shared header include
 // Usage: require_once 'nav.php'; at top of every page (after auth.php)
 // Requires $currentUser to already be set
@@ -49,6 +59,24 @@
       <!-- RIGHT: all inline styles to defeat Bootstrap -->
       <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0;">
 
+        <!-- Pulse Alert Bell -->
+        <button class="pulse-alert-trigger" id="pulseAlertToggle" type="button" aria-label="Open UrbanPulse alerts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"></path>
+            <path d="M10 21a2 2 0 0 0 4 0"></path>
+          </svg>
+          <span class="pulse-alert-badge" id="pulseAlertBadge" hidden>0</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle dark mode">
+          <span class="theme-toggle-track" aria-hidden="true">
+            <span class="theme-toggle-icon theme-toggle-sun">☀</span>
+            <span class="theme-toggle-thumb"></span>
+            <span class="theme-toggle-icon theme-toggle-moon">☾</span>
+          </span>
+        </button>
+
         <!-- Search icon -->
         <button class="search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false"
           style="background:none;border:none;cursor:pointer;color:#666;padding:0.25rem;display:flex;align-items:center;">
@@ -61,86 +89,43 @@
         <?php if ($currentUser): ?>
 
           <!-- Divider -->
-          <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
+          <span class="nav-divider"></span>
 
           <!-- Avatar circle -->
-          <span style="
-            width:32px;height:32px;border-radius:50%;
-            background-color:<?= htmlspecialchars($currentUser['avatar_color']) ?>;
-            color:#fff;display:inline-flex;align-items:center;justify-content:center;
-            font-weight:800;font-size:0.85rem;flex-shrink:0;
-            font-family:'Source Sans 3',sans-serif;
-            line-height:1;
-          "><?= strtoupper(substr($currentUser['name'],0,1)) ?></span>
+          <span class="nav-avatar" style="background-color:<?= htmlspecialchars($currentUser['avatar_color']) ?>">
+            <?= strtoupper(substr($currentUser['name'],0,1)) ?>
+          </span>
 
           <!-- Hi name -->
-          <span style="font-size:0.85rem;font-weight:700;color:#1a1a1a;white-space:nowrap;font-family:'Source Sans 3',sans-serif;">
+          <span class="nav-username">
             Hi, <?= htmlspecialchars(explode(' ',$currentUser['name'])[0]) ?>!
           </span>
 
           <?php if (in_array($currentUser['role'], ['author','admin'])): ?>
-            <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
-            <!-- Submit link -->
-            <a href="submit-article.php" style="
-              font-size:0.82rem;font-weight:700;
-              color:<?= basename($_SERVER['PHP_SELF'])==='submit-article.php' ? '#c8102e' : '#1a1a1a' ?>;
-              text-decoration:none;white-space:nowrap;
-              font-family:'Source Sans 3',sans-serif;
-              transition:color 0.2s;
-            " onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='<?= basename($_SERVER['PHP_SELF'])==='submit-article.php' ? '#c8102e' : '#1a1a1a' ?>'">
+            <span class="nav-divider"></span>
+            <a href="submit-article.php" class="nav-submit-btn <?= basename($_SERVER['PHP_SELF'])==='submit-article.php' ? 'nav-active-link' : '' ?>">
               ✍️ Submit
             </a>
           <?php endif; ?>
 
           <?php if ($currentUser['role'] === 'admin'): ?>
-            <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
-            <!-- Admin link -->
-            <a href="admin.php" style="
-              font-size:0.78rem;font-weight:800;
-              color:<?= basename($_SERVER['PHP_SELF'])==='admin.php' ? '#fff' : '#c8102e' ?>;
-              text-decoration:none;white-space:nowrap;
-              background:<?= basename($_SERVER['PHP_SELF'])==='admin.php' ? '#c8102e' : 'rgba(200,16,46,0.09)' ?>;
-              padding:0.3rem 0.65rem;border-radius:6px;
-              font-family:'Source Sans 3',sans-serif;
-              transition:all 0.2s;
-            " onmouseover="this.style.background='#c8102e';this.style.color='#fff'"
-               onmouseout="this.style.background='<?= basename($_SERVER['PHP_SELF'])==='admin.php' ? '#c8102e' : 'rgba(200,16,46,0.09)' ?>';this.style.color='<?= basename($_SERVER['PHP_SELF'])==='admin.php' ? '#fff' : '#c8102e' ?>'">
+            <span class="nav-divider"></span>
+            <a href="admin.php" class="nav-admin-btn <?= basename($_SERVER['PHP_SELF'])==='admin.php' ? 'nav-admin-btn--active' : '' ?>">
               👑 Admin
             </a>
           <?php endif; ?>
 
-          <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
-
-          <!-- Log Out -->
-          <a href="logout.php" style="
-            font-size:0.82rem;font-weight:700;color:#999;text-decoration:none;
-            white-space:nowrap;font-family:'Source Sans 3',sans-serif;transition:color 0.2s;
-          " onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='#999'">
-            Log Out
-          </a>
+          <span class="nav-divider"></span>
+          <a href="logout.php" class="nav-logout-btn">Log Out</a>
 
         <?php else: ?>
 
-          <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
-
-          <!-- Sign In -->
-          <a href="login.php" style="
-            font-size:0.85rem;font-weight:700;color:#1a1a1a;text-decoration:none;
-            white-space:nowrap;font-family:'Source Sans 3',sans-serif;transition:color 0.2s;
-          " onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='#1a1a1a'">
-            Sign In
-          </a>
-
-          <span style="display:inline-block;width:1px;height:18px;background:#e0e0e0;"></span>
-
-          <!-- Subscribe -->
-          <a href="register.php" style="
-            font-size:0.85rem;font-weight:800;color:#1a1a1a;text-decoration:none;
-            white-space:nowrap;font-family:'Source Sans 3',sans-serif;
-            text-transform:uppercase;letter-spacing:0.5px;transition:color 0.2s;
-          " onmouseover="this.style.color='#c8102e'" onmouseout="this.style.color='#1a1a1a'">
-            Subscribe
-          </a>
+          <span class="nav-divider"></span>
+          <span class="nav-username nav-guest">👤 Guest</span>
+          <span class="nav-divider"></span>
+          <a href="login.php" class="nav-signin-btn">Sign In</a>
+          <span class="nav-divider"></span>
+          <a href="register.php" class="nav-subscribe-btn">Subscribe</a>
 
         <?php endif; ?>
       </div>
@@ -233,3 +218,27 @@
       </div>
     </div>
   </aside>
+  <!-- PULSE ALERT DRAWER -->
+  <div class="pulse-overlay" id="pulseOverlay" hidden></div>
+  <div class="pulse-drawer" id="pulseDrawer" hidden aria-hidden="true">
+    <div class="pulse-drawer-header">
+      <div>
+        <div class="pulse-drawer-eyebrow">UrbanPulse Alerts</div>
+        <h2 class="pulse-drawer-title">Live Feed</h2>
+      </div>
+      <button class="pulse-close-btn" type="button" data-close-pulse aria-label="Close alerts">✕</button>
+    </div>
+    <div class="pulse-drawer-controls">
+      <button class="pulse-enable-btn" id="pulseEnableNotifications" type="button">Enable browser notifications</button>
+      <p class="pulse-permission-state" id="pulsePermissionState"></p>
+    </div>
+    <div class="pulse-alert-list" id="pulseAlertList"></div>
+  </div>
+
+  <!-- TRANSCRIPT MODAL -->
+  <div class="pulse-transcript-modal" id="pulseTranscriptModal" hidden aria-hidden="true">
+    <div class="pulse-transcript-shell">
+      <button class="pulse-close-transcript pulse-close-btn" type="button" data-close-transcript aria-label="Close transcript">✕</button>
+      <div id="pulseTranscriptContent"></div>
+    </div>
+  </div>

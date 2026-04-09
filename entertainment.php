@@ -1,78 +1,120 @@
 <?php
 require_once 'db.php';
-require_once 'auth.php'; // This also starts the session and connects to the DB
-$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
-?><!DOCTYPE html>
+require_once 'auth.php';
+$currentUser = getCurrentUser();
+?>
+<?php $pageId = 'entertainment'; ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>UrbanPulse | Entertainment</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('up_theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (error) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="navfooter.css">
-  <link rel="stylesheet" href="home.css">
-  <link rel="stylesheet" href="entertainment.css">
+  <link rel="stylesheet" href="technology.css">
   <link rel="stylesheet" href="burgermenu.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="pulse-features.css">
   <link rel="icon" type="image/x-icon" href="IMAGES/UrbanPulse.png">
   <style>
-    .active { color: #c8102e !important; text-decoration: underline !important; text-decoration-color: #c8102e !important; text-decoration-thickness: 2px !important; }
-    /* Search box — same as home.php */
+    .active { color: #c8102e; text-decoration: underline; text-decoration-color: #c8102e; text-decoration-thickness: 1.5px; }
     #searchBox:empty::before { content: attr(data-placeholder); color: #aaa; font-style: italic; pointer-events: none; }
     #searchBox:focus { outline: none; }
     #searchBox::-webkit-scrollbar { display: none; }
     .search-bar-inner { display: flex !important; align-items: center !important; gap: 1rem !important; padding: 0.85rem 2rem !important; width: 100% !important; background: #fff !important; }
-    /* Card hover */
+
     a.card-link { display: block; text-decoration: none; color: inherit; }
     a.card-link:hover .news-card { box-shadow: 0 6px 20px rgba(0,0,0,.13); transform: translateY(-3px); }
-    a.card-link:hover .news-card-title { color: #c8102e; }
-    a.card-link:hover .sidebar-story { border-color: #c8102e; }
+    a.card-link:hover .news-card-title,
+    a.card-link:hover .hero-title { color: var(--color-secondary, #c8102e); }
     .news-card { transition: box-shadow .2s, transform .2s; }
-    /* Image fills */
-    .news-card-image { overflow: hidden; border-radius: 6px; aspect-ratio: 16/9; height: auto; }
+
+    .news-card-image { overflow: hidden; border-radius: 6px; width: 100%; aspect-ratio: 16/9; }
     .news-card-image img, .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-image { overflow: hidden; border-radius: 8px; }
+    .hero-image { overflow: hidden; border-radius: 8px; width: 100%; aspect-ratio: 16/9; margin-bottom: 1.25rem; }
+
+    .hero-article { padding-bottom: 1.4rem; border-bottom: 1px solid var(--color-border, #e0e0e0); margin-bottom: 2rem; }
+    .hero-category {
+      display: inline-flex; align-items: center;
+      background: rgba(200,16,46,0.09); color: var(--color-secondary, #c8102e);
+      border-radius: 999px; padding: 0.35rem 0.75rem;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.8px;
+      text-transform: uppercase; margin-bottom: 0.85rem;
+    }
+    .hero-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700;
+      line-height: 1.1; color: var(--color-primary, #1a1a1a); margin-bottom: 0.85rem;
+    }
+    .hero-excerpt { font-size: 1rem; line-height: 1.75; color: var(--color-text, #2d2d2d); margin-bottom: 0.85rem; }
+    .hero-meta { font-size: 0.86rem; color: var(--color-text-light, #666); }
+    .hero-author { font-weight: 700; color: var(--color-primary, #1a1a1a); }
+
+    .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .news-card { display: flex; flex-direction: column; border-bottom: 1px solid var(--color-border, #e0e0e0); padding-bottom: 1.25rem; }
+    .news-card-category {
+      display: inline-flex; background: rgba(200,16,46,0.09); color: var(--color-secondary, #c8102e);
+      border-radius: 999px; padding: 0.3rem 0.65rem;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.8px;
+      text-transform: uppercase; margin: 0.75rem 0 0.5rem;
+    }
+    .news-card-title {
+      font-family: var(--font-display, 'Playfair Display', serif);
+      font-size: 1.15rem; font-weight: 700; line-height: 1.25;
+      color: var(--color-primary, #1a1a1a); margin-bottom: 0.55rem; transition: color .2s;
+    }
+    .news-card-excerpt { font-size: 0.9rem; line-height: 1.65; color: var(--color-text, #2d2d2d); margin-bottom: 0.65rem; flex: 1; }
+    .news-card-meta { font-size: 0.82rem; color: var(--color-text-light, #666); margin-top: auto; }
+
+    .trending-bottom-grid { display: flex; flex-direction: column; }
+    .trending-bottom-item { padding: 1rem 0; border-bottom: 1px solid var(--color-border, #e0e0e0); }
+    .trending-bottom-item:last-child { border-bottom: none; }
+    .item-category {
+      display: inline-block; font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--color-secondary, #c8102e); margin-bottom: 0.35rem;
+    }
+    .item-meta { font-size: 0.82rem; color: var(--color-text-light, #666); margin-top: 0.25rem; }
+
+    .page-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2rem; }
+    .sidebar { position: sticky; top: 110px; align-self: start; display: flex; flex-direction: column; gap: 1.5rem; }
+    .sidebar-section { border-top: 3px solid var(--color-secondary, #c8102e); padding-top: 1rem; }
+    .sidebar-heading { font-family: var(--font-display, 'Playfair Display', serif); font-size: 1.15rem; font-weight: 700; color: var(--color-primary, #1a1a1a); margin-bottom: 1rem; }
+    .sidebar-story { padding: 0.9rem 0; border-bottom: 1px solid var(--color-border, #e0e0e0); }
+    .sidebar-story:first-child { padding-top: 0; }
+    .sidebar-story:last-child { border-bottom: none; }
+    .sidebar-category {
+      display: inline-block; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--color-secondary, #c8102e); margin-bottom: 0.3rem;
+    }
+    .sidebar-title { font-family: var(--font-display, 'Playfair Display', serif); font-size: 1rem; font-weight: 700; color: var(--color-primary, #1a1a1a); margin: 0 0 0.35rem; line-height: 1.3; }
+    .sidebar-meta { font-size: 0.8rem; color: var(--color-text-light, #666); }
+
+    @media (max-width: 1100px) { .page-layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
+    @media (max-width: 760px) { .news-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .news-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
-<body>
+<body data-page="<?php echo htmlspecialchars($pageId, ENT_QUOTES, 'UTF-8'); ?>">
 
-  <!-- BREAKING NEWS -->
   <?php require_once 'nav.php'; ?>
-
-
-
-  <!-- SEARCH DROP BAR — same as home.php -->
-  <div class="search-bar-drop" id="searchBarDrop" aria-hidden="true">
-    <div class="search-bar-inner">
-      <div id="searchBox"
-        role="searchbox"
-        contenteditable="true"
-        aria-label="Search UrbanPulse"
-        data-placeholder="Enter search item"
-        spellcheck="false"></div>
-      <button class="search-bar-close" id="searchClose" aria-label="Close search">&#10005;</button>
-    </div>
-    <div id="results" class="search-bar-results"></div>
-  </div>
-
-  <!-- ENTERTAINMENT SUB-NAV -->
-  <nav class="entertainment-nav">
-    <div class="entertainment-nav-container">
-      <a href="#" class="active">All</a>
-      <a href="#">Movies</a>
-      <a href="#">Music</a>
-      <a href="#">TV Shows</a>
-      <a href="#">Celebrity</a>
-      <a href="#">Style</a>
-      <a href="#">Buzz</a>
-    </div>
-  </nav>
 
   <main>
     <div class="container">
 
-      <!-- TOOLS BAR — same layout as home.php -->
       <section class="tools-bar" aria-label="Entertainment page tools">
         <div class="tools-field">
           <label class="tools-label" for="articleSearch">Search stories</label>
@@ -107,9 +149,10 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
 
           <!-- HERO -->
           <a href="article-cinema-renaissance.php" class="card-link">
-            <article class="hero-article filter-item" data-category="movies" data-date="2026-02-22" data-search="cinema renaissance directors fourth wall 70mm AI film festival Elena Thorne movies entertainment 2026">
+            <a href="article-cinema-renaissance.php" class="card-link"><article class="hero-article filter-item" data-category="movies" data-date="2026-02-22"
+              data-search="cinema renaissance directors fourth wall 70mm AI film festival Elena Thorne movies entertainment 2026">
               <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop" alt="Cinema Renaissance">
+                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&auto=format&fit=crop" alt="Cinema Renaissance" loading="lazy">
               </div>
               <span class="hero-category">Movies</span>
               <h1 class="hero-title">The Renaissance of Cinema: 2026's Boldest Directors</h1>
@@ -117,84 +160,72 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
               <div class="hero-meta">
                 <span class="hero-author">Elena Thorne</span> • March 18, 2026
               </div>
-            </article>
+            </article></a>
           </a>
 
           <!-- LATEST NEWS -->
-          <section>
-            <div class="section-header">
-              <h2 class="section-title">Latest News</h2>
+          <section data-filter-section>
+            <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;padding-bottom:0.9rem;border-bottom:2px solid var(--color-border,#e0e0e0);">
+              <h2 style="margin:0;font-family:var(--font-display,'Playfair Display',serif);font-size:clamp(1.4rem,2vw,1.95rem);color:var(--color-primary,#1a1a1a);">Latest News</h2>
             </div>
             <div class="news-grid">
 
               <a href="#" class="card-link">
                 <article class="news-card filter-item" data-category="music" data-date="2026-03-15" data-search="Coachella 2026 lineup festival music live J. Rivera entertainment">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&auto=format&fit=crop" alt="Coachella">
-                  </div>
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&auto=format&fit=crop" alt="Coachella" loading="lazy"></div>
                   <span class="news-card-category">Music</span>
                   <h3 class="news-card-title">Coachella 2026 Lineup Leaked</h3>
-                  <p class="news-card-excerpt">The leaked Coachella lineup has fans speculating about the festival's headliners and surprise collaborations. The early reveal stirs excitement and debate, showing how anticipation drives engagement in live music culture.</p>
+                  <p class="news-card-excerpt">The leaked Coachella lineup has fans speculating about headliners and surprise collaborations, showing how anticipation drives engagement in live music culture.</p>
                   <div class="news-card-meta">J. Rivera • March 15, 2026</div>
                 </article>
               </a>
 
               <a href="#" class="card-link">
                 <article class="news-card filter-item" data-category="tv" data-date="2026-03-12" data-search="streaming cancels show controversy TV T.Cook entertainment 2026">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&auto=format&fit=crop" alt="Streaming">
-                  </div>
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&auto=format&fit=crop" alt="Streaming" loading="lazy"></div>
                   <span class="news-card-category">TV</span>
                   <h3 class="news-card-title">Streaming Giant Cancels Top-Rated Show</h3>
-                  <p class="news-card-excerpt">The cancellation of the hit series highlights tensions between audience demand and business strategies. Fans are frustrated as metrics-driven decisions override creative success, sparking discussions on how streaming platforms value content.</p>
+                  <p class="news-card-excerpt">Fans are frustrated as metrics-driven decisions override creative success, sparking debate on how streaming platforms value content.</p>
                   <div class="news-card-meta">T. Cook • March 12, 2026</div>
                 </article>
               </a>
 
               <a href="article-cinema-renaissance.php" class="card-link">
-                <article class="news-card filter-item" data-category="movies" data-date="2026-03-12" data-search="35mm projection film analog cinema A.Varda movies entertainment 2026">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&auto=format&fit=crop" alt="35mm Film">
-                  </div>
+                <a href="article-cinema-renaissance.php" class="card-link"><article class="news-card filter-item" data-category="movies" data-date="2026-03-12" data-search="35mm projection film analog cinema A.Varda movies entertainment 2026">
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&auto=format&fit=crop" alt="35mm Film" loading="lazy"></div>
                   <span class="news-card-category">Movies</span>
                   <h3 class="news-card-title">The Return of 35mm Projection</h3>
-                  <p class="news-card-excerpt">The revival of 35mm projection celebrates the tactile artistry of film. Audiences enjoy a more authentic cinematic experience, emphasizing nostalgia and craftsmanship in an era of digital dominance.</p>
+                  <p class="news-card-excerpt">The revival of 35mm celebrates the tactile artistry of film, emphasizing nostalgia and craftsmanship in an era of digital dominance.</p>
                   <div class="news-card-meta">A. Varda • March 12, 2026</div>
-                </article>
+                </article></a>
               </a>
 
               <a href="#" class="card-link">
                 <article class="news-card filter-item" data-category="tv" data-date="2026-03-10" data-search="UrbanStream price hike streaming subscription TV staff entertainment 2026">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop" alt="Streaming Platform">
-                  </div>
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop" alt="Streaming Platform" loading="lazy"></div>
                   <span class="news-card-category">TV</span>
                   <h3 class="news-card-title">UrbanStream+ Price Hike</h3>
-                  <p class="news-card-excerpt">UrbanStream's price hike reflects the challenges of balancing rising production costs with customer retention. The move has fueled debate about subscription value, showing how pricing changes impact streaming loyalty.</p>
+                  <p class="news-card-excerpt">The move fueled debate about subscription value, showing how pricing changes impact streaming loyalty and subscriber retention.</p>
                   <div class="news-card-meta">Staff • March 10, 2026</div>
                 </article>
               </a>
 
               <a href="#" class="card-link">
                 <article class="news-card filter-item" data-category="buzz" data-date="2026-03-14" data-search="interactive theatre Shakespeare immersive stage W.Shake buzz entertainment 2026">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&auto=format&fit=crop" alt="Theatre">
-                  </div>
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&auto=format&fit=crop" alt="Theatre" loading="lazy"></div>
                   <span class="news-card-category">Buzz</span>
                   <h3 class="news-card-title">Interactive Theatre: New Shakespeare</h3>
-                  <p class="news-card-excerpt">Interactive Shakespeare blends classic storytelling with audience participation, creating a dynamic theatrical experience. This approach revitalizes theatre by making viewers part of the narrative, merging tradition with innovation.</p>
+                  <p class="news-card-excerpt">Interactive Shakespeare blends classic storytelling with audience participation, revitalizing theatre by making viewers part of the narrative.</p>
                   <div class="news-card-meta">W. Shake • March 14, 2026</div>
                 </article>
               </a>
 
               <a href="#" class="card-link">
                 <article class="news-card filter-item" data-category="music" data-date="2026-03-06" data-search="Coachella VR meta festival virtual reality music Z.G entertainment 2026">
-                  <div class="news-card-image">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop" alt="VR Festival">
-                  </div>
+                  <div class="news-card-image"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop" alt="VR Festival" loading="lazy"></div>
                   <span class="news-card-category">Music</span>
                   <h3 class="news-card-title">Meta-Festival: Coachella VR</h3>
-                  <p class="news-card-excerpt">The Coachella VR festival expands access to live music, letting audiences participate from anywhere. Virtual reality brings immersive performances to fans, blending technology with traditional festival culture.</p>
+                  <p class="news-card-excerpt">Virtual reality brings immersive performances to fans everywhere, blending technology with traditional festival culture.</p>
                   <div class="news-card-meta">Z. G • March 06, 2026</div>
                 </article>
               </a>
@@ -202,10 +233,12 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
             </div>
           </section>
 
+          <div class="section-divider"></div>
+
           <!-- POP CULTURE BUZZ -->
-          <section class="mt-5">
-            <div class="section-header">
-              <h2 class="section-title">Pop Culture Buzz</h2>
+          <section data-filter-section>
+            <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;padding-bottom:0.9rem;border-bottom:2px solid var(--color-border,#e0e0e0);">
+              <h2 style="margin:0;font-family:var(--font-display,'Playfair Display',serif);font-size:clamp(1.4rem,2vw,1.95rem);color:var(--color-primary,#1a1a1a);">Pop Culture Buzz</h2>
             </div>
             <div class="trending-bottom-grid">
               <div class="trending-bottom-item filter-item" data-category="movies" data-date="2026-03-18" data-search="Oscars 2026 highlights awards movies film critic entertainment">
@@ -241,37 +274,41 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
         <!-- SIDEBAR -->
         <aside class="sidebar">
           <section class="sidebar-section">
-            <h2 class="sidebar-heading">Trending Now</h2>
-            <div class="sidebar-stories">
+            <h3 class="sidebar-heading">Trending Now</h3>
+            <div>
               <div class="sidebar-story">
-                <span class="sidebar-category">Celeb</span>
-                <h3 class="sidebar-title">Secret Bali Wedding Rumors</h3>
+                <span class="sidebar-category">Celebrity</span>
+                <h4 class="sidebar-title">Secret Bali Wedding Rumors</h4>
                 <div class="sidebar-meta">Rumor Mill • March 18, 2026</div>
               </div>
               <div class="sidebar-story">
                 <span class="sidebar-category">Box Office</span>
-                <h3 class="sidebar-title">Indie Film Breaks Records</h3>
+                <h4 class="sidebar-title">Indie Film Breaks Records</h4>
                 <div class="sidebar-meta">Cinema Data • March 13, 2026</div>
               </div>
             </div>
           </section>
-          <section class="sidebar-section mt-4">
-            <h2 class="sidebar-heading">Editor's Pick</h2>
-            <div class="sidebar-stories">
+          <section class="sidebar-section">
+            <h3 class="sidebar-heading">Editor's Pick</h3>
+            <div>
               <div class="sidebar-story">
                 <span class="sidebar-category">Movies</span>
-                <h3 class="sidebar-title">The Future of 70mm</h3>
+                <h4 class="sidebar-title">The Future of 70mm</h4>
                 <div class="sidebar-meta">A. Varda • March 19, 2026</div>
               </div>
             </div>
           </section>
+          <div style="background:linear-gradient(135deg,#111,#232323);color:white;border-radius:20px;padding:1.5rem;">
+            <div style="font-size:.72rem;letter-spacing:1px;opacity:.75;margin-bottom:.75rem;text-transform:uppercase;">Inside Entertainment</div>
+            <h4 style="margin:0 0 .5rem;font-family:var(--font-display,'Playfair Display',serif);font-size:1.2rem;">Stay ahead of the culture</h4>
+            <p style="margin:0;line-height:1.7;color:rgba(255,255,255,0.8);font-size:.9rem;">From box office to buzz, we cover it all.</p>
+          </div>
         </aside>
 
       </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-content">
@@ -305,66 +342,19 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
         </div>
         <div class="footer-section">
           <h4>Pledge</h4>
-          <p>We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated. Inspired by our school's champion radio broadcasting team, we carry the same goal: to share information clearly, quickly, and with purpose.</p>
+          <p id="pledge">We, the UrbanPulse team, pledge to deliver news that keeps people informed, aware, and always updated. Inspired by our school's champion radio broadcasting team, we carry the same goal: to share information clearly, quickly, and with purpose.</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 UrbanPulse News. All rights reserved.</p>
-      </div>
+      <div class="footer-bottom"><p>&copy; 2026 UrbanPulse News. All rights reserved.</p></div>
     </div>
   </footer>
 
-  <!-- BURGER -->
-  <div class="menu-overlay" id="menuOverlay" hidden></div>
-  <aside class="burger-menu" id="burgerMenu" aria-hidden="true" aria-label="Site menu" inert>
-    <div class="burger-top">
-      <button type="button" class="menu-close" id="menuClose" aria-label="Close menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 6 6 18"></path><path d="M6 6l12 12"></path>
-        </svg>
-      </button>
-      <div class="burger-brand">
-        <div class="burger-logo">UrbanPulse</div>
-        <div class="burger-tagline">Feel the Ripple!</div>
-      </div>
-    </div>
-    <div class="burger-body">
-      <div class="burger-section">
-        <div class="burger-section-title">Browse</div>
-        <nav class="burger-links" aria-label="Primary">
-          <a class="burger-link" data-nav href="home.php">Home</a>
-          <a class="burger-link" data-nav href="technology.php">Technology</a>
-          <a class="burger-link" data-nav href="sports.php">Sports</a>
-          <a class="burger-link" data-nav href="entertainment.php">Entertainment</a>
-          <a class="burger-link" data-nav href="worldnews.php">World News</a>
-        </nav>
-      </div>
-      <div class="burger-divider"></div>
-      <div class="burger-section">
-        <div class="burger-section-title">Company</div>
-        <nav class="burger-links" aria-label="Company">
-          <a class="burger-link" data-nav href="about.php">About</a>
-          <a class="burger-link" data-nav href="contact.php">Contact</a>
-        </nav>
-      </div>
-      <div class="burger-divider"></div>
-      <div class="burger-section burger-account">
-        <div class="account-row">
-          <div class="account-left">
-            <span class="account-dot" aria-hidden="true"></span>
-            <span class="account-name">Guest</span>
-          </div>
-          <a class="account-register" href="#">Register</a>
-        </div>
-        <a class="burger-cta" href="Login.php">SIGN IN</a>
-        <a class="burger-support" href="#">Support</a>
-      </div>
-    </div>
-  </aside>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="burger.js"></script>
+  <script src="theme.js"></script>
   <script src="search.js"></script>
-  <script src="filter.js"></script>
+  <script src="interactions.js"></script>
+  <script src="pulse-features.js"></script>
+  <script src="editorial-tools.js"></script>
 </body>
 </html>

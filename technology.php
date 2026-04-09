@@ -1,14 +1,20 @@
-<?php
-require_once 'db.php';
-require_once 'auth.php'; // This also starts the session and connects to the DB
-$currentUser = getCurrentUser(); // Returns user data if logged in, or null if not
-?>
+<?php $pageId = 'technology'; ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title> UrbanPulse | Technology Page </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('up_theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (error) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,12 +32,96 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
       }
     </style>
 
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="pulse-features.css">
 </head>
-<body>
+<body data-page="<?php echo htmlspecialchars($pageId, ENT_QUOTES, 'UTF-8'); ?>">
 
 	<!-- BREAKING NEWS STICKER -->
-	<?php require_once 'nav.php'; ?>
+	<div class="BreakingNews">
+		<span class="BreakingNewsLabel"> Breaking News </span>
+		<div class="BreakingNewsContent">
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+			<span class="BreakingNewsItem">UMak HSU Filipino Radio Broadcasting Won Championship in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU English Radio Broadcasting placed 2nd in DSPC</span>
+            <span class="BreakingNewsItem">UMak HSU Filipibo RB will be fighting in RSPC NCR</span>
+		</div>
+	</div>
 
+
+
+<!-- NAVIGATION BAR -->
+<header class="header-main">
+  <div class="header-container">
+    <!-- LEFT: Burger + Logo -->
+    <div class="header-left">
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-controls="burgerMenu"
+        aria-expanded="false"
+      >
+        <span class="burger-icon" aria-hidden="true"
+          ><span></span><span></span><span></span
+        ></span>
+      </button>
+      <!-- LOGO & TAGLINE -->
+      <span class="header-logo">
+        <h1>UrbanPulse</h1>
+        <p class="header-logo-tagline">Feel the Ripple!</p>
+      </span>
+    </div>
+
+    <!-- CENTER: Navigation -->
+    <nav class="main-nav">
+      <a href="home.php"> Home </a>
+      <a href="technology.php" class="active"> Technology </a>
+      <a href="sports.php"> Sports </a>
+      <a href="entertainment.php"> Entertainment </a>
+      <a href="worldnews.php"> World News</a>
+    </nav>
+
+    <!-- RIGHT: Search + Login + Subscribe -->
+    <div class="header-right">
+      <!-- Search icon only -->
+      <button class="search-toggle" id="searchToggle" aria-label="Open search" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+      <button class="pulse-alert-trigger" id="pulseAlertToggle" type="button" aria-label="Open UrbanPulse alerts">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"></path>
+          <path d="M10 21a2 2 0 0 0 4 0"></path>
+        </svg>
+        <span class="pulse-alert-badge" id="pulseAlertBadge" hidden>0</span>
+      </button>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle light and dark mode">
+            <span class="theme-toggle-track" aria-hidden="true">
+              <span class="theme-toggle-icon theme-toggle-sun">☀</span>
+              <span class="theme-toggle-thumb"></span>
+              <span class="theme-toggle-icon theme-toggle-moon">☾</span>
+            </span>
+          </button>
+
+      <span class="header-right-divider"></span>
+      <div class="header-login">
+        <a href="login.php" target="_blank">
+          <img src="IMAGES/usericon.png" alt="User" width="24" height="24" />
+        </a>
+      </div>
+      <span class="header-right-divider"></span>
+      <div class="header-subscription">
+        <a href="subscription.php"><strong>Subscribe</strong></a>
+      </div>
+    </div>
+  </div>
+</header>
 
 
 
@@ -72,11 +162,13 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                 </div>
             </section>
 
+<?php include __DIR__ . '/includes/editorial-tools.php'; ?>
+
             <div id="filterEmpty" class="filter-empty">No technology stories match your current search and filter combination.</div>
 
             <div class="page-layout">
                 <div class="main-content">
-                    <article class="hero-article filter-item" data-category="ai" data-date="2026-02-23" data-search="Agentic AI autonomous systems workflows supply chains trust safety Aris Thorne">
+                    <a href="article-ai-agentic-revolution.php" class="card-link"><article class="hero-article filter-item" data-category="ai" data-date="2026-02-23" data-search="Agentic AI autonomous systems workflows supply chains trust safety Aris Thorne">
                         <div class="media-slot hero-image"><span>Hero image slot</span><small>Insert AI systems or robotics image</small></div>
                         <span class="hero-category">AI and Robotics</span>
                         <h2 class="hero-title">The Transition to Agentic AI and Autonomous Systems</h2>
@@ -87,7 +179,13 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                         </div>
                         <button class="read-more-btn" type="button" data-read-more="techHeroMore" aria-expanded="false">Read more</button>
                         <div class="hero-meta"><span class="hero-author">Aris Thorne</span><span>•</span><span>February 23, 2026</span><span>•</span><span>9:00 AM PST</span></div>
-                    </article>
+                        <button class="pulse-transcript-trigger" type="button" data-transcript-id="tech-agentic">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Transcript Lens
+</button>
+                    </article></a>
 
                     <div class="section-divider"></div>
 
@@ -120,7 +218,7 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                             <span class="section-link">Card layout</span>
                         </div>
                         <div class="news-grid">
-                            <article class="news-card filter-item" data-category="ai" data-date="2026-02-23" data-search="GPT-6 beta near-human emotional reasoning persistent memory privacy Julian Vane">
+                            <a href="article-gpt6-beta.php" class="card-link"><article class="news-card filter-item" data-category="ai" data-date="2026-02-23" data-search="GPT-6 beta near-human emotional reasoning persistent memory privacy Julian Vane">
                                 <div class="media-slot news-card-image"><span>Image slot</span><small>Insert GPT or AI memory image</small></div>
                                 <span class="news-card-category">AI and Robotics</span>
                                 <h3 class="news-card-title">GPT-6 Early Beta Users Report Near-Human Emotional Reasoning</h3>
@@ -128,7 +226,13 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
                                 <div id="techCard1" class="read-more-content" hidden><p class="review-copy">That same memory layer raises fresh privacy questions, and the debate is already moving toward how persistent AI memory should be protected and governed.</p></div>
                                 <button class="read-more-btn" type="button" data-read-more="techCard1" aria-expanded="false">Read more</button>
                                 <div class="news-card-meta"><span class="news-card-author">Julian Vane</span><span>•</span><span>11:15 AM EST</span></div>
-                            </article>
+                                <button class="pulse-transcript-trigger" type="button" data-transcript-id="tech-gpt6">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 7h16"></path><path d="M4 12h12"></path><path d="M4 17h9"></path>
+  </svg>
+  Transcript Lens
+</button>
+                            </article></a>
                             <article class="news-card filter-item" data-category="ai" data-date="2026-02-23" data-search="Humanoid robots manufacturing lines Optimus Digit Electric Atlas Sarah Jenkins robotics">
                                 <div class="media-slot news-card-image"><span>Image slot</span><small>Insert humanoid robot factory image</small></div>
                                 <span class="news-card-category">AI and Robotics</span>
@@ -461,8 +565,11 @@ $currentUser = getCurrentUser(); // Returns user data if logged in, or null if n
     </aside>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="burger.js"></script>
+		<script src="burger.js"></script>
+	<script src="theme.js"></script>
 	<script src="interactions.js"></script>
 	<script src="comments_updated.js"></script>
+<script src="pulse-features.js"></script>
+<script src="editorial-tools.js"></script>
 </body>
 </html>

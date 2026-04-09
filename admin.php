@@ -10,80 +10,15 @@ if (!isLoggedIn()) {
 
 $user = getCurrentUser();
 
-// Role check — show helpful debug if wrong role
+// Role check — only admins may access this page
 if ($user['role'] !== 'admin') {
-    // Check what's actually in DB
-    $db = getDB();
-    $dbUser = $db->prepare('SELECT role FROM users WHERE id = ?');
-    $dbUser->execute([$user['id']]);
-    $dbRole = $dbUser->fetchColumn();
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <title>Access Denied — UrbanPulse</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-      <style>
-        body { font-family: 'Source Sans 3', sans-serif; background: #f4f4f4; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
-        .box { background: white; border-radius: 16px; padding: 2.5rem; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-        h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
-        p { color: #666; font-size: 0.9rem; line-height: 1.6; }
-        .info { background: #fff7ed; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem; margin: 1.25rem 0; font-size: 0.875rem; text-align: left; }
-        .info strong { color: #c8102e; }
-        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: #c8102e; color: white; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; margin: 0.35rem; }
-        .btn-gray { background: #e0e0e0; color: #333; }
-        form { display: inline; }
-        .fix-btn { padding: 0.65rem 1.25rem; background: #16a34a; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 0.875rem; cursor: pointer; font-family: inherit; }
-      </style>
-    </head>
-    <body>
-      <div class="box">
-        <div style="font-size:3rem;margin-bottom:1rem;">🔒</div>
-        <h2>Admin Access Required</h2>
-        <p>Your account doesn't have admin privileges yet.</p>
-        <div class="info">
-          <strong>Session role:</strong> <?= htmlspecialchars($user['role']) ?><br>
-          <strong>Database role:</strong> <?= htmlspecialchars($dbRole ?: 'unknown') ?><br>
-          <strong>Your username:</strong> <?= htmlspecialchars($user['username']) ?>
-          <?php if ($dbRole === 'admin' && $user['role'] !== 'admin'): ?>
-          <br><br>
-          ⚠️ Your DB role is <strong>admin</strong> but session shows <strong><?= htmlspecialchars($user['role']) ?></strong>.
-          You just need to <strong>log out and log back in!</strong>
-          <?php endif; ?>
-        </div>
-        <?php if ($dbRole !== 'admin'): ?>
-          <!-- Auto-fix: make this user admin right now -->
-          <form method="POST" action="admin.php">
-            <input type="hidden" name="self_promote" value="1">
-            <button type="submit" class="fix-btn"
-              onclick="return confirm('Make your account (<?= htmlspecialchars($user['username']) ?>) an admin?')">
-              ⚡ Make My Account Admin
-            </button>
-          </form>
-          <p style="font-size:.78rem;color:#999;margin-top:.75rem;">This will set your role to admin in the database.</p>
-        <?php endif; ?>
-        <br>
-        <a href="logout.php" class="btn" style="margin-top:.5rem;">Log Out & Back In</a>
-        <a href="home.php" class="btn btn-gray">Go Home</a>
-      </div>
-    </body>
-    </html>
-    <?php
+    header('Location: home.php');
     exit;
 }
 
 $db = getDB();
 $message = '';
 $msgType = '';
-
-// ── Handle self-promote (fallback fix) ──────────────────
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['self_promote'])) {
-    $db->prepare('UPDATE users SET role = ? WHERE id = ?')->execute(['admin', $user['id']]);
-    header('Location: logout.php');
-    exit;
-}
 
 // ── Handle approve / decline ────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

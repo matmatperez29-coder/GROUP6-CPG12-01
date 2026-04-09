@@ -114,3 +114,110 @@ a.news-related-headline:hover { opacity:.75; }
 
 @media(max-width:900px){.article-container{grid-template-columns:1fr}.sidebar{position:static}}
 @media(max-width:600px){.hero-news{padding:1.25rem}.hero-title{font-size:1.6rem}.comment-form-row{grid-template-columns:1fr}.reaction-buttons{gap:.5rem}.reaction-btn{min-width:60px;padding:.5rem .75rem}}
+/* ══════════════════════════════════
+   DARK MODE — article.css
+══════════════════════════════════ */
+html[data-theme='dark'] body { background: #0f1115; color: #e7ecf4; }
+
+html[data-theme='dark'] .article-page { background: #0f1115; }
+
+/* Article card */
+html[data-theme='dark'] .hero-news {
+  background: #151a22;
+  border-color: #2a313c;
+  color: #e7ecf4;
+}
+html[data-theme='dark'] .hero-title { color: #f4f7fb; }
+html[data-theme='dark'] .hero-meta { color: #8f98a7; border-bottom-color: #2a313c; }
+html[data-theme='dark'] .hero-summary { color: #c9d1dc; border-left-color: #c8102e; }
+html[data-theme='dark'] .hero-description { color: #c9d1dc; }
+html[data-theme='dark'] .section-divider { background: #2a313c; }
+
+/* Share bar */
+html[data-theme='dark'] .share-label { color: #8f98a7; }
+
+/* Reactions */
+html[data-theme='dark'] .reactions-title { color: #8f98a7; }
+html[data-theme='dark'] .reaction-btn {
+  background: #1e2530;
+  border-color: #2a313c;
+  color: #c9d1dc;
+}
+html[data-theme='dark'] .reaction-btn .label,
+html[data-theme='dark'] .reaction-btn .count { color: #8f98a7; }
+html[data-theme='dark'] .reaction-btn:hover {
+  border-color: #c8102e;
+  background: rgba(200,16,46,0.1);
+}
+html[data-theme='dark'] .reaction-btn.active {
+  border-color: #c8102e;
+  background: rgba(200,16,46,0.12);
+}
+html[data-theme='dark'] .reaction-btn.active .label,
+html[data-theme='dark'] .reaction-btn.active .count { color: #ff7a8a; }
+
+/* Related stories */
+html[data-theme='dark'] .news-related-title { color: #f4f7fb; border-bottom-color: #c8102e; }
+html[data-theme='dark'] .news-related-container { border-bottom-color: #2a313c; }
+html[data-theme='dark'] .news-related-container:hover { background: #1e2530; }
+html[data-theme='dark'] .news-related-image {
+  background: #1e2530;
+  border-color: #2a313c;
+}
+
+/* Comments */
+html[data-theme='dark'] .comments-heading { color: #f4f7fb; border-bottom-color: #c8102e; }
+html[data-theme='dark'] .comment-form {
+  background: #1e2530;
+  border-color: #2a313c;
+}
+html[data-theme='dark'] .comment-form input,
+html[data-theme='dark'] .comment-form textarea {
+  background: #0f1420;
+  border-color: #2a313c;
+  color: #e7ecf4;
+}
+html[data-theme='dark'] .comment-form input::placeholder,
+html[data-theme='dark'] .comment-form textarea::placeholder { color: #4a5568; }
+html[data-theme='dark'] .comment-form input:focus,
+html[data-theme='dark'] .comment-form textarea:focus {
+  border-color: #c8102e;
+  box-shadow: 0 0 0 3px rgba(200,16,46,0.12);
+}
+html[data-theme='dark'] .comment-char-count { color: #8f98a7; }
+html[data-theme='dark'] .comment-item { border-bottom-color: #2a313c; }
+html[data-theme='dark'] .comment-name { color: #f4f7fb; }
+html[data-theme='dark'] .comment-time { color: #8f98a7; }
+html[data-theme='dark'] .comment-text { color: #c9d1dc; }
+html[data-theme='dark'] .comment-like-btn { color: #8f98a7; }
+html[data-theme='dark'] .comment-like-btn:hover,
+html[data-theme='dark'] .comment-like-btn.liked { color: #ff7a8a; }
+html[data-theme='dark'] .comment-empty { color: #8f98a7; }
+
+/* Sidebar */
+html[data-theme='dark'] .sidebar-heading { color: #f4f7fb; border-bottom-color: #c8102e; }
+html[data-theme='dark'] .sidebar-story {
+  background: #151a22;
+  border-color: #2a313c;
+}
+html[data-theme='dark'] .sidebar-story:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.4); }
+html[data-theme='dark'] .sidebar-headline { color: #f4f7fb; }
+html[data-theme='dark'] .sidebar-story:hover .sidebar-headline { color: #ff7a8a; }
+html[data-theme='dark'] .sidebar-image { background: #1e2530; }
+html[data-theme='dark'] .sidebar-share,
+html[data-theme='dark'] .sidebar-tweet {
+  color: #8f98a7;
+  border-color: #2a313c;
+  background: none;
+}
+
+/* Roundup / newsletter */
+html[data-theme='dark'] .roundup-section { background: #1e2530; }
+
+/* "Join the Conversation" guest box */
+html[data-theme='dark'] .comment-form[style*="text-align: center"] {
+  background: #1e2530 !important;
+  border-color: #2a313c !important;
+}
+html[data-theme='dark'] .comment-form h4 { color: #f4f7fb !important; }
+html[data-theme='dark'] .comment-form p { color: #8f98a7 !important; }
